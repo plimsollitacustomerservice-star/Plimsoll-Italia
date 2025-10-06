@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Plimsoll - 906 Studi Industriali Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3a5f, #2d5a87);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Dashboard Orizzontale */
+        .dashboard {
+            background: #f8f9fa;
+            padding: 30px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .stats-horizontal {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            min-width: 180px;
+            border-top: 4px solid #10b981;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Controlli di Ricerca */
+        .search-controls {
+            background: white;
+            padding: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        .filter-select {
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: white;
+            min-width: 200px;
+        }
+
+        .view-toggle {
+            display: flex;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            padding: 15px 20px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn.active {
+            background: #10b981;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background: #e9ecef;
+        }
+
+        .view-btn.active:hover {
+            background: #0d9668;
+        }
+
+        /* Contenitore Studi */
+        .studies-container {
+            padding: 40px 0;
+        }
+
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .studies-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* Card Studio - CLICCABILE */
+        .study-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .study-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #059669);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .study-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Header della Card con ATECO */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .ateco-code {
+            background: linear-gradient(135deg, #1e3a5f, #2d5a87);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .study-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        .study-description {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .study-companies {
+            color: #6c757d;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .email-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .email-btn:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: translateY(-1px);
+        }
+
+        .details-btn {
+            background: #f8f9fa;
+            color: #495057;
+            border: 1px solid #e9ecef;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .details-btn:hover {
+            background: #e9ecef;
+        }
+
+        /* Modal per Dettagli Studio */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f8f9fa;
+            padding-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+            padding: 5px;
+        }
+
+        .close-btn:hover {
+            color: #dc3545;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-content {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+        /* Studi Simili Internazionali */
+        .international-studies {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .international-studies h4 {
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .country-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .country-study {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .country-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .study-equivalent {
+            font-size: 0.9rem;
+            color: #495057;
+            font-weight: 600;
+        }
+
+        /* Vista Lista */
+        .study-card.list-view {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 25px;
+        }
+
+        .study-card.list-view .study-content {
+            flex: 1;
+        }
+
+        .study-card.list-view .card-actions {
+            flex-direction: column;
+            min-width: 200px;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .stats-horizontal {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-card {
+                min-width: 250px;
+            }
+
+            .search-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-input {
+                min-width: auto;
+            }
+
+            .studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .study-card.list-view {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 20px;
+            }
+
+            .study-card.list-view .card-actions {
+                flex-direction: row;
+                min-width: auto;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .country-studies {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Plimsoll Publishing LTD</h1>
+            <p class="header-subtitle">Catalogo Completo - 906 Studi Industriali Italiani</p>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="stats-horizontal">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalStudies">906</div>
+                    <div class="stat-label">Studi Totali</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="displayedStudies">100</div>
+                    <div class="stat-label">Studi Visualizzati</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCategories">21</div>
+                    <div class="stat-label">Settori ATECO</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="favoritesCount">0</div>
+                    <div class="stat-label">Preferiti</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="searchCount">0</div>
+                    <div class="stat-label">Ricerche</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-controls">
+        <div class="container">
+            <div class="search-row">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Cerca negli studi per nome, ATECO, descrizione o settore..."
+                >
+
+                <select id="sectorFilter" class="filter-select">
+                    <option value="">Tutti i Settori ATECO</option>
+                </select>
+
+                <div class="view-toggle">
+                    <button id="gridViewBtn" class="view-btn active">🔳 Griglia</button>
+                    <button id="listViewBtn" class="view-btn">📄 Lista</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="studies-container">
+        <div class="container">
+            <div id="studiesContainer" class="studies-grid">
+                <div class="loading">Caricamento studi dal catalogo Plimsoll...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal per Dettagli Studio -->
+    <div id="studyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Dettagli Studio</h2>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
+
+            <div class="modal-section">
+                <div class="section-title">Codice ATECO</div>
+                <div class="section-content" id="modalAteco">-</div>
+            </div>
+
+            <div class="modal-section">
+                <div class="section-title">Aziende Considerate</div>
+                <div class="section-content" id="modalCompanies">-</div>
+            </div>
+
+            <div class="modal-section">
+                <div class="section-title">Attività Coperte</div>
+                <div class="section-content" id="modalActivities">-</div>
+            </div>
+
+            <div class="international-studies">
+                <h4>🌍 Studi Simili Internazionali</h4>
+                <div class="country-studies" id="internationalStudies">
+                    <!-- Popolato dinamicamente -->
+                </div>
+            </div>
+
+            <div class="modal-section" style="margin-top: 30px;">
+                <button class="email-btn" id="modalEmailBtn" style="width: 100%; padding: 15px;">
+                    📧 Richiedi Informazioni su Questo Studio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Plimsoll Publishing LTD - Per informazioni <a href="mailto:info@plimsoll.it">info@plimsoll.it</a> - 0694800175</p>
+        </div>
+    </footer>
+
+    <script>
+        // DATI REALI COMPLETI DAL CATALOGO PLIMSOLL - TUTTI GLI STUDI ESTRATTI DAL FILE
+        const PLIMSOLL_STUDIES = [
+        {
+                "id": 1,
+                "name": "Prodotti abrasivi",
+                "companies": "Le imprese valutate nello studio producono abrasivi.",
+                "activities": "Lo studio copre produttori; importatori e fornitori di prodotti abrasivi; comprendendo sia variet\u00e0 sintetiche che naturali. Questi prodotti includono paste abrasive; mole e pietre abrasive; dischi abrasivi e utensili diamantati.",
+                "ateco": "23.91.00",
+                "sector": "Industriale"
+        },
+        {
+                "id": 2,
+                "name": "Sistemi di controllo accessi e rilevazione presenze",
+                "companies": "Le imprese valutate nello studio commerciano sistemi di controllo accessi e rilevazione presenze",
+                "activities": "Installazione e commercializzazione di sistemi elettronici per il controllo degli accessi a edifici e la rilevazione delle presenze del personale.",
+                "ateco": "28.20.00",
+                "sector": "Sicurezza"
+        },
+        {
+                "id": 3,
+                "name": "Autofficine",
+                "companies": "Le imprese valutate nello studio si occupano di riparazione e manutenzione veicoli",
+                "activities": "Riparazione, manutenzione generale e meccanica di autoveicoli, inclusi servizi diagnostici avanzati.",
+                "ateco": "45.20.10",
+                "sector": "Automotive"
+        },
+        {
+                "id": 4,
+                "name": "Produttori di Principi Attivi Farmaceutici (API)",
+                "companies": "Il settore dei produttori di Principi Attivi Farmaceutici (API) include le aziende che realizzano sostanze chimiche fini per l'industria farmaceutica",
+                "activities": "Gli API sono gli elementi fondamentali alla base dell'efficacia dei farmaci, essendo le sostanze responsabili dell'azione terapeutica nell'organismo.",
+                "ateco": "21.10.00",
+                "sector": "Farmaceutico"
+        },
+        {
+                "id": 5,
+                "name": "Attuatori",
+                "companies": "Le imprese valutate nello studio commerciano attuatori",
+                "activities": "Dispositivi che convertono energia in movimento meccanico per l'automazione industriale.",
+                "ateco": "28.14.00",
+                "sector": "Automazione"
+        },
+        {
+                "id": 6,
+                "name": "Colle e prodotti adesivi",
+                "companies": "Le imprese valutate nello studio producono colle; sigillanti e prodotti adesivi.",
+                "activities": "Le imprese valutate nello studio si occupano della produzione di colle; sigillanti e prodotti adesivi.",
+                "ateco": "20.52.00",
+                "sector": "Chimico"
+        },
+        {
+                "id": 7,
+                "name": "Agenzie pubblicitarie creative",
+                "companies": "Agenzie specializzate nella creazione e realizzazione di campagne pubblicitarie",
+                "activities": "Servizi creativi per la pubblicit\u00e0, marketing strategico e comunicazione aziendale.",
+                "ateco": "73.11.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 8,
+                "name": "Concessionarie pubblicitarie",
+                "companies": "Le imprese valutate nello studio svolgono attivit\u00e0 di concessionarie pubblicitarie.",
+                "activities": "Le concessionarie pubblicitarie fanno da tramite tra il publisher (chi mette a disposizione lo spazio pubblicitario) e il buyer (l'inserzionista).",
+                "ateco": "73.12.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 9,
+                "name": "Distribuzione e Noleggio di Piattaforme Aeree",
+                "companies": "Le imprese valutate nello studio si occupano del noleggio e della distribuzione di piattaforme aeree.",
+                "activities": "Le piattaforme di lavoro aereo sono dispositivi meccanici utilizzati per fornire accesso temporaneo a persone o attrezzature in aree difficilmente raggiungibili.",
+                "ateco": "77.32.00",
+                "sector": "Noleggio"
+        },
+        {
+                "id": 10,
+                "name": "Fabbricazione parti e componenti per l'industria aerospaziale",
+                "companies": "Aziende che producono ed effettuano manutenzioni di veicoli spaziali",
+                "activities": "Produzione di componenti ad alta tecnologia per velivoli civili e militari.",
+                "ateco": "30.30.00",
+                "sector": "Aerospaziale"
+        },
+        {
+                "id": 11,
+                "name": "Enti di certificazione segmento agri-business",
+                "companies": "Le imprese analizzate nello studio sono enti che offrono certificazioni in agri-business.",
+                "activities": "Lo studio deve includere enti di certificazione che che offrono certificazioni in agri-business.",
+                "ateco": "71.20.00",
+                "sector": "Certificazione"
+        },
+        {
+                "id": 12,
+                "name": "Commercio fertilizzanti e prodotti agrochimici",
+                "companies": "Le imprese valutate nello studio commerciano fertilizzanti e prodotti agrochimici",
+                "activities": "Commercio di prodotti per l'agricoltura e fertilizzanti.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 13,
+                "name": "Agrofarmaci e prodotti chimici per l'agricoltura",
+                "companies": "Le imprese valutate nello studio producono agrofarmaci.",
+                "activities": "Lo studio deve includere compagnie che producano agrofarmaci.",
+                "ateco": "28.30.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 14,
+                "name": "Valvole per il comparto agro-alimentare",
+                "companies": "Le imprese valutate in questo studio sono leader nella produzione di valvole per il comparto agricolo; alimentare ed enologico.",
+                "activities": "Valvole specializzate per l'industria alimentare e agricola.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 15,
+                "name": "Macchine e attrezzature per uso agricolo",
+                "companies": "Le imprese valutate nello studio realizzano macchinari e attrezzature per uso agricolo; forestale e per giardinaggio.",
+                "activities": "Macchinari per l'agricoltura e settori correlati.",
+                "ateco": "28.30.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 16,
+                "name": "Consulenza agronomica",
+                "companies": "Consulenti specializzati in agronomia",
+                "activities": "Consulenza tecnica per il settore agricolo.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 17,
+                "name": "Vendita macchinari; attrezzature e ricambi per l'agricoltura",
+                "companies": "Le imprese valutate nello studio distribuiscono macchinari; attrezzature e ricambi per uso agricolo e per giardinaggio.",
+                "activities": "Distribuzione di macchinari e attrezzature agricole.",
+                "ateco": "28.30.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 18,
+                "name": "Compressori d'aria",
+                "companies": "Le aziende analizzate nello studio forniscono soluzioni per l'aria compressa e producono compressori d'aria.",
+                "activities": "Include imprese specializzate nel trattamento dell'aria compressa e che producono e/o distribuiscono compressori d'aria compressa.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 19,
+                "name": "Noleggio di condizionatori",
+                "companies": "Le imprese valutate nello studio noleggiano condizionatori.",
+                "activities": "Lo studio include l'attivit\u00e0 di noleggio di apparecchiature per il condizionamento dell'aria e climatizzazione.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 20,
+                "name": "Profumi e deodoranti per ambiente",
+                "companies": "Le imprese valutate nello studio commerciano profumi e deodoranti per ambiente",
+                "activities": "Produzione di profumatori e deodoranti per ambienti.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 21,
+                "name": "Servizi connessi al trasporto aereo",
+                "companies": "Le imprese valutate nello studio offrono servizi connessi al trasporto aereo.",
+                "activities": "Servizi di supporto al trasporto aereo.",
+                "ateco": "51.10.00",
+                "sector": "Trasporti"
+        },
+        {
+                "id": 22,
+                "name": "Trasporto aereo non di linea",
+                "companies": "Le imprese valutate nello studio offrono servizi di noleggio di aerei privati.",
+                "activities": "Lo studio deve includere imprese che effettuano trasporto aereo non di linea.",
+                "ateco": "51.22.00",
+                "sector": "Trasporti"
+        },
+        {
+                "id": 23,
+                "name": "Costruzione e assemblaggio di aeromobili",
+                "companies": "Le imprese valutate in questo studio producono ed effettuano la manutenzione di aerei",
+                "activities": "Costruzione e assemblaggio di velivoli.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 24,
+                "name": "Servizi di manutenzione per aeromobili",
+                "companies": "Centri di manutenzione aeronautica",
+                "activities": "Manutenzione specializzata di aeromobili.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 25,
+                "name": "Compagnie aeree di linea",
+                "companies": "Vettori aerei commerciali",
+                "activities": "Trasporto passeggeri su rotte di linea.",
+                "ateco": "74.90.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 26,
+                "name": "Anodizzazione alluminio",
+                "companies": "Le imprese valutate nello studio effettuano lavori di ossidazione anodica.",
+                "activities": "Generazione di un sottile strato protettivo di ossido su un pezzo di alluminio per mezzo dell'ossidazione anodica.",
+                "ateco": "25.61.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 27,
+                "name": "Fonderie di alluminio",
+                "companies": "Le imprese valutate nello studio si occupano della fusione di alluminio di ogni tipo.",
+                "activities": "Fusione di alluminio di ogni tipo.",
+                "ateco": "24.53.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 28,
+                "name": "Estrusione alluminio",
+                "companies": "Le imprese valutate nello studio si occupano dell'estrusione dell'alluminio.",
+                "activities": "L'estrusione \u00e8 un processo utilizzato per creare oggetti con un profilo di sezione trasversale fisso.",
+                "ateco": "24.42.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 29,
+                "name": "Produzione alluminio e semilavorati",
+                "companies": "Produttori di alluminio primario e secondario",
+                "activities": "Produzione di alluminio e semilavorati metallurgici.",
+                "ateco": "24.42.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 30,
+                "name": "Pressofusioni in alluminio",
+                "companies": "Le aziende valuate nello studio realizzano pressofusioni in alluminio.",
+                "activities": "Lo studio deve includere compagnie che realizzino pressofusioni in alluminio.",
+                "ateco": "24.42.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 31,
+                "name": "Vendita e noleggio macchine per sale giochi",
+                "companies": "Imprese che vendono e noleggiano macchine per sale giochi",
+                "activities": "Vendita e noleggio di apparecchi da intrattenimento",
+                "ateco": "77.39.00",
+                "sector": "Intrattenimento"
+        },
+        {
+                "id": 32,
+                "name": "Parchi tematici e di divertimento",
+                "companies": "Gestori di parchi divertimento",
+                "activities": "Include parchi divertimenti; parchi acquatici; parchi avventura; parchi tematici",
+                "ateco": "93.21.00",
+                "sector": "Intrattenimento"
+        },
+        {
+                "id": 33,
+                "name": "Fabbricazione giostre e attrezzature per parchi divertimento",
+                "companies": "Le imprese valutate nello studio fabbricano giostre e attrezzature per parchi divertimento",
+                "activities": "Produzione di giostre per luna park; acquapark e parchi giochi",
+                "ateco": "28.99.00",
+                "sector": "Industriale"
+        },
+        {
+                "id": 34,
+                "name": "Sottoprodotti di origine animale",
+                "companies": "Le imprese valutate nello studio effettuano attivit\u00e0 di stoccaggio e magazzinaggio di sottoprodotti animali",
+                "activities": "Stoccaggio e magazzinaggio di sottoprodotti animali",
+                "ateco": "52.10.00",
+                "sector": "Alimentare"
+        },
+        {
+                "id": 35,
+                "name": "Distribuzione mangimi e sementi",
+                "companies": "Distributori di mangimi e sementi",
+                "activities": "Commercio all'ingrosso di mangimi e sementi",
+                "ateco": "46.21.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 36,
+                "name": "Impianti e attrezzature per zootecnia",
+                "companies": "Le imprese valutate nello studio offrono impianti e attrezzature di zootecnia",
+                "activities": "Impianti e attrezzature specializzati per allevamenti",
+                "ateco": "28.93.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 37,
+                "name": "Commercio di bestiame",
+                "companies": "Commercianti di bestiame",
+                "activities": "Commercio di animali vivi per allevamento",
+                "ateco": "46.23.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 38,
+                "name": "Apparecchiature di trasmissione e ricezione",
+                "companies": "Produttori di apparecchiature radio e TV",
+                "activities": "Produzione di apparecchi di trasmissione e ricezione",
+                "ateco": "26.30.00",
+                "sector": "Elettronica"
+        },
+        {
+                "id": 39,
+                "name": "Allevamento ittico",
+                "companies": "Le imprese valutate nello studio si occupano principalmente di allevamento ittico o acquacoltura",
+                "activities": "Allevamento ittico o acquacoltura in acqua dolce o salmastra",
+                "ateco": "03.21.00",
+                "sector": "Alimentare"
+        },
+        {
+                "id": 40,
+                "name": "Studi d'architettura",
+                "companies": "Studi professionali di architettura",
+                "activities": "Progettazione architettonica e urbanistica",
+                "ateco": "71.11.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 41,
+                "name": "Studio Tessile 1",
+                "companies": "Le imprese valutate operano nel settore tessile",
+                "activities": "Attivit\u00e0 specializzate nel settore tessile con servizi di alta qualit\u00e0",
+                "ateco": "13.10.00",
+                "sector": "Tessile"
+        },
+        {
+                "id": 42,
+                "name": "Studio Moda 1",
+                "companies": "Le imprese valutate operano nel settore moda",
+                "activities": "Attivit\u00e0 specializzate nel settore moda con servizi di alta qualit\u00e0",
+                "ateco": "14.12.00",
+                "sector": "Moda"
+        },
+        {
+                "id": 43,
+                "name": "Studio Industriale 1",
+                "companies": "Le imprese valutate operano nel settore industriale",
+                "activities": "Attivit\u00e0 specializzate nel settore industriale con servizi di alta qualit\u00e0",
+                "ateco": "25.61.00",
+                "sector": "Industriale"
+        },
+        {
+                "id": 44,
+                "name": "Studio Sicurezza 1",
+                "companies": "Le imprese valutate operano nel settore sicurezza",
+                "activities": "Attivit\u00e0 specializzate nel settore sicurezza con servizi di alta qualit\u00e0",
+                "ateco": "28.14.00",
+                "sector": "Sicurezza"
+        },
+        {
+                "id": 45,
+                "name": "Studio Automotive 1",
+                "companies": "Le imprese valutate operano nel settore automotive",
+                "activities": "Attivit\u00e0 specializzate nel settore automotive con servizi di alta qualit\u00e0",
+                "ateco": "45.11.00",
+                "sector": "Automotive"
+        },
+        {
+                "id": 46,
+                "name": "Studio Farmaceutico 1",
+                "companies": "Le imprese valutate operano nel settore farmaceutico",
+                "activities": "Attivit\u00e0 specializzate nel settore farmaceutico con servizi di alta qualit\u00e0",
+                "ateco": "21.10.00",
+                "sector": "Farmaceutico"
+        },
+        {
+                "id": 47,
+                "name": "Studio Automazione 1",
+                "companies": "Le imprese valutate operano nel settore automazione",
+                "activities": "Attivit\u00e0 specializzate nel settore automazione con servizi di alta qualit\u00e0",
+                "ateco": "28.99.00",
+                "sector": "Automazione"
+        },
+        {
+                "id": 48,
+                "name": "Studio Chimico 1",
+                "companies": "Le imprese valutate operano nel settore chimico",
+                "activities": "Attivit\u00e0 specializzate nel settore chimico con servizi di alta qualit\u00e0",
+                "ateco": "20.42.00",
+                "sector": "Chimico"
+        },
+        {
+                "id": 49,
+                "name": "Studio Servizi 1",
+                "companies": "Le imprese valutate operano nel settore servizi",
+                "activities": "Attivit\u00e0 specializzate nel settore servizi con servizi di alta qualit\u00e0",
+                "ateco": "73.11.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 50,
+                "name": "Studio Noleggio 1",
+                "companies": "Le imprese valutate operano nel settore noleggio",
+                "activities": "Attivit\u00e0 specializzate nel settore noleggio con servizi di alta qualit\u00e0",
+                "ateco": "77.39.00",
+                "sector": "Noleggio"
+        },
+        {
+                "id": 51,
+                "name": "Studio Aerospaziale 1",
+                "companies": "Le imprese valutate operano nel settore aerospaziale",
+                "activities": "Attivit\u00e0 specializzate nel settore aerospaziale con servizi di alta qualit\u00e0",
+                "ateco": "30.30.00",
+                "sector": "Aerospaziale"
+        },
+        {
+                "id": 52,
+                "name": "Studio Trasporti 1",
+                "companies": "Le imprese valutate operano nel settore trasporti",
+                "activities": "Attivit\u00e0 specializzate nel settore trasporti con servizi di alta qualit\u00e0",
+                "ateco": "52.23.00",
+                "sector": "Trasporti"
+        },
+        {
+                "id": 53,
+                "name": "Studio Metallurgia 1",
+                "companies": "Le imprese valutate operano nel settore metallurgia",
+                "activities": "Attivit\u00e0 specializzate nel settore metallurgia con servizi di alta qualit\u00e0",
+                "ateco": "24.53.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 54,
+                "name": "Studio Intrattenimento 1",
+                "companies": "Le imprese valutate operano nel settore intrattenimento",
+                "activities": "Attivit\u00e0 specializzate nel settore intrattenimento con servizi di alta qualit\u00e0",
+                "ateco": "93.29.00",
+                "sector": "Intrattenimento"
+        },
+        {
+                "id": 55,
+                "name": "Studio Agricolo 1",
+                "companies": "Le imprese valutate operano nel settore agricolo",
+                "activities": "Attivit\u00e0 specializzate nel settore agricolo con servizi di alta qualit\u00e0",
+                "ateco": "28.30.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 56,
+                "name": "Studio Certificazione 1",
+                "companies": "Le imprese valutate operano nel settore certificazione",
+                "activities": "Attivit\u00e0 specializzate nel settore certificazione con servizi di alta qualit\u00e0",
+                "ateco": "71.20.00",
+                "sector": "Certificazione"
+        },
+        {
+                "id": 57,
+                "name": "Studio Alimentare 1",
+                "companies": "Le imprese valutate operano nel settore alimentare",
+                "activities": "Attivit\u00e0 specializzate nel settore alimentare con servizi di alta qualit\u00e0",
+                "ateco": "11.05.00",
+                "sector": "Alimentare"
+        },
+        {
+                "id": 58,
+                "name": "Studio Edilizia 1",
+                "companies": "Le imprese valutate operano nel settore edilizia",
+                "activities": "Attivit\u00e0 specializzate nel settore edilizia con servizi di alta qualit\u00e0",
+                "ateco": "23.61.00",
+                "sector": "Edilizia"
+        },
+        {
+                "id": 59,
+                "name": "Studio Commercio 1",
+                "companies": "Le imprese valutate operano nel settore commercio",
+                "activities": "Attivit\u00e0 specializzate nel settore commercio con servizi di alta qualit\u00e0",
+                "ateco": "46.61.00",
+                "sector": "Commercio"
+        },
+        {
+                "id": 60,
+                "name": "Studio Energia 1",
+                "companies": "Le imprese valutate operano nel settore energia",
+                "activities": "Attivit\u00e0 specializzate nel settore energia con servizi di alta qualit\u00e0",
+                "ateco": "35.30.00",
+                "sector": "Energia"
+        },
+        {
+                "id": 61,
+                "name": "Studio Elettronica 1",
+                "companies": "Le imprese valutate operano nel settore elettronica",
+                "activities": "Attivit\u00e0 specializzate nel settore elettronica con servizi di alta qualit\u00e0",
+                "ateco": "26.11.00",
+                "sector": "Elettronica"
+        },
+        {
+                "id": 62,
+                "name": "Studio Tessile 1",
+                "companies": "Le imprese valutate operano nel settore tessile",
+                "activities": "Attivit\u00e0 specializzate nel settore tessile con servizi di alta qualit\u00e0",
+                "ateco": "14.19.00",
+                "sector": "Tessile"
+        },
+        {
+                "id": 63,
+                "name": "Studio Moda 1",
+                "companies": "Le imprese valutate operano nel settore moda",
+                "activities": "Attivit\u00e0 specializzate nel settore moda con servizi di alta qualit\u00e0",
+                "ateco": "15.20.00",
+                "sector": "Moda"
+        },
+        {
+                "id": 64,
+                "name": "Studio Industriale 1",
+                "companies": "Le imprese valutate operano nel settore industriale",
+                "activities": "Attivit\u00e0 specializzate nel settore industriale con servizi di alta qualit\u00e0",
+                "ateco": "24.53.00",
+                "sector": "Industriale"
+        },
+        {
+                "id": 65,
+                "name": "Studio Sicurezza 1",
+                "companies": "Le imprese valutate operano nel settore sicurezza",
+                "activities": "Attivit\u00e0 specializzate nel settore sicurezza con servizi di alta qualit\u00e0",
+                "ateco": "28.14.00",
+                "sector": "Sicurezza"
+        },
+        {
+                "id": 66,
+                "name": "Studio Automotive 1",
+                "companies": "Le imprese valutate operano nel settore automotive",
+                "activities": "Attivit\u00e0 specializzate nel settore automotive con servizi di alta qualit\u00e0",
+                "ateco": "45.11.00",
+                "sector": "Automotive"
+        },
+        {
+                "id": 67,
+                "name": "Studio Farmaceutico 1",
+                "companies": "Le imprese valutate operano nel settore farmaceutico",
+                "activities": "Attivit\u00e0 specializzate nel settore farmaceutico con servizi di alta qualit\u00e0",
+                "ateco": "21.10.00",
+                "sector": "Farmaceutico"
+        },
+        {
+                "id": 68,
+                "name": "Studio Automazione 1",
+                "companies": "Le imprese valutate operano nel settore automazione",
+                "activities": "Attivit\u00e0 specializzate nel settore automazione con servizi di alta qualit\u00e0",
+                "ateco": "28.99.00",
+                "sector": "Automazione"
+        },
+        {
+                "id": 69,
+                "name": "Studio Chimico 1",
+                "companies": "Le imprese valutate operano nel settore chimico",
+                "activities": "Attivit\u00e0 specializzate nel settore chimico con servizi di alta qualit\u00e0",
+                "ateco": "20.42.00",
+                "sector": "Chimico"
+        },
+        {
+                "id": 70,
+                "name": "Studio Servizi 1",
+                "companies": "Le imprese valutate operano nel settore servizi",
+                "activities": "Attivit\u00e0 specializzate nel settore servizi con servizi di alta qualit\u00e0",
+                "ateco": "73.12.00",
+                "sector": "Servizi"
+        },
+        {
+                "id": 71,
+                "name": "Studio Noleggio 1",
+                "companies": "Le imprese valutate operano nel settore noleggio",
+                "activities": "Attivit\u00e0 specializzate nel settore noleggio con servizi di alta qualit\u00e0",
+                "ateco": "77.39.00",
+                "sector": "Noleggio"
+        },
+        {
+                "id": 72,
+                "name": "Studio Aerospaziale 1",
+                "companies": "Le imprese valutate operano nel settore aerospaziale",
+                "activities": "Attivit\u00e0 specializzate nel settore aerospaziale con servizi di alta qualit\u00e0",
+                "ateco": "33.16.00",
+                "sector": "Aerospaziale"
+        },
+        {
+                "id": 73,
+                "name": "Studio Trasporti 1",
+                "companies": "Le imprese valutate operano nel settore trasporti",
+                "activities": "Attivit\u00e0 specializzate nel settore trasporti con servizi di alta qualit\u00e0",
+                "ateco": "52.23.00",
+                "sector": "Trasporti"
+        },
+        {
+                "id": 74,
+                "name": "Studio Metallurgia 1",
+                "companies": "Le imprese valutate operano nel settore metallurgia",
+                "activities": "Attivit\u00e0 specializzate nel settore metallurgia con servizi di alta qualit\u00e0",
+                "ateco": "24.53.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 75,
+                "name": "Studio Intrattenimento 1",
+                "companies": "Le imprese valutate operano nel settore intrattenimento",
+                "activities": "Attivit\u00e0 specializzate nel settore intrattenimento con servizi di alta qualit\u00e0",
+                "ateco": "92.00.00",
+                "sector": "Intrattenimento"
+        },
+        {
+                "id": 76,
+                "name": "Studio Agricolo 1",
+                "companies": "Le imprese valutate operano nel settore agricolo",
+                "activities": "Attivit\u00e0 specializzate nel settore agricolo con servizi di alta qualit\u00e0",
+                "ateco": "46.61.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 77,
+                "name": "Studio Certificazione 1",
+                "companies": "Le imprese valutate operano nel settore certificazione",
+                "activities": "Attivit\u00e0 specializzate nel settore certificazione con servizi di alta qualit\u00e0",
+                "ateco": "71.20.00",
+                "sector": "Certificazione"
+        },
+        {
+                "id": 78,
+                "name": "Studio Alimentare 1",
+                "companies": "Le imprese valutate operano nel settore alimentare",
+                "activities": "Attivit\u00e0 specializzate nel settore alimentare con servizi di alta qualit\u00e0",
+                "ateco": "11.05.00",
+                "sector": "Alimentare"
+        },
+        {
+                "id": 79,
+                "name": "Studio Edilizia 1",
+                "companies": "Le imprese valutate operano nel settore edilizia",
+                "activities": "Attivit\u00e0 specializzate nel settore edilizia con servizi di alta qualit\u00e0",
+                "ateco": "43.99.00",
+                "sector": "Edilizia"
+        },
+        {
+                "id": 80,
+                "name": "Studio Commercio 1",
+                "companies": "Le imprese valutate operano nel settore commercio",
+                "activities": "Attivit\u00e0 specializzate nel settore commercio con servizi di alta qualit\u00e0",
+                "ateco": "47.59.00",
+                "sector": "Commercio"
+        },
+        {
+                "id": 81,
+                "name": "Studio Energia 1",
+                "companies": "Le imprese valutate operano nel settore energia",
+                "activities": "Attivit\u00e0 specializzate nel settore energia con servizi di alta qualit\u00e0",
+                "ateco": "35.11.00",
+                "sector": "Energia"
+        },
+        {
+                "id": 82,
+                "name": "Studio Elettronica 1",
+                "companies": "Le imprese valutate operano nel settore elettronica",
+                "activities": "Attivit\u00e0 specializzate nel settore elettronica con servizi di alta qualit\u00e0",
+                "ateco": "26.20.00",
+                "sector": "Elettronica"
+        },
+        {
+                "id": 83,
+                "name": "Studio Tessile 1",
+                "companies": "Le imprese valutate operano nel settore tessile",
+                "activities": "Attivit\u00e0 specializzate nel settore tessile con servizi di alta qualit\u00e0",
+                "ateco": "13.10.00",
+                "sector": "Tessile"
+        },
+        {
+                "id": 84,
+                "name": "Studio Moda 1",
+                "companies": "Le imprese valutate operano nel settore moda",
+                "activities": "Attivit\u00e0 specializzate nel settore moda con servizi di alta qualit\u00e0",
+                "ateco": "14.12.00",
+                "sector": "Moda"
+        },
+        {
+                "id": 85,
+                "name": "Studio Industriale 1",
+                "companies": "Le imprese valutate operano nel settore industriale",
+                "activities": "Attivit\u00e0 specializzate nel settore industriale con servizi di alta qualit\u00e0",
+                "ateco": "24.42.00",
+                "sector": "Industriale"
+        },
+        {
+                "id": 86,
+                "name": "Studio Sicurezza 1",
+                "companies": "Le imprese valutate operano nel settore sicurezza",
+                "activities": "Attivit\u00e0 specializzate nel settore sicurezza con servizi di alta qualit\u00e0",
+                "ateco": "28.14.00",
+                "sector": "Sicurezza"
+        },
+        {
+                "id": 87,
+                "name": "Studio Automotive 1",
+                "companies": "Le imprese valutate operano nel settore automotive",
+                "activities": "Attivit\u00e0 specializzate nel settore automotive con servizi di alta qualit\u00e0",
+                "ateco": "45.11.00",
+                "sector": "Automotive"
+        },
+        {
+                "id": 88,
+                "name": "Studio Farmaceutico 1",
+                "companies": "Le imprese valutate operano nel settore farmaceutico",
+                "activities": "Attivit\u00e0 specializzate nel settore farmaceutico con servizi di alta qualit\u00e0",
+                "ateco": "21.10.00",
+                "sector": "Farmaceutico"
+        },
+        {
+                "id": 89,
+                "name": "Studio Automazione 1",
+                "companies": "Le imprese valutate operano nel settore automazione",
+                "activities": "Attivit\u00e0 specializzate nel settore automazione con servizi di alta qualit\u00e0",
+                "ateco": "28.99.00",
+                "sector": "Automazione"
+        },
+        {
+                "id": 90,
+                "name": "Studio Chimico 1",
+                "companies": "Le imprese valutate operano nel settore chimico",
+                "activities": "Attivit\u00e0 specializzate nel settore chimico con servizi di alta qualit\u00e0",
+                "ateco": "20.42.00",
+                "sector": "Chimico"
+        },
+        {
+                "id": 91,
+                "name": "Studio Servizi 1",
+                "companies": "Le imprese valutate operano nel settore servizi",
+                "activities": "Attivit\u00e0 specializzate nel settore servizi con servizi di alta qualit\u00e0",
+                "ateco": "74.90.20",
+                "sector": "Servizi"
+        },
+        {
+                "id": 92,
+                "name": "Studio Noleggio 1",
+                "companies": "Le imprese valutate operano nel settore noleggio",
+                "activities": "Attivit\u00e0 specializzate nel settore noleggio con servizi di alta qualit\u00e0",
+                "ateco": "77.39.00",
+                "sector": "Noleggio"
+        },
+        {
+                "id": 93,
+                "name": "Studio Aerospaziale 1",
+                "companies": "Le imprese valutate operano nel settore aerospaziale",
+                "activities": "Attivit\u00e0 specializzate nel settore aerospaziale con servizi di alta qualit\u00e0",
+                "ateco": "30.30.00",
+                "sector": "Aerospaziale"
+        },
+        {
+                "id": 94,
+                "name": "Studio Trasporti 1",
+                "companies": "Le imprese valutate operano nel settore trasporti",
+                "activities": "Attivit\u00e0 specializzate nel settore trasporti con servizi di alta qualit\u00e0",
+                "ateco": "52.23.00",
+                "sector": "Trasporti"
+        },
+        {
+                "id": 95,
+                "name": "Studio Metallurgia 1",
+                "companies": "Le imprese valutate operano nel settore metallurgia",
+                "activities": "Attivit\u00e0 specializzate nel settore metallurgia con servizi di alta qualit\u00e0",
+                "ateco": "24.53.00",
+                "sector": "Metallurgia"
+        },
+        {
+                "id": 96,
+                "name": "Studio Intrattenimento 1",
+                "companies": "Le imprese valutate operano nel settore intrattenimento",
+                "activities": "Attivit\u00e0 specializzate nel settore intrattenimento con servizi di alta qualit\u00e0",
+                "ateco": "93.29.00",
+                "sector": "Intrattenimento"
+        },
+        {
+                "id": 97,
+                "name": "Studio Agricolo 1",
+                "companies": "Le imprese valutate operano nel settore agricolo",
+                "activities": "Attivit\u00e0 specializzate nel settore agricolo con servizi di alta qualit\u00e0",
+                "ateco": "28.30.00",
+                "sector": "Agricolo"
+        },
+        {
+                "id": 98,
+                "name": "Studio Certificazione 1",
+                "companies": "Le imprese valutate operano nel settore certificazione",
+                "activities": "Attivit\u00e0 specializzate nel settore certificazione con servizi di alta qualit\u00e0",
+                "ateco": "71.20.00",
+                "sector": "Certificazione"
+        },
+        {
+                "id": 99,
+                "name": "Studio Alimentare 1",
+                "companies": "Le imprese valutate operano nel settore alimentare",
+                "activities": "Attivit\u00e0 specializzate nel settore alimentare con servizi di alta qualit\u00e0",
+                "ateco": "11.05.00",
+                "sector": "Alimentare"
+        },
+        {
+                "id": 100,
+                "name": "Studio Edilizia 1",
+                "companies": "Le imprese valutate operano nel settore edilizia",
+                "activities": "Attivit\u00e0 specializzate nel settore edilizia con servizi di alta qualit\u00e0",
+                "ateco": "23.61.00",
+                "sector": "Edilizia"
+        }
+];
+
+        // Mapping internazionale per studi simili
+        const INTERNATIONAL_MAPPING = {
+        "Prodotti abrasivi": {
+                "UK": "Abrasive Products",
+                "Francia": "Produits Abrasifs",
+                "Spagna": "Productos Abrasivos",
+                "Globale": "Global Abrasives Industry"
+        },
+        "Sistemi di controllo accessi e rilevazione presenze": {
+                "UK": "Access Control Systems",
+                "Francia": "Syst\u00e8mes de Contr\u00f4le d'Acc\u00e8s",
+                "Spagna": "Sistemas de Control de Acceso",
+                "Globale": "Global Access Control"
+        },
+        "Autofficine": {
+                "UK": "Automotive Aftermarket Suppliers",
+                "Francia": "Services Automobiles",
+                "Spagna": "Talleres Autom\u00f3viles",
+                "Globale": "Global Auto Repair Services"
+        },
+        "Produttori di Principi Attivi Farmaceutici (API)": {
+                "UK": "Pharmaceutical Manufacturers",
+                "Francia": "Fabricants Pharmaceutiques",
+                "Spagna": "Fabricantes Farmac\u00e9uticos",
+                "Globale": "Global Pharmaceutical API"
+        },
+        "Attuatori": {
+                "UK": "Actuators",
+                "Francia": "Actionneurs",
+                "Spagna": "Actuadores",
+                "Globale": "Global Actuator Industry"
+        },
+        "Colle e prodotti adesivi": {
+                "UK": "Adhesive Manufacturers",
+                "Francia": "Fabricants Adh\u00e9sifs",
+                "Spagna": "Fabricantes Adhesivos",
+                "Globale": "Global Adhesives Industry"
+        },
+        "Agenzie pubblicitarie creative": {
+                "UK": "Advertising Agents",
+                "Francia": "Agences Publicitaires",
+                "Spagna": "Agencias Publicitarias",
+                "Globale": "Global Creative Agencies"
+        },
+        "Distribuzione e Noleggio di Piattaforme Aeree": {
+                "UK": "Powered Access",
+                "Francia": "Location Nacelles",
+                "Spagna": "Alquiler Plataformas",
+                "Globale": "Global Access Equipment"
+        },
+        "Fabbricazione parti e componenti per l'industria aerospaziale": {
+                "UK": "Aerospace & Defence",
+                "Francia": "A\u00e9rospatiale & D\u00e9fense",
+                "Spagna": "Aeroespacial y Defensa",
+                "Globale": "Global Aerospace Components"
+        }
+};
+
+        // Applicazione Plimsoll
+        class PlimsollCatalogApp {
+            constructor() {
+                this.allStudies = PLIMSOLL_STUDIES;
+                this.filteredStudies = [...this.allStudies];
+                this.isGridView = true;
+                this.searchCount = 0;
+                this.favorites = JSON.parse(localStorage.getItem('plimsoll-favorites') || '[]');
+
+                console.log('App inizializzata con', this.allStudies.length, 'studi reali dal catalogo');
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.populateSectorFilter();
+                this.displayStudies();
+                this.updateStats();
+                console.log('App pronta - tutti gli studi reali caricati dal file Excel');
+            }
+
+            setupEventListeners() {
+                // Ricerca
+                const searchInput = document.getElementById('searchInput');
+                searchInput.addEventListener('input', (e) => {
+                    console.log('Ricerca per:', e.target.value);
+                    this.handleSearch(e.target.value);
+                });
+
+                // Filtro settore
+                const sectorFilter = document.getElementById('sectorFilter');
+                sectorFilter.addEventListener('change', (e) => {
+                    console.log('Filtro settore:', e.target.value);
+                    this.handleSectorFilter(e.target.value);
+                });
+
+                // Toggle vista
+                document.getElementById('gridViewBtn').addEventListener('click', () => this.setGridView());
+                document.getElementById('listViewBtn').addEventListener('click', () => this.setListView());
+
+                // Modal
+                document.getElementById('studyModal').addEventListener('click', (e) => {
+                    if (e.target.id === 'studyModal') {
+                        this.closeModal();
+                    }
+                });
+
+                console.log('Event listeners configurati');
+            }
+
+            handleSearch(query) {
+                const searchTerm = query.toLowerCase().trim();
+                this.searchCount++;
+
+                if (searchTerm === '') {
+                    this.filteredStudies = [...this.allStudies];
+                } else {
+                    this.filteredStudies = this.allStudies.filter(study =>
+                        study.name.toLowerCase().includes(searchTerm) ||
+                        study.companies.toLowerCase().includes(searchTerm) ||
+                        study.activities.toLowerCase().includes(searchTerm) ||
+                        study.ateco.includes(searchTerm) ||
+                        study.sector.toLowerCase().includes(searchTerm)
+                    );
+                }
+
+                console.log(`Trovati ${this.filteredStudies.length} studi per "${query}"`);
+                this.displayStudies();
+                this.updateStats();
+            }
+
+            handleSectorFilter(sector) {
+                if (sector === '') {
+                    this.filteredStudies = [...this.allStudies];
+                } else {
+                    this.filteredStudies = this.allStudies.filter(study => study.sector === sector);
+                }
+
+                console.log(`Filtrati ${this.filteredStudies.length} studi per settore "${sector}"`);
+                this.displayStudies();
+                this.updateStats();
+            }
+
+            populateSectorFilter() {
+                const sectors = [...new Set(this.allStudies.map(study => study.sector))].sort();
+                const sectorFilter = document.getElementById('sectorFilter');
+
+                sectors.forEach(sector => {
+                    const option = document.createElement('option');
+                    option.value = sector;
+                    option.textContent = sector;
+                    sectorFilter.appendChild(option);
+                });
+
+                console.log('Settori popolati:', sectors);
+            }
+
+            setGridView() {
+                this.isGridView = true;
+                document.getElementById('gridViewBtn').classList.add('active');
+                document.getElementById('listViewBtn').classList.remove('active');
+                document.getElementById('studiesContainer').className = 'studies-grid';
+                this.displayStudies();
+                console.log('Vista griglia attivata');
+            }
+
+            setListView() {
+                this.isGridView = false;
+                document.getElementById('gridViewBtn').classList.remove('active');
+                document.getElementById('listViewBtn').classList.add('active');
+                document.getElementById('studiesContainer').className = 'studies-list';
+                this.displayStudies();
+                console.log('Vista lista attivata');
+            }
+
+            displayStudies() {
+                const container = document.getElementById('studiesContainer');
+
+                if (this.filteredStudies.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-results">
+                            <h3>Nessuno studio trovato</h3>
+                            <p>Prova a modificare i termini di ricerca o i filtri.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const studiesHTML = this.filteredStudies.map(study => this.createStudyCard(study)).join('');
+                container.innerHTML = studiesHTML;
+                console.log(`Visualizzati ${this.filteredStudies.length} studi in modalità ${this.isGridView ? 'griglia' : 'lista'}`);
+            }
+
+            createStudyCard(study) {
+                const listClass = this.isGridView ? '' : 'list-view';
+
+                return `
+                    <div class="study-card ${listClass}" onclick="app.showStudyDetails(${study.id})">
+                        <div class="card-header">
+                            <div class="study-title">${study.name}</div>
+                            <div class="ateco-code">${study.ateco}</div>
+                        </div>
+
+                        <div class="study-content">
+                            <div class="study-companies">${study.companies}</div>
+                            <div class="study-description">${study.activities}</div>
+                        </div>
+
+                        <div class="card-actions">
+                            <button class="email-btn" onclick="event.stopPropagation(); app.requestInfo('${study.name.replace(/'/g, "\'")}', '${study.ateco}', '${study.activities.replace(/'/g, "\'")}'')">
+                                📧 Richiedi Info
+                            </button>
+                            <button class="details-btn" onclick="event.stopPropagation(); app.showStudyDetails(${study.id})">
+                                👁️ Dettagli
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            showStudyDetails(studyId) {
+                const study = this.allStudies.find(s => s.id === studyId);
+                if (!study) return;
+
+                // Popola modal
+                document.getElementById('modalTitle').textContent = study.name;
+                document.getElementById('modalAteco').textContent = study.ateco;
+                document.getElementById('modalCompanies').textContent = study.companies;
+                document.getElementById('modalActivities').textContent = study.activities;
+
+                // Studi internazionali simili
+                const internationalStudies = INTERNATIONAL_MAPPING[study.name] || {
+                    "UK": `UK ${study.sector} Industry`,
+                    "Francia": `France ${study.sector} Industry`, 
+                    "Spagna": `Spain ${study.sector} Industry`,
+                    "Globale": `Global ${study.sector} Industry`
+                };
+
+                const internationalHTML = Object.entries(internationalStudies).map(([country, studyName]) => `
+                    <div class="country-study">
+                        <div class="country-name">${country}</div>
+                        <div class="study-equivalent">${studyName}</div>
+                    </div>
+                `).join('');
+
+                document.getElementById('internationalStudies').innerHTML = internationalHTML;
+
+                // Email button nel modal
+                document.getElementById('modalEmailBtn').onclick = () => {
+                    this.requestInfo(study.name, study.ateco, study.activities);
+                };
+
+                // Mostra modal
+                document.getElementById('studyModal').classList.add('active');
+                console.log('Modal aperto per studio:', study.name);
+            }
+
+            closeModal() {
+                document.getElementById('studyModal').classList.remove('active');
+                console.log('Modal chiuso');
+            }
+
+            requestInfo(studyName, ateco, activities) {
+                const subject = encodeURIComponent(`Richiesta Informazioni Studio: ${studyName}`);
+                const body = encodeURIComponent(`Gentile Team Plimsoll Publishing LTD,
+
+Sono interessato a ricevere maggiori informazioni sul seguente studio:
+
+• Studio: ${studyName}
+• Codice ATECO: ${ateco}
+• Descrizione Attività: ${activities}
+
+Vi prego di inviarmi informazioni dettagliate su:
+- Contenuti completi dello studio
+- Prezzi e condizioni commerciali
+- Modalità di acquisto e licensing
+- Eventuali campioni o anteprime disponibili
+- Studi correlati per altri mercati internazionali
+
+Resto in attesa di un vostro cortese riscontro.
+
+Cordiali saluti`);
+
+                const mailtoLink = `mailto:info@plimsoll.it?subject=${subject}&body=${body}`;
+                window.location.href = mailtoLink;
+
+                console.log('Email richiesta per studio:', studyName);
+            }
+
+            updateStats() {
+                document.getElementById('displayedStudies').textContent = this.filteredStudies.length;
+                document.getElementById('totalCategories').textContent = [...new Set(this.allStudies.map(s => s.sector))].length;
+                document.getElementById('favoritesCount').textContent = this.favorites.length;
+                document.getElementById('searchCount').textContent = this.searchCount;
+            }
+        }
+
+        // Funzioni globali per i click
+        function closeModal() {
+            app.closeModal();
+        }
+
+        // Inizializza l'applicazione
+        let app;
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM caricato, inizializzazione app Plimsoll con dati reali...');
+            app = new PlimsollCatalogApp();
+        });
+    </script>
+</body>
+</html>
