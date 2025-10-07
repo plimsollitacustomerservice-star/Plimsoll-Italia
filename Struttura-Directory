@@ -1,0 +1,21 @@
+plimsoll-catalog/
+├── index.html                 # Pagina principale
+├── assets/
+│   ├── css/
+│   │   └── style.css         # Stili CSS
+│   ├── js/
+│   │   ├── app.js           # Logica applicazione
+│   │   ├── data-manager.js  # Gestione dati
+│   │   └── export.js        # Funzioni export
+│   └── lib/                 # Librerie esterne
+├── data/
+│   ├── sectors.json         # Database settori
+│   ├── ateco-nace.json     # Mappatura codici
+│   └── backup/             # Backup automatici
+├── uploads/                # File caricati utenti
+├── scripts/
+│   └── update-catalog.py   # Script automazione
+├── .github/
+│   └── workflows/
+│       └── update.yml      # GitHub Actions
+└── README.md
