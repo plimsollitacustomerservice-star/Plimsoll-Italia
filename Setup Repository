@@ -1,0 +1,22 @@
+# 1. Creare il repository su GitHub
+# Nome: plimsoll-catalog
+# Tipo: Public (per GitHub Pages gratuito)
+
+# 2. Clonare e setup iniziale
+git clone https://github.com/TUO-USERNAME/plimsoll-catalog.git
+cd plimsoll-catalog
+
+# 3. Creare struttura directory
+mkdir -p assets/{css,js,lib}
+mkdir -p data/backup
+mkdir -p uploads/{processed,archive}
+mkdir -p scripts
+mkdir -p .github/workflows
+
+# 4. Aggiungere tutti i file del codice
+# (Copiare tutti i file forniti nelle rispettive directory)
+
+# 5. Commit iniziale
+git add .
+git commit -m "🚀 Setup iniziale Catalogo Plimsoll"
+git push origin main
