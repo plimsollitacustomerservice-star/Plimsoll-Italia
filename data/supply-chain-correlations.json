@@ -1,0 +1,223 @@
+{
+  "supply_chain_rules": {
+    "industries": {
+      "AUTOMOTIVE": {
+        "levels": {
+          "1": "Materie Prime (Acciaio, Alluminio, Plastica)",
+          "2": "Componentistica (Accessori, Ricambi, Elettronica)",  
+          "3": "Assemblaggio (Produzione Veicoli)",
+          "4": "Distribuzione (Concessionarie, Dealer)",
+          "5": "Servizi (Assicurazioni, Leasing, Assistenza)"
+        },
+        "cross_correlations": {
+          "upstream": ["MANUFACTURING", "LOGISTICS"],
+          "downstream": ["FINANCE", "SERVICES"]
+        }
+      },
+      "FOOD_BEVERAGE": {
+        "levels": {
+          "1": "Agricoltura (Produzione Primaria)",
+          "2": "Trasformazione (Food Processing)", 
+          "3": "Packaging (Imballaggio Alimentare)",
+          "4": "Distribuzione (GDO, Retail)",
+          "5": "Servizi (Ristorazione, Catering)"
+        }
+      },
+      "CONSTRUCTION": {
+        "levels": {
+          "1": "Materie Prime (Cemento, Acciaio, Legno)",
+          "2": "Prodotti Edili (Prefabbricati, Serramenti)",
+          "3": "Costruzione (Imprese Edili)", 
+          "4": "Immobiliare (Vendita, Gestione)"
+        }
+      }
+    }
+  },
+
+  "correlations": {
+    "ITACC01": {
+      "upstream": [
+        {
+          "id": "ITACC02",
+          "relation": "Fornitore materie prime",
+          "description": "Acciaio utilizzato per strutture accessori"
+        },
+        {
+          "id": "ITPLA01", 
+          "name_native": "Prodotti in Plastica",
+          "name_english": "Plastic Products",
+          "status": "missing",
+          "relation": "Materiali plastici per accessori"
+        }
+      ],
+      "same_level": [
+        {
+          "id": "ITRIC01",
+          "name_native": "Ricambi Auto", 
+          "name_english": "Car Spare Parts",
+          "status": "available", 
+          "relation": "Settore correlato aftermarket"
+        },
+        {
+          "id": "ITSYS01",
+          "name_native": "Sistemi Audio Auto",
+          "name_english": "Car Audio Systems", 
+          "status": "missing",
+          "relation": "Categoria specifica accessori"
+        }
+      ],
+      "downstream": [
+        {
+          "id": "ITOFF01",
+          "name_native": "Officine e Autofficine",
+          "name_english": "Car Repair Shops",
+          "status": "available",
+          "relation": "Installatori accessori"
+        },
+        {
+          "id": "ITDEA01", 
+          "name_native": "Concessionarie Auto",
+          "name_english": "Car Dealers",
+          "status": "available",
+          "relation": "Canale vendita accessori"
+        }
+      ],
+      "cross_market": [
+        {
+          "id": "UKACC01",
+          "market": "UK",
+          "status": "available"
+        },
+        {
+          "id": "FRACC01", 
+          "market": "FR",
+          "status": "missing"
+        },
+        {
+          "id": "SPACC01",
+          "market": "SP", 
+          "status": "available"
+        },
+        {
+          "id": "GLACC01",
+          "market": "Global",
+          "status": "available"
+        }
+      ]
+    },
+
+    "ITACC02": {
+      "upstream": [
+        {
+          "id": "ITMIN01",
+          "name_native": "Minerali Ferrosi",
+          "name_english": "Iron Ore Mining",
+          "status": "missing",
+          "relation": "Materie prime siderurgia"
+        }
+      ],
+      "same_level": [
+        {
+          "id": "ITAL01", 
+          "name_native": "Alluminio e Leghe",
+          "name_english": "Aluminum and Alloys",
+          "status": "available",
+          "relation": "Metalli non ferrosi"
+        }
+      ],
+      "downstream": [
+        {
+          "id": "ITACC01",
+          "relation": "Forniture per accessori auto"
+        },
+        {
+          "id": "ITCEM01",
+          "relation": "Rinforzi per calcestruzzo"  
+        },
+        {
+          "id": "ITCOS01",
+          "name_native": "Costruzioni Metalliche",
+          "name_english": "Metal Construction",
+          "status": "available", 
+          "relation": "Carpenteria metallica"
+        }
+      ],
+      "cross_market": [
+        {
+          "id": "UKSTEEL01",
+          "market": "UK", 
+          "status": "available"
+        },
+        {
+          "id": "FRSTEEL01",
+          "market": "FR",
+          "status": "available"
+        }
+      ]
+    },
+
+    "ITBAK01": {
+      "upstream": [
+        {
+          "id": "ITFIN01",
+          "name_native": "Servizi Finanziari Specializzati", 
+          "name_english": "Specialized Financial Services",
+          "status": "missing",
+          "relation": "Servizi fintech e consulenza"
+        }
+      ],
+      "same_level": [
+        {
+          "id": "ITINS01",
+          "name_native": "Assicurazioni",
+          "name_english": "Insurance Companies", 
+          "status": "available",
+          "relation": "Servizi finanziari complementari"
+        }
+      ],
+      "downstream": [
+        {
+          "id": "ITLEA01",
+          "name_native": "Società di Leasing", 
+          "name_english": "Leasing Companies",
+          "status": "available",
+          "relation": "Finanziamenti specializzati"
+        },
+        {
+          "id": "ITCRE01",
+          "name_native": "Recupero Crediti",
+          "name_english": "Debt Collection",
+          "status": "missing", 
+          "relation": "Gestione crediti deteriorati"
+        }
+      ],
+      "cross_market": [
+        {
+          "id": "UKBANK01",
+          "market": "UK",
+          "status": "available"
+        },
+        {
+          "id": "FRBANK01", 
+          "market": "FR", 
+          "status": "available"
+        }
+      ]
+    }
+  },
+
+  "industry_mapping": {
+    "AUTOMOTIVE": ["29", "30", "45"],
+    "FOOD_BEVERAGE": ["01", "10", "11", "46", "47"],
+    "CONSTRUCTION": ["08", "23", "41", "42", "43"],
+    "TEXTILE_FASHION": ["13", "14", "15", "47"],
+    "PHARMACEUTICAL": ["21", "46", "47"],
+    "ENERGY": ["05", "06", "35"],
+    "TECHNOLOGY": ["26", "27", "62", "63"],
+    "SERVICES": ["69", "70", "71", "73", "74"],
+    "MANUFACTURING": ["24", "25", "28", "32", "33"], 
+    "LOGISTICS": ["49", "50", "52", "53"],
+    "FINANCE": ["64", "65", "66"],
+    "HEALTHCARE": ["75", "86", "87", "88"]
+  }
+}
