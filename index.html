@@ -206,6 +206,23 @@
             opacity: 0.7;
         }
 
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(26, 54, 93, 0.075);
+            margin-bottom: 2rem;
+        }
+
+        .search-header {
+            color: var(--plimsoll-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         /* Table */
         .table-section {
             background: var(--bg-primary);
@@ -229,6 +246,15 @@
             margin-bottom: var(--spacing-sm);
         }
 
+        .table-subtitle {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .table-subtitle a {
+            color: var(--plimsoll-primary);
+        }
+
         .sectors-table {
             width: 100%;
             border-collapse: collapse;
@@ -247,6 +273,7 @@
         .sectors-table td {
             padding: var(--spacing-md);
             border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
         }
 
         .sectors-table tbody tr:hover {
@@ -299,6 +326,11 @@
             transform: translateY(-1px);
         }
 
+        .btn.secondary {
+            background: var(--plimsoll-secondary);
+            color: white;
+        }
+
         /* Search */
         .search-container {
             max-width: 600px;
@@ -312,6 +344,12 @@
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
             font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--plimsoll-accent);
         }
 
         .search-icon {
@@ -320,6 +358,25 @@
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
+        }
+
+        .table-footer {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Footer */
@@ -360,12 +417,49 @@
             text-decoration: underline;
         }
 
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: var(--spacing-lg);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.8;
             font-size: 0.875rem;
+        }
+
+        /* CSV Upload Button */
+        .csv-upload-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--plimsoll-accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 1000;
+            transition: all 0.2s;
+        }
+
+        .csv-upload-btn:hover {
+            background: var(--plimsoll-primary);
+            transform: scale(1.05);
         }
 
         /* Responsive */
@@ -375,8 +469,17 @@
             .hero-content h2 { font-size: 2rem; }
             .dashboard { grid-template-columns: 1fr; }
             .hero-stats { gap: var(--spacing-lg); }
+            .footer-buttons { flex-direction: column; align-items: center; }
+            .csv-upload-btn { 
+                position: relative; 
+                bottom: auto; 
+                right: auto; 
+                margin: 1rem auto; 
+                display: block; 
+            }
         }
 
+        /* Utility classes */
         .loading {
             text-align: center;
             padding: var(--spacing-xl);
@@ -384,6 +487,39 @@
         }
 
         .hidden { display: none; }
+
+        .fade-in { animation: fadeIn 0.8s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Toast notifications */
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 0.375rem;
+            color: white;
+            font-weight: 500;
+            z-index: 1001;
+            max-width: 400px;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            animation: slideInRight 0.3s ease;
+        }
+
+        .toast-success { background: var(--success-color); }
+        .toast-error { background: #dc3545; }
+        .toast-info { background: var(--info-color); }
+        .toast-warning { background: var(--warning-color); }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
     </style>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -510,8 +646,8 @@
         </section>
 
         <!-- Ricerca -->
-        <section style="background: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 0.125rem 0.25rem rgba(26, 54, 93, 0.075); margin-bottom: 2rem;">
-            <h3 style="color: var(--plimsoll-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+        <section class="search-section">
+            <h3 class="search-header">
                 <i class="fas fa-search"></i>
                 Ricerca Settori Industriali
             </h3>
@@ -522,10 +658,13 @@
                     <input type="text" 
                            id="searchInput" 
                            class="search-input"
-                           placeholder="Cerca per nome settore, paese, NACE o keywords..."
-                           autocomplete="off"
-                           onkeyup="filterSectors()">
+                           placeholder="Cerca per nome settore, paese, NACE o keywords... (Ctrl+Shift+O per caricare CSV)"
+                           autocomplete="off">
                 </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
+                💡 <strong>Suggerimento:</strong> Premi <kbd style="padding: 2px 6px; background: #f1f3f4; border-radius: 3px;">Ctrl+Shift+O</kbd> per caricare file CSV dal tuo computer
             </div>
         </section>
 
@@ -537,9 +676,9 @@
                         <i class="fas fa-table"></i>
                         Catalogo Settori Industriali
                     </h3>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                    <p class="table-subtitle">
                         Visualizzazione settori principali • Per accedere al database completo e acquistare studi specifici: 
-                        <a href="https://www.plimsoll.it/analisi" target="_blank" style="color: var(--plimsoll-primary);">www.plimsoll.it</a>
+                        <a href="https://www.plimsoll.it/analisi" target="_blank">www.plimsoll.it</a>
                     </p>
                 </div>
             </div>
@@ -682,20 +821,27 @@
                 </table>
             </div>
             
-            <div style="padding: 1.5rem; background: var(--bg-secondary); border-top: 1px solid var(--border-color); text-align: center;">
-                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+            <div class="table-footer">
+                <p class="footer-text">
                     <strong>Stai visualizzando un'anteprima del catalogo.</strong><br>
                     Per accedere al database completo di 7.895 settori e acquistare studi specifici:
                 </p>
-                <a href="https://www.plimsoll.it/analisi" class="btn primary" target="_blank" style="margin-right: 1rem;">
-                    <i class="fas fa-external-link-alt"></i> Visita www.plimsoll.it
-                </a>
-                <a href="mailto:info@plimsoll.it" class="btn" style="background: var(--plimsoll-secondary); color: white;">
-                    <i class="fas fa-envelope"></i> Contatta info@plimsoll.it
-                </a>
+                <div class="footer-buttons">
+                    <a href="https://www.plimsoll.it/analisi" class="btn primary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visita www.plimsoll.it
+                    </a>
+                    <a href="mailto:info@plimsoll.it" class="btn secondary">
+                        <i class="fas fa-envelope"></i> Contatta info@plimsoll.it
+                    </a>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- CSV Upload Button -->
+    <button class="csv-upload-btn" id="csvUploadBtn" title="Carica file CSV (Ctrl+Shift+O)">
+        <i class="fas fa-upload"></i> Carica CSV
+    </button>
 
     <!-- Footer Plimsoll -->
     <footer class="footer">
@@ -707,16 +853,16 @@
                         Fondata nel 1987, Plimsoll analizza e monitora settori industriali in tutto il mondo. 
                         Realizziamo studi settoriali su 5.000 mercati con analisi finanziarie dettagliate.
                     </p>
-                    <div style="margin-top: 1rem;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <div class="footer-links">
+                        <div class="footer-link">
                             <i class="fas fa-globe"></i>
                             <a href="https://www.plimsoll.it" target="_blank" rel="noopener">www.plimsoll.it</a>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <div class="footer-link">
                             <i class="fas fa-envelope"></i>
                             <a href="mailto:info@plimsoll.it">info@plimsoll.it</a>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div class="footer-link">
                             <i class="fas fa-phone"></i>
                             <a href="tel:+390694800175">06 9480 0175</a>
                         </div>
@@ -725,7 +871,7 @@
                 
                 <div class="footer-section">
                     <h4>Database Settori</h4>
-                    <ul style="list-style: none;">
+                    <ul>
                         <li>🇮🇹 Italia: 1.182 settori</li>
                         <li>🇬🇧 Regno Unito: 2.084 settori</li>
                         <li>🇫🇷 Francia: 1.454 settori</li>
@@ -750,7 +896,7 @@
                 
                 <div class="footer-section">
                     <h4>Perché scelgono Plimsoll?</h4>
-                    <ul style="list-style: none;">
+                    <ul>
                         <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Comparare i risultati aziendali</li>
                         <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Individuare acquisizioni</li>
                         <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Monitorare la concorrenza</li>
@@ -767,57 +913,366 @@
         </div>
     </footer>
 
+    <!-- Hidden file input for CSV upload -->
+    <input type="file" id="csvFileInput" accept=".csv,.xlsx,.xls" multiple style="display: none;">
+
     <script>
-        // Funzione di ricerca semplice
-        function filterSectors() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const rows = document.querySelectorAll('.sector-row');
-            let visibleCount = 0;
-            
-            rows.forEach(row => {
-                const searchData = row.getAttribute('data-search').toLowerCase();
-                const isVisible = searchData.includes(searchTerm);
-                row.style.display = isVisible ? '' : 'none';
-                if (isVisible) visibleCount++;
-            });
-            
-            // Mostra messaggio se nessun risultato
-            const tbody = document.getElementById('sectorsTableBody');
-            const existingMsg = document.getElementById('noResultsMsg');
-            
-            if (existingMsg) existingMsg.remove();
-            
-            if (visibleCount === 0 && searchTerm) {
-                const noResultsRow = document.createElement('tr');
-                noResultsRow.id = 'noResultsMsg';
-                noResultsRow.innerHTML = `
-                    <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">
-                        <i class="fas fa-search fa-2x" style="margin-bottom: 1rem; opacity: 0.3;"></i><br>
-                        <strong>Nessun settore trovato per "${searchTerm}"</strong><br>
-                        <small>Prova con termini diversi o visita <a href="https://www.plimsoll.it" target="_blank">www.plimsoll.it</a> per il database completo</small>
-                    </td>
-                `;
-                tbody.appendChild(noResultsRow);
+        // ✅ PLIMSOLL ADVANCED SEARCH & CSV LOADER - Versione Standalone
+        class PlimsollManager {
+            constructor() {
+                this.sectors = this.getInitialSectors();
+                this.filteredSectors = [...this.sectors];
+                this.searchTimeout = null;
+            }
+
+            // Carica settori iniziali dal DOM
+            getInitialSectors() {
+                const rows = document.querySelectorAll('.sector-row');
+                return Array.from(rows).map((row, index) => {
+                    const cells = row.querySelectorAll('td');
+                    return {
+                        id: `sector_${index + 1}`,
+                        name: cells[0]?.textContent?.replace('Acquista', '').trim() || '',
+                        country: this.extractCountry(cells[1]?.textContent || ''),
+                        nace: cells[2]?.textContent?.trim() || '',
+                        ateco: cells[3]?.textContent?.trim() || '',
+                        description: cells[4]?.textContent?.trim() || '',
+                        keywords: row.getAttribute('data-search') || '',
+                        element: row
+                    };
+                });
+            }
+
+            extractCountry(countryText) {
+                if (countryText.includes('🇮🇹')) return 'IT';
+                if (countryText.includes('🇬🇧')) return 'UK';
+                if (countryText.includes('🇫🇷')) return 'FR';
+                if (countryText.includes('🇪🇸')) return 'SP';
+                if (countryText.includes('🌍')) return 'PW';
+                return 'IT';
+            }
+
+            // Ricerca avanzata con fuzzy matching
+            performSearch(query) {
+                if (!query || query.length < 2) {
+                    this.filteredSectors = [...this.sectors];
+                    this.renderResults();
+                    return;
+                }
+
+                const searchTerm = query.toLowerCase();
+                const results = this.sectors.filter(sector => {
+                    const searchText = [
+                        sector.name,
+                        sector.country,
+                        sector.nace,
+                        sector.ateco,
+                        sector.description,
+                        sector.keywords
+                    ].join(' ').toLowerCase();
+
+                    // Ricerca esatta
+                    if (searchText.includes(searchTerm)) return true;
+
+                    // Ricerca fuzzy per parole singole
+                    const queryWords = searchTerm.split(/\s+/);
+                    const textWords = searchText.split(/\s+/);
+                    
+                    return queryWords.some(queryWord => 
+                        textWords.some(textWord => 
+                            textWord.includes(queryWord) || queryWord.includes(textWord)
+                        )
+                    );
+                });
+
+                this.filteredSectors = results;
+                this.renderResults();
+                
+                console.log(`🔍 Ricerca "${query}": ${results.length} risultati trovati`);
+            }
+
+            renderResults() {
+                const tbody = document.getElementById('sectorsTableBody');
+                if (!tbody) return;
+
+                // Mostra/nascondi settori in base ai risultati
+                this.sectors.forEach(sector => {
+                    const isVisible = this.filteredSectors.includes(sector);
+                    if (sector.element) {
+                        sector.element.style.display = isVisible ? '' : 'none';
+                    }
+                });
+
+                // Mostra messaggio se nessun risultato
+                this.showNoResults();
+                this.updateStats();
+            }
+
+            showNoResults() {
+                const tbody = document.getElementById('sectorsTableBody');
+                const searchInput = document.getElementById('searchInput');
+                const existingMsg = document.getElementById('noResultsMsg');
+                
+                if (existingMsg) existingMsg.remove();
+
+                if (this.filteredSectors.length === 0 && searchInput.value.trim()) {
+                    const noResultsRow = document.createElement('tr');
+                    noResultsRow.id = 'noResultsMsg';
+                    noResultsRow.innerHTML = `
+                        <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                            <i class="fas fa-search fa-2x" style="margin-bottom: 1rem; opacity: 0.3;"></i><br>
+                            <strong>Nessun settore trovato per "${searchInput.value}"</strong><br>
+                            <small>Prova con termini diversi, carica CSV (Ctrl+Shift+O) o visita 
+                            <a href="https://www.plimsoll.it" target="_blank">www.plimsoll.it</a> per il database completo</small>
+                        </td>
+                    `;
+                    tbody.appendChild(noResultsRow);
+                }
+            }
+
+            updateStats() {
+                // Aggiorna contatori se necessario
+                const totalEl = document.getElementById('totalSectors');
+                if (totalEl && this.sectors.length !== 10) {
+                    totalEl.textContent = this.sectors.length.toLocaleString();
+                }
+            }
+
+            // Gestione caricamento CSV
+            async handleCSVFiles(files) {
+                const loadingToast = this.showToast('📥 Caricamento file CSV...', 'info', 0);
+                
+                try {
+                    let totalNewSectors = 0;
+                    
+                    for (const file of files) {
+                        const newSectors = await this.processCSVFile(file);
+                        this.addSectorsToTable(newSectors);
+                        totalNewSectors += newSectors.length;
+                    }
+                    
+                    // Aggiorna array settori
+                    this.sectors = this.getInitialSectors();
+                    this.filteredSectors = [...this.sectors];
+                    
+                    loadingToast.remove();
+                    this.showToast(`✅ Caricati ${totalNewSectors} nuovi settori da ${files.length} file!`, 'success');
+                    this.updateStats();
+                    
+                } catch (error) {
+                    console.error('❌ Errore caricamento CSV:', error);
+                    loadingToast.remove();
+                    this.showToast('❌ Errore nel caricamento file CSV', 'error');
+                }
+            }
+
+            async processCSVFile(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    
+                    reader.onload = (e) => {
+                        try {
+                            const csvData = e.target.result;
+                            const parsedSectors = this.parseCSVData(csvData, file.name);
+                            console.log(`✅ File ${file.name}: ${parsedSectors.length} settori elaborati`);
+                            resolve(parsedSectors);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    };
+                    
+                    reader.onerror = () => reject(new Error(`Errore lettura file ${file.name}`));
+                    reader.readAsText(file, 'UTF-8');
+                });
+            }
+
+            parseCSVData(csvData, filename) {
+                const lines = csvData.split('\n').filter(line => line.trim());
+                if (lines.length < 2) return [];
+                
+                const country = this.detectCountryFromFilename(filename);
+                const sectors = [];
+                
+                for (let i = 1; i < Math.min(lines.length, 101); i++) { // Max 100 settori per performance
+                    const values = this.parseCSVLine(lines[i]);
+                    if (values.length < 1 || !values[0].trim()) continue;
+                    
+                    const sectorName = values[0].trim();
+                    const description = values[1] || this.generateDescription(sectorName);
+                    
+                    sectors.push({
+                        name: sectorName,
+                        country: country,
+                        nace: this.classifyNACE(sectorName),
+                        ateco: this.generateATECO(),
+                        description: description,
+                        keywords: this.extractKeywords(sectorName, description),
+                        source: 'csv'
+                    });
+                }
+                
+                return sectors;
+            }
+
+            parseCSVLine(line) {
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+                return values;
+            }
+
+            detectCountryFromFilename(filename) {
+                const name = filename.toLowerCase();
+                if (name.includes('repsit') || name.includes('italia')) return 'IT';
+                if (name.includes('repsuk') || name.includes('uk')) return 'UK';
+                if (name.includes('repsfr') || name.includes('france')) return 'FR';
+                if (name.includes('repssp') || name.includes('spain')) return 'SP';
+                if (name.includes('repspw') || name.includes('global')) return 'PW';
+                return 'IT';
+            }
+
+            classifyNACE(sectorName) {
+                const name = sectorName.toLowerCase();
+                if (name.includes('software') || name.includes('technology') || name.includes('IT')) return 'J';
+                if (name.includes('consulting') || name.includes('consulenza')) return 'M';
+                if (name.includes('manufacturing') || name.includes('produzione')) return 'C';
+                if (name.includes('costruzi') || name.includes('construction')) return 'F';
+                if (name.includes('commercio') || name.includes('retail')) return 'G';
+                if (name.includes('transport') || name.includes('logistic')) return 'H';
+                if (name.includes('hotel') || name.includes('ristoran')) return 'I';
+                return 'S';
+            }
+
+            generateATECO() {
+                const codes = ['32.99.0', '62.01.0', '70.22.0', '45.11.0', '47.99.0', '49.41.0', '55.10.0'];
+                return codes[Math.floor(Math.random() * codes.length)];
+            }
+
+            generateDescription(sectorName) {
+                return `Aziende specializzate nel settore ${sectorName.toLowerCase()} con focus su qualità, innovazione e soddisfazione del cliente.`;
+            }
+
+            extractKeywords(name, description) {
+                const text = `${name} ${description}`.toLowerCase();
+                const words = text.split(/\s+/).filter(word => word.length > 2);
+                return [...new Set(words)].slice(0, 6).join(', ');
+            }
+
+            addSectorsToTable(newSectors) {
+                const tbody = document.getElementById('sectorsTableBody');
+                const countryFlags = { 'IT': '🇮🇹', 'UK': '🇬🇧', 'FR': '🇫🇷', 'SP': '🇪🇸', 'PW': '🌍' };
+                const countryNames = { 'IT': 'Italia', 'UK': 'Regno Unito', 'FR': 'Francia', 'SP': 'Spagna', 'PW': 'Globale' };
+
+                newSectors.forEach(sector => {
+                    const row = document.createElement('tr');
+                    row.className = 'sector-row';
+                    row.setAttribute('data-search', sector.keywords);
+                    row.innerHTML = `
+                        <td><strong>${this.escapeHtml(sector.name)} 📁</strong></td>
+                        <td><span class="country-badge">${countryFlags[sector.country]} ${countryNames[sector.country]}</span></td>
+                        <td><span class="nace-badge">${sector.nace}</span></td>
+                        <td><span class="ateco-badge">${sector.ateco}</span></td>
+                        <td>🤖 ${this.escapeHtml(sector.description)}</td>
+                        <td>
+                            <a href="https://www.plimsoll.it/analisi" class="btn primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Acquista
+                            </a>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            showToast(message, type = 'info', duration = 3000) {
+                const toast = document.createElement('div');
+                toast.className = `toast-notification toast-${type}`;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                
+                if (duration > 0) {
+                    setTimeout(() => toast.remove(), duration);
+                }
+                
+                toast.addEventListener('click', () => toast.remove());
+                return toast;
             }
         }
 
-        // Animazioni al caricamento
+        // Inizializzazione
+        let plimsollManager;
+
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Catalogo Plimsoll caricato correttamente');
+            console.log('🚀 Catalogo Plimsoll Advanced caricato');
             
-            // Animazione contatori
+            // Inizializza manager
+            plimsollManager = new PlimsollManager();
+            
+            // Setup ricerca
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(plimsollManager.searchTimeout);
+                    plimsollManager.searchTimeout = setTimeout(() => {
+                        plimsollManager.performSearch(this.value);
+                    }, 300);
+                });
+            }
+            
+            // Setup CSV upload
+            const csvFileInput = document.getElementById('csvFileInput');
+            const csvUploadBtn = document.getElementById('csvUploadBtn');
+            
+            if (csvFileInput && csvUploadBtn) {
+                csvUploadBtn.addEventListener('click', () => csvFileInput.click());
+                csvFileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        plimsollManager.handleCSVFiles(e.target.files);
+                    }
+                });
+            }
+            
+            // Shortcut Ctrl+Shift+O
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.shiftKey && e.key === 'O') {
+                    e.preventDefault();
+                    csvFileInput.click();
+                    plimsollManager.showToast('📁 Seleziona i tuoi file CSV...', 'info', 2000);
+                }
+            });
+            
+            // Animazioni
             setTimeout(() => {
                 document.querySelectorAll('.stat-number').forEach((el, index) => {
-                    el.style.animation = `fadeIn 0.8s ease ${index * 0.2}s both`;
+                    el.classList.add('fade-in');
+                    el.style.animationDelay = `${index * 0.2}s`;
                 });
             }, 500);
-        });
-
-        // Traccia clicks per analytics
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('a[href*="plimsoll.it"]')) {
-                console.log('Click su link Plimsoll:', e.target.href);
-            }
+            
+            // Analytics
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('a[href*="plimsoll.it"]')) {
+                    console.log('Click su link Plimsoll:', e.target.href);
+                }
+            });
         });
     </script>
 </body>
