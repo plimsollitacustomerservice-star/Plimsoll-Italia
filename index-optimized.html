@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Studi Plimsoll - Gestione Completa Settori Industriali</title>
+    <meta name="description" content="Catalogo completo degli studi di settore Plimsoll per Italia, Regno Unito, Francia, Spagna e mercati globali. Oltre 7.800 settori classificati con codici ATECO/NACE.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Catalogo Studi Plimsoll - 7.800+ Settori Industriali">
+    <meta property="og:description" content="Database completo settori con analisi Plimsoll disponibili. Ricerca avanzata, classificazione ATECO/NACE, export dati.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>Caricamento Catalogo Plimsoll</h2>
+            <p>Inizializzazione database settori...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-brand">
+                <h1>
+                    <i class="fas fa-chart-line"></i>
+                    Catalogo Studi Plimsoll
+                </h1>
+                <div class="header-subtitle">
+                    <span>7.895 settori industriali • 5 mercati • Classificazione ATECO/NACE</span>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button id="uploadBtn" class="btn primary" title="Carica file CSV/Excel">
+                    <i class="fas fa-upload"></i>
+                    <span>Carica File</span>
+                </button>
+                <button id="exportBtn" class="btn secondary" title="Esporta catalogo">
+                    <i class="fas fa-download"></i>
+                    <span>Esporta</span>
+                </button>
+                <div class="header-menu">
+                    <button id="menuToggle" class="btn secondary" title="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div id="dropdownMenu" class="dropdown-menu">
+                        <a href="mailto:info@plimsoll.it" class="dropdown-item">
+                            <i class="fas fa-envelope"></i>
+                            Contatta Plimsoll
+                        </a>
+                        <a href="#" id="helpBtn" class="dropdown-item">
+                            <i class="fas fa-question-circle"></i>
+                            Guida Utilizzo
+                        </a>
+                        <a href="#" id="aboutBtn" class="dropdown-item">
+                            <i class="fas fa-info-circle"></i>
+                            Info Catalogo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Status Banner -->
+        <div id="statusBanner" class="status-banner hidden">
+            <div class="status-content">
+                <i class="fas fa-info-circle"></i>
+                <span id="statusMessage">Database caricato con successo</span>
+                <button id="closeBanner" class="status-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Statistiche -->
+        <section id="dashboard" class="dashboard">
+            <div class="stat-card primary">
+                <div class="stat-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Settori Totali</h3>
+                    <span id="totalSectors" class="stat-number">7,895</span>
+                    <div class="stat-detail">Tutti i mercati</div>
+                </div>
+            </div>
+            
+            <div class="stat-card success">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Con Descrizione</h3>
+                    <span id="withDescription" class="stat-number">4,922</span>
+                    <div class="stat-detail" id="completionRate">62.3% completi</div>
+                </div>
+            </div>
+            
+            <div class="stat-card warning">
+                <div class="stat-icon">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Generate Auto</h3>
+                    <span id="missingDescription" class="stat-number">2,973</span>
+                    <div class="stat-detail">Descrizioni AI</div>
+                </div>
+            </div>
+            
+            <div class="stat-card info">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Paesi Coperti</h3>
+                    <span id="countriesCovered" class="stat-number">5</span>
+                    <div class="stat-detail">IT, UK, FR, SP, PW</div>
+                </div>
+            </div>
+            
+            <div class="stat-card secondary">
+                <div class="stat-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Sezioni NACE</h3>
+                    <span id="naceSections" class="stat-number">18</span>
+                    <div class="stat-detail">Classificazioni</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="quick-action-grid">
+                <button class="quick-action-card" onclick="quickSearch('automotive')">
+                    <i class="fas fa-car"></i>
+                    <span>Automotive</span>
+                    <small>452 settori</small>
+                </button>
+                <button class="quick-action-card" onclick="quickSearch('software')">
+                    <i class="fas fa-code"></i>
+                    <span>Software & ICT</span>
+                    <small>800 settori</small>
+                </button>
+                <button class="quick-action-card" onclick="quickSearch('manufacturing')">
+                    <i class="fas fa-industry"></i>
+                    <span>Manifatturiero</span>
+                    <small>2.685 settori</small>
+                </button>
+                <button class="quick-action-card" onclick="quickSearch('consulting')">
+                    <i class="fas fa-handshake"></i>
+                    <span>Consulenza</span>
+                    <small>119 settori</small>
+                </button>
+            </div>
+        </section>
+
+        <!-- Filtri e Ricerca Avanzata -->
+        <section id="filters" class="filters-section">
+            <div class="filters-header">
+                <h2>
+                    <i class="fas fa-search"></i>
+                    Ricerca Avanzata
+                </h2>
+                <button id="resetFilters" class="btn secondary btn-sm">
+                    <i class="fas fa-undo"></i>
+                    Reset Filtri
+                </button>
+            </div>
+            
+            <div class="search-section">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" 
+                           placeholder="Cerca settori per nome, descrizione, keywords, codici ATECO/NACE..."
+                           autocomplete="off">
+                    <div id="searchSuggestions" class="search-suggestions hidden"></div>
+                </div>
+                
+                <div class="advanced-search-toggle">
+                    <button id="advancedToggle" class="btn secondary btn-sm">
+                        <i class="fas fa-filter"></i>
+                        <span>Filtri Avanzati</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="advancedFilters" class="advanced-filters hidden">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="countryFilter">
+                            <i class="fas fa-flag"></i>
+                            Paese/Mercato
+                        </label>
+                        <select id="countryFilter">
+                            <option value="">Tutti i Paesi</option>
+                            <option value="IT">🇮🇹 Italia</option>
+                            <option value="UK">🇬🇧 Regno Unito</option>
+                            <option value="FR">🇫🇷 Francia</option>
+                            <option value="SP">🇪🇸 Spagna</option>
+                            <option value="PW">🌍 Mercato Globale</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="naceFilter">
+                            <i class="fas fa-sitemap"></i>
+                            Sezione NACE
+                        </label>
+                        <select id="naceFilter">
+                            <option value="">Tutte le Sezioni NACE</option>
+                            <!-- Popolato dinamicamente da JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="statusFilter">
+                            <i class="fas fa-info-circle"></i>
+                            Stato Descrizione
+                        </label>
+                        <select id="statusFilter">
+                            <option value="">Tutti gli Stati</option>
+                            <option value="complete">✅ Con Descrizione Originale</option>
+                            <option value="incomplete">🤖 Descrizione Generata AI</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sortBy">
+                            <i class="fas fa-sort"></i>
+                            Ordinamento
+                        </label>
+                        <select id="sortBy">
+                            <option value="name">Nome A-Z</option>
+                            <option value="name-desc">Nome Z-A</option>
+                            <option value="country">Paese</option>
+                            <option value="nace">Sezione NACE</option>
+                            <option value="updated">Ultimo Aggiornamento</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="filter-actions">
+                    <button id="applyFilters" class="btn primary">
+                        <i class="fas fa-filter"></i>
+                        Applica Filtri
+                    </button>
+                    <button id="exportFiltered" class="btn secondary">
+                        <i class="fas fa-download"></i>
+                        Esporta Filtrati
+                    </button>
+                </div>
+            </div>
+            
+            <div id="filterSummary" class="filter-summary hidden">
+                <div class="summary-content">
+                    <span id="resultsCount">7,895 settori trovati</span>
+                    <div class="active-filters" id="activeFilters"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabella Catalogo Settori -->
+        <section id="catalog" class="catalog-section">
+            <div class="table-header">
+                <div class="table-title">
+                    <h2>
+                        <i class="fas fa-table"></i>
+                        Catalogo Settori
+                    </h2>
+                    <div class="table-info">
+                        <span id="tableInfo">Visualizzazione settori 1-50 di 7,895</span>
+                    </div>
+                </div>
+                
+                <div class="table-actions">
+                    <button id="bulkEditBtn" class="btn secondary" disabled title="Seleziona settori per modifiche multiple">
+                        <i class="fas fa-edit"></i>
+                        <span>Modifica Multipla</span>
+                    </button>
+                    <button id="addSectorBtn" class="btn primary" title="Aggiungi nuovo settore">
+                        <i class="fas fa-plus"></i>
+                        <span>Nuovo Settore</span>
+                    </button>
+                    <button id="viewModeToggle" class="btn secondary" title="Cambia visualizzazione">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Table View -->
+            <div id="tableView" class="table-container">
+                <table id="sectorsTable" class="sectors-table">
+                    <thead>
+                        <tr>
+                            <th class="select-col">
+                                <input type="checkbox" id="selectAll" title="Seleziona tutti">
+                            </th>
+                            <th class="sortable" data-sort="name">
+                                <span>Settore</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="country">
+                                <span>Paese</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="nace">
+                                <span>NACE</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="ateco">
+                                <span>ATECO</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="description-col">Descrizione</th>
+                            <th class="keywords-col">Keywords</th>
+                            <th class="actions-col">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sectorsTableBody">
+                        <!-- Popolato dinamicamente da JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Card View (Alternative) -->
+            <div id="cardView" class="card-container hidden">
+                <div id="sectorsCards" class="sectors-cards">
+                    <!-- Popolato dinamicamente da JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-info">
+                    <span id="pageInfo">Pagina 1 di 158</span>
+                    <div class="items-per-page">
+                        <label for="itemsPerPage">Elementi per pagina:</label>
+                        <select id="itemsPerPage">
+                            <option value="25">25</option>
+                            <option value="50" selected>50</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="pagination-controls">
+                    <button id="firstPage" class="btn secondary btn-sm" title="Prima pagina">
+                        <i class="fas fa-angle-double-left"></i>
+                    </button>
+                    <button id="prevPage" class="btn secondary btn-sm" title="Pagina precedente">
+                        <i class="fas fa-angle-left"></i>
+                        <span>Precedente</span>
+                    </button>
+                    
+                    <div class="page-numbers" id="pageNumbers">
+                        <!-- Popolato dinamicamente -->
+                    </div>
+                    
+                    <button id="nextPage" class="btn secondary btn-sm" title="Pagina successiva">
+                        <span>Successiva</span>
+                        <i class="fas fa-angle-right"></i>
+                    </button>
+                    <button id="lastPage" class="btn secondary btn-sm" title="Ultima pagina">
+                        <i class="fas fa-angle-double-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Upload File -->
+    <div id="uploadModal" class="modal" aria-labelledby="uploadModalTitle" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="uploadModalTitle">
+                    <i class="fas fa-upload"></i>
+                    Carica File Settori
+                </h2>
+                <button class="close" aria-label="Chiudi modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="upload-instructions">
+                    <p>Carica file CSV o Excel contenenti dati sui settori industriali.</p>
+                    <ul>
+                        <li><strong>Formati supportati:</strong> .csv, .xlsx, .xls</li>
+                        <li><strong>Dimensione massima:</strong> 10 MB per file</li>
+                        <li><strong>Colonne richieste:</strong> Nome settore, Paese</li>
+                        <li><strong>Colonne opzionali:</strong> Descrizione, Keywords, NACE, ATECO</li>
+                    </ul>
+                </div>
+                
+                <div class="upload-zone" id="uploadZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Trascina i file qui o clicca per selezionare</h3>
+                    <p>Supportati: CSV, Excel (XLS, XLSX)</p>
+                    <input type="file" id="fileInput" multiple accept=".csv,.xlsx,.xls" hidden>
+                </div>
+                
+                <div id="uploadProgress" class="upload-progress hidden">
+                    <div class="progress-header">
+                        <h4>Elaborazione file in corso...</h4>
+                        <span id="progressPercentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Inizializzazione...</p>
+                </div>
+                
+                <div id="uploadResults" class="upload-results hidden">
+                    <h3>
+                        <i class="fas fa-check-circle"></i>
+                        Risultati Caricamento
+                    </h3>
+                    <div id="resultsContent">
+                        <!-- Popolato dinamicamente -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="cancelUpload" class="btn secondary">
+                    <i class="fas fa-times"></i>
+                    Annulla
+                </button>
+                <button id="confirmUpload" class="btn primary hidden">
+                    <i class="fas fa-check"></i>
+                    Conferma Caricamento
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Modifica Settore -->
+    <div id="editModal" class="modal" aria-labelledby="editModalTitle" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="editModalTitle">
+                    <i class="fas fa-edit"></i>
+                    Modifica Settore
+                </h2>
+                <button class="close" aria-label="Chiudi modal">&times;</button>
+            </div>
+            
+            <form id="editForm" class="modal-body">
+                <div class="form-grid">
+                    <div class="form-group span-2">
+                        <label for="sectorName">
+                            <i class="fas fa-building"></i>
+                            Nome Settore *
+                        </label>
+                        <input type="text" id="sectorName" required 
+                               placeholder="es. Concessionarie AUDI">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sectorCountry">
+                            <i class="fas fa-flag"></i>
+                            Paese *
+                        </label>
+                        <select id="sectorCountry" required>
+                            <option value="IT">🇮🇹 Italia</option>
+                            <option value="UK">🇬🇧 Regno Unito</option>
+                            <option value="FR">🇫🇷 Francia</option>
+                            <option value="SP">🇪🇸 Spagna</option>
+                            <option value="PW">🌍 Mercato Globale</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="code-inputs">
+                            <div class="code-input">
+                                <label for="naceCode">
+                                    <i class="fas fa-tag"></i>
+                                    Codice NACE
+                                </label>
+                                <input type="text" id="naceCode" maxlength="1" 
+                                       placeholder="C" title="Sezione NACE (A-U)">
+                            </div>
+                            <div class="code-input">
+                                <label for="atecoCode">
+                                    <i class="fas fa-barcode"></i>
+                                    Codice ATECO
+                                </label>
+                                <input type="text" id="atecoCode" maxlength="7" 
+                                       placeholder="45.11.0" title="Codice ATECO completo">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group span-2">
+                        <label for="sectorDescription">
+                            <i class="fas fa-align-left"></i>
+                            Descrizione
+                        </label>
+                        <textarea id="sectorDescription" rows="4" 
+                                  placeholder="Descrizione dettagliata delle società considerate nello Studio Plimsoll..."></textarea>
+                        <div class="character-count">
+                            <span id="descriptionCount">0</span>/500 caratteri
+                        </div>
+                    </div>
+                    
+                    <div class="form-group span-2">
+                        <label for="sectorKeywords">
+                            <i class="fas fa-tags"></i>
+                            Keywords (separate da virgola)
+                        </label>
+                        <input type="text" id="sectorKeywords" 
+                               placeholder="es: automobili, concessionarie, automotive, vendita">
+                        <small class="form-help">Inserisci keywords separate da virgola per facilitare la ricerca</small>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="modal-footer">
+                <div class="form-validation" id="formValidation"></div>
+                <button type="button" class="btn secondary" id="cancelEdit">
+                    <i class="fas fa-times"></i>
+                    Annulla
+                </button>
+                <button type="submit" form="editForm" class="btn primary" id="saveEdit">
+                    <i class="fas fa-save"></i>
+                    Salva Modifiche
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifiche -->
+    <div id="toast" class="toast" role="alert" aria-live="polite">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close" aria-label="Chiudi notifica">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Catalogo Studi Plimsoll</h4>
+                    <p>Database completo di 7.895 settori industriali con analisi di mercato disponibili.</p>
+                    <div class="footer-stats">
+                        <span>🇮🇹 IT: 1,182</span>
+                        <span>🇬🇧 UK: 2,084</span>
+                        <span>🇫🇷 FR: 1,454</span>
+                        <span>🇪🇸 SP: 1,134</span>
+                        <span>🌍 PW: 2,041</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contatti</h4>
+                    <div class="contact-info">
+                        <a href="mailto:info@plimsoll.it">
+                            <i class="fas fa-envelope"></i>
+                            info@plimsoll.it
+                        </a>
+                        <p>
+                            <i class="fas fa-building"></i>
+                            Plimsoll Analysis Ltd
+                        </p>
+                        <p>
+                            <i class="fas fa-clock"></i>
+                            Ultimo aggiornamento: 10 Ottobre 2025
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Funzionalità</h4>
+                    <ul class="footer-features">
+                        <li><i class="fas fa-search"></i> Ricerca avanzata</li>
+                        <li><i class="fas fa-upload"></i> Upload file CSV/Excel</li>
+                        <li><i class="fas fa-download"></i> Export dati</li>
+                        <li><i class="fas fa-edit"></i> Gestione settori</li>
+                        <li><i class="fas fa-tags"></i> Classificazione ATECO/NACE</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Tecnologie</h4>
+                    <div class="tech-badges">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">GitHub Pages</span>
+                    </div>
+                    <p class="version-info">
+                        <i class="fas fa-code-branch"></i>
+                        Versione 2.0.0
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Plimsoll Analysis Ltd. Tutti i diritti riservati.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/plimsollitacustomerservice-star/Plimsoll-Italia" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                        Repository GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="assets/js/data-manager.js"></script>
+    <script src="assets/js/export.js"></script>
+    <script src="assets/js/app.js"></script>
+    
+    <!-- Service Worker per caching (opzionale) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => console.log('SW registered'))
+                .catch(error => console.log('SW registration failed'));
+        }
+    </script>
+</body>
+</html>

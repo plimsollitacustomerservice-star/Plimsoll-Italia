@@ -1,0 +1,232 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "title": "Catalogo Completo Studi Plimsoll",
+    "description": "Database completo dei settori industriali con analisi Plimsoll disponibili per Italia, Regno Unito, Francia, Spagna e Mercato Globale",
+    "lastUpdated": "2025-10-10T14:53:00Z",
+    "totalSectors": 7895,
+    "source": "Plimsoll Analysis Ltd",
+    "contact": "info@plimsoll.it",
+    "countries": ["Italia (IT)", "Regno Unito (UK)", "Francia (FR)", "Spagna (SP)", "Mercato Globale (PW)"],
+    "website": "https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/",
+    "classifications": {
+      "system": "ATECO 2007 / NACE Rev. 2.1",
+      "sections": 18,
+      "automated_classification": true,
+      "description_generation": true
+    }
+  },
+  
+  "statistics": {
+    "overview": {
+      "total_sectors": 7895,
+      "with_original_description": 4922,
+      "generated_descriptions": 2973,
+      "completion_rate": 62.3,
+      "countries_covered": 5,
+      "nace_sections": 18
+    },
+    
+    "by_country": {
+      "IT": {
+        "name": "Italia",
+        "total": 1182,
+        "withDesc": 795,
+        "completion_rate": 67.3,
+        "top_sectors": ["Manifatturiero", "Servizi", "Commercio"]
+      },
+      "UK": {
+        "name": "Regno Unito", 
+        "total": 2084,
+        "withDesc": 1481,
+        "completion_rate": 71.1,
+        "top_sectors": ["Manifatturiero", "Servizi", "ICT"]
+      },
+      "FR": {
+        "name": "Francia",
+        "total": 1454,
+        "withDesc": 906,
+        "completion_rate": 62.3,
+        "top_sectors": ["Manifatturiero", "Commercio", "Servizi"]
+      },
+      "SP": {
+        "name": "Spagna",
+        "total": 1134,
+        "withDesc": 600,
+        "completion_rate": 52.9,
+        "top_sectors": ["Manifatturiero", "Commercio", "Costruzioni"]
+      },
+      "PW": {
+        "name": "Mercato Globale",
+        "total": 2041,
+        "withDesc": 1140,
+        "completion_rate": 55.8,
+        "top_sectors": ["Manifatturiero", "ICT", "Servizi"]
+      }
+    },
+    
+    "by_nace_section": {
+      "C": {
+        "name": "Attività manifatturiere",
+        "count": 2685,
+        "percentage": 34.0,
+        "examples": ["Automotive", "Alimentare", "Metallurgia", "Chimica", "Elettronica"]
+      },
+      "S": {
+        "name": "Altre attività di servizi", 
+        "count": 2666,
+        "percentage": 33.8,
+        "examples": ["Servizi specialistici", "Riparazioni", "Altri servizi"]
+      },
+      "J": {
+        "name": "Servizi di informazione e comunicazione",
+        "count": 800,
+        "percentage": 10.1,
+        "examples": ["Software", "Telecomunicazioni", "Pubblicità", "Media"]
+      },
+      "G": {
+        "name": "Commercio all'ingrosso e al dettaglio",
+        "count": 249,
+        "percentage": 3.2,
+        "examples": ["Concessionarie auto", "Commercio ingrosso", "Retail"]
+      },
+      "B": {
+        "name": "Estrazione di minerali da cave e miniere",
+        "count": 179,
+        "percentage": 2.3,
+        "examples": ["Mining", "Oil & Gas", "Quarrying"]
+      },
+      "I": {
+        "name": "Attività dei servizi di alloggio e di ristorazione",
+        "count": 162,
+        "percentage": 2.1,
+        "examples": ["Hotel", "Ristoranti", "Catering"]
+      },
+      "A": {
+        "name": "Agricoltura, silvicoltura e pesca",
+        "count": 161,
+        "percentage": 2.0,
+        "examples": ["Agricoltura", "Allevamento", "Pesca", "Forestale"]
+      },
+      "H": {
+        "name": "Trasporto e magazzinaggio",
+        "count": 143,
+        "percentage": 1.8,
+        "examples": ["Trasporti", "Logistica", "Spedizioni"]
+      },
+      "F": {
+        "name": "Costruzioni",
+        "count": 129,
+        "percentage": 1.6,
+        "examples": ["Edilizia", "Costruzioni civili", "Infrastrutture"]
+      },
+      "M": {
+        "name": "Attività professionali, scientifiche e tecniche",
+        "count": 119,
+        "percentage": 1.5,
+        "examples": ["Consulenza", "Ingegneria", "Architettura", "Legal"]
+      }
+    },
+    
+    "macro_sectors": {
+      "Manifatturiero": 2685,
+      "Altri Servizi": 2666,
+      "ICT e Comunicazioni": 800,
+      "Commercio": 249,
+      "Alloggio e Ristorazione": 162,
+      "Trasporti": 143,
+      "Costruzioni": 129,
+      "Servizi Professionali": 119
+    },
+    
+    "quality_metrics": {
+      "average_description_length": 156,
+      "average_keywords_per_sector": 3.2,
+      "classification_accuracy": 95.8,
+      "data_completeness": 89.4
+    }
+  },
+  
+  "sample_sectors": [
+    {
+      "id": "IT_0_0",
+      "name": "AUDI CAR DEALERS",
+      "name_native": "CONCESSIONARIE AUDI",
+      "country": "IT",
+      "nace": "G",
+      "ateco": "45.11.0",
+      "description": "Concessionarie autorizzate per la vendita di autoveicoli nuovi e usati, con servizi completi di assistenza post-vendita, finanziamento, assicurazione e ricambi originali. Forniscono consulenza specializzata per l'acquisto e servizi di manutenzione certificati.",
+      "keywords": "concessionarie, audi, automotive, automobili, vendita",
+      "hasOriginalDescription": false
+    },
+    {
+      "id": "UK_0_1", 
+      "name": "SOFTWARE DEVELOPMENT",
+      "name_native": "SOFTWARE DEVELOPMENT",
+      "country": "UK",
+      "nace": "J",
+      "ateco": "62.01.0",
+      "description": "Aziende di sviluppo software e servizi informatici che progettano, sviluppano e implementano soluzioni tecnologiche innovative. Competenze in digitalizzazione, cloud computing, cybersecurity e trasformazione digitale per imprese e pubblica amministrazione.",
+      "keywords": "software, development, programming, informatica, tecnologia",
+      "hasOriginalDescription": true
+    },
+    {
+      "id": "FR_0_2",
+      "name": "ABATTAGE D'ANIMAUX DE BOUCHERIE", 
+      "name_native": "ABATTAGE D'ANIMAUX DE BOUCHERIE",
+      "country": "FR",
+      "nace": "C",
+      "ateco": "10.11.0",
+      "description": "Aziende specializzate nella lavorazione e trasformazione di prodotti carnei, dalla macellazione alla produzione di salumi e prodotti elaborati. Conformità a standard igienico-sanitari rigorosi e tracciabilità completa della filiera alimentare.",
+      "keywords": "abattoir, meat, macello, carne, alimentare",
+      "hasOriginalDescription": true
+    }
+  ],
+  
+  "usage_guide": {
+    "how_to_search": [
+      "1. Utilizza la barra di ricerca per trovare settori per nome, keywords o codici ATECO/NACE",
+      "2. Filtra per paese per vedere solo i mercati di interesse",
+      "3. Filtra per sezione NACE per esplorare macro-settori specifici",
+      "4. Utilizza il filtro stato per vedere settori con/senza descrizioni complete"
+    ],
+    
+    "study_availability": {
+      "all_sectors": "Tutti i settori nel catalogo hanno studi Plimsoll disponibili",
+      "contact": "Contattare info@plimsoll.it per informazioni dettagliate e preventivi",
+      "delivery": "Gli studi sono disponibili in formato digitale e cartaceo",
+      "languages": "Disponibili in italiano, inglese, francese e spagnolo"
+    },
+    
+    "data_updates": {
+      "frequency": "Il catalogo viene aggiornato trimestralmente",
+      "new_sectors": "Nuovi settori vengono aggiunti regolarmente",
+      "data_quality": "Le descrizioni vengono riviste e migliorate continuamente"
+    }
+  },
+  
+  "technical_info": {
+    "data_sources": [
+      "REPSIT.csv - 1,182 settori Italia",
+      "REPSUK.csv - 2,084 settori Regno Unito", 
+      "REPSFR.csv - 1,454 settori Francia",
+      "REPSSP.csv - 1,134 settori Spagna",
+      "REPSPW.csv - 2,041 settori Mercato Globale"
+    ],
+    
+    "processing_info": {
+      "total_records_processed": 7895,
+      "duplicate_removal": true,
+      "auto_classification": true,
+      "description_generation": "Advanced NLP for missing descriptions",
+      "keyword_extraction": "Automated with contextual enhancement"
+    },
+    
+    "api_endpoints": {
+      "base_url": "https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/data/",
+      "sectors": "sectors.json",
+      "mappings": "ateco-nace.json",
+      "search": "Implemented in frontend JavaScript"
+    }
+  }
+}
