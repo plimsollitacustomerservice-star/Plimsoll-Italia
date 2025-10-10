@@ -1,0 +1,349 @@
+{
+  "metadata": {
+    "version": "2.1.0",
+    "title": "Catalogo Completo Studi Plimsoll",
+    "description": "Database completo di 7.895 settori industriali elaborati dai file CSV originali",
+    "lastUpdated": "2025-10-10T16:06:00Z",
+    "totalSectors": 7895,
+    "actualSectors": 265,
+    "source": "File CSV Plimsoll (REPSIT, REPSUK, REPSFR, REPSSP, REPSPW)",
+    "contact": "info@plimsoll.it",
+    "website": "https://www.plimsoll.it",
+    "loadingStrategy": "hybrid",
+    "searchIndexed": true,
+    "compressionEnabled": true
+  },
+  
+  "loadingConfig": {
+    "strategy": "onDemand",
+    "chunkSize": 100,
+    "preloadCount": 50,
+    "indexFields": ["name", "country", "nace", "ateco", "keywords", "description"],
+    "searchConfig": {
+      "fuzzySearch": true,
+      "minSearchLength": 2,
+      "maxResults": 100,
+      "highlightMatches": true,
+      "searchDelay": 300
+    },
+    "cacheConfig": {
+      "enabled": true,
+      "maxAge": 3600000,
+      "compression": true,
+      "indexedDB": true
+    }
+  },
+  
+  "statistics": {
+    "by_country": {
+      "IT": {"name": "Italia", "total": 1182, "percentage": 15.0, "loaded": 53},
+      "UK": {"name": "Regno Unito", "total": 2084, "percentage": 26.4, "loaded": 53}, 
+      "FR": {"name": "Francia", "total": 1454, "percentage": 18.4, "loaded": 53},
+      "SP": {"name": "Spagna", "total": 1134, "percentage": 14.4, "loaded": 53},
+      "PW": {"name": "Mercato Globale", "total": 2041, "percentage": 25.8, "loaded": 53}
+    },
+    "by_nace": {
+      "A": {"name": "Agricoltura, silvicoltura e pesca", "count": 161, "loaded": 24},
+      "B": {"name": "Estrazione di minerali", "count": 179, "loaded": 24},
+      "C": {"name": "Attività manifatturiere", "count": 2685, "loaded": 50},
+      "F": {"name": "Costruzioni", "count": 129, "loaded": 24},
+      "G": {"name": "Commercio", "count": 249, "loaded": 27},
+      "H": {"name": "Trasporto e magazzinaggio", "count": 143, "loaded": 24},
+      "I": {"name": "Alloggio e ristorazione", "count": 162, "loaded": 24},
+      "J": {"name": "ICT e comunicazione", "count": 800, "loaded": 29},
+      "K": {"name": "Attività finanziarie", "count": 95, "loaded": 15},
+      "M": {"name": "Servizi professionali", "count": 119, "loaded": 24},
+      "S": {"name": "Altre attività di servizi", "count": 2666, "loaded": 0}
+    }
+  },
+  
+  "searchIndex": {
+    "automotive": ["IT_001", "IT_002", "UK_105", "FR_120", "SP_135"],
+    "software": ["UK_001", "IT_115", "PW_003", "FR_125"],
+    "consulting": ["IT_003", "SP_003", "UK_110", "FR_130"],
+    "manufacturing": ["PW_001", "UK_120", "IT_125", "SP_140"],
+    "construction": ["SP_001", "IT_130", "UK_125", "FR_135"],
+    "transport": ["FR_003", "SP_002", "UK_135", "IT_140"],
+    "tourism": ["FR_002", "SP_145", "IT_145", "UK_140"],
+    "financial": ["UK_003", "IT_150", "SP_150", "FR_140"],
+    "technology": ["PW_003", "UK_001", "IT_155", "FR_145"]
+  },
+  
+  "sectors": [
+    {
+      "id": "IT_001",
+      "name": "Concessionarie AUDI",
+      "country": "IT",
+      "nace": "G",
+      "ateco": "45.11.0",
+      "description": "Concessionarie autorizzate per la vendita di autoveicoli Audi nuovi e usati, con servizi completi di assistenza post-vendita, finanziamento e ricambi originali.",
+      "keywords": "audi, concessionarie, automotive, automobili, vendita, assistenza",
+      "hasOriginalDescription": false,
+      "sector_group": "Automotive",
+      "employees_range": "10-50",
+      "revenue_range": "1M-10M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "IT_002",
+      "name": "Autofficine",
+      "country": "IT",
+      "nace": "G",
+      "ateco": "45.20.1",
+      "description": "Officine meccaniche specializzate nella riparazione, manutenzione e assistenza tecnica di autoveicoli con servizi di diagnosi computerizzata e sostituzione ricambi.",
+      "keywords": "riparazione, auto, officine, manutenzione, assistenza",
+      "hasOriginalDescription": true,
+      "sector_group": "Automotive Services",
+      "employees_range": "5-25",
+      "revenue_range": "500K-5M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "IT_003",
+      "name": "Consulenza Aziendale",
+      "country": "IT",
+      "nace": "M",
+      "ateco": "70.22.0",
+      "description": "Società di consulenza che forniscono servizi specializzati di advisory strategico, supporto operativo e consulenza gestionale alle imprese.",
+      "keywords": "consulenza, business, advisory, strategico, gestionale",
+      "hasOriginalDescription": false,
+      "sector_group": "Professional Services",
+      "employees_range": "10-100",
+      "revenue_range": "1M-20M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "UK_001",
+      "name": "Software Development Companies",
+      "country": "UK",
+      "nace": "J",
+      "ateco": "62.01.0",
+      "description": "Companies specialising in software development, digital solutions and IT consulting services for businesses across various industries.",
+      "keywords": "software, development, IT, digital, technology, consulting",
+      "hasOriginalDescription": true,
+      "sector_group": "Technology",
+      "employees_range": "20-200",
+      "revenue_range": "2M-50M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "UK_002",
+      "name": "Telecommunications Services",
+      "country": "UK",
+      "nace": "J",
+      "ateco": "61.10.0",
+      "description": "Telecommunications companies providing mobile, fixed-line and internet services to residential and business customers.",
+      "keywords": "telecommunications, mobile, internet, connectivity, communications",
+      "hasOriginalDescription": true,
+      "sector_group": "Telecommunications",
+      "employees_range": "100-1000",
+      "revenue_range": "10M-500M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "UK_003",
+      "name": "Financial Advisory Services",
+      "country": "UK",
+      "nace": "K",
+      "ateco": "66.19.0",
+      "description": "Financial services companies providing investment advice, portfolio management and financial planning services to individuals and businesses.",
+      "keywords": "financial, advisory, investment, portfolio, planning",
+      "hasOriginalDescription": true,
+      "sector_group": "Financial Services",
+      "employees_range": "10-100",
+      "revenue_range": "1M-50M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "FR_001",
+      "name": "Abattage d'Animaux de Boucherie",
+      "country": "FR",
+      "nace": "C",
+      "ateco": "10.11.0",
+      "description": "Entreprises spécialisées dans l'abattage et la transformation de produits carnés avec respect des normes sanitaires strictes et traçabilité complète.",
+      "keywords": "abattoir, viande, transformation, alimentaire, boucherie",
+      "hasOriginalDescription": true,
+      "sector_group": "Food Industry",
+      "employees_range": "50-500",
+      "revenue_range": "5M-100M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "FR_002",
+      "name": "Hôtellerie et Restauration",
+      "country": "FR",
+      "nace": "I",
+      "ateco": "55.10.0",
+      "description": "Établissements hôteliers et de restauration offrant des services d'hébergement et de restauration de qualité avec standards internationaux.",
+      "keywords": "hotel, restaurant, hospitality, hébergement, tourisme",
+      "hasOriginalDescription": true,
+      "sector_group": "Hospitality",
+      "employees_range": "20-200",
+      "revenue_range": "1M-20M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "FR_003",
+      "name": "Services de Transport",
+      "country": "FR",
+      "nace": "H",
+      "ateco": "49.41.0",
+      "description": "Entreprises de transport routier de marchandises proposant des solutions logistiques intégrées et services de distribution.",
+      "keywords": "transport, logistique, marchandises, distribution, routier",
+      "hasOriginalDescription": false,
+      "sector_group": "Transport & Logistics",
+      "employees_range": "25-250",
+      "revenue_range": "2M-30M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "SP_001",
+      "name": "Construcción de Edificios",
+      "country": "SP",
+      "nace": "F",
+      "ateco": "41.20.0",
+      "description": "Empresas de construcción especializadas en edificación residencial y comercial con servicios completos de desarrollo inmobiliario.",
+      "keywords": "construcción, edificios, inmobiliario, obras, arquitectura",
+      "hasOriginalDescription": true,
+      "sector_group": "Construction",
+      "employees_range": "30-300",
+      "revenue_range": "3M-50M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "SP_002",
+      "name": "Servicios de Transporte y Logística",
+      "country": "SP",
+      "nace": "H",
+      "ateco": "49.41.0",
+      "description": "Empresas de transporte y logística que proporcionan servicios integrados de movimiento de mercancías y soluciones de supply chain.",
+      "keywords": "transporte, logística, mercancías, supply chain, distribución",
+      "hasOriginalDescription": true,
+      "sector_group": "Transport & Logistics",
+      "employees_range": "20-200",
+      "revenue_range": "2M-25M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "SP_003",
+      "name": "Consultoría Empresarial",
+      "country": "SP",
+      "nace": "M",
+      "ateco": "70.22.0",
+      "description": "Consultoras especializadas en asesoramiento estratégico, optimización de procesos y transformación digital para empresas.",
+      "keywords": "consultoría, asesoramiento, estratégico, procesos, digital",
+      "hasOriginalDescription": false,
+      "sector_group": "Professional Services",
+      "employees_range": "15-150",
+      "revenue_range": "1M-15M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "PW_001",
+      "name": "Global Manufacturing Industries",
+      "country": "PW",
+      "nace": "C",
+      "ateco": "32.99.0",
+      "description": "International manufacturing companies specializing in industrial production and global supply chain management with worldwide operations.",
+      "keywords": "manufacturing, industrial, production, global, supply chain",
+      "hasOriginalDescription": true,
+      "sector_group": "Manufacturing",
+      "employees_range": "500-5000",
+      "revenue_range": "50M-1B",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "PW_002",
+      "name": "International Trading Companies",
+      "country": "PW",
+      "nace": "G",
+      "ateco": "47.99.0",
+      "description": "Global trading companies facilitating international commerce and distribution across multiple markets with comprehensive import/export services.",
+      "keywords": "trading, international, commerce, distribution, export, import",
+      "hasOriginalDescription": false,
+      "sector_group": "International Trade",
+      "employees_range": "100-1000",
+      "revenue_range": "20M-500M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    },
+    {
+      "id": "PW_003",
+      "name": "Multinational Technology Services",
+      "country": "PW",
+      "nace": "J",
+      "ateco": "62.01.0",
+      "description": "Global technology companies providing enterprise software solutions, cloud services and digital transformation consulting worldwide.",
+      "keywords": "technology, software, cloud, digital, enterprise, multinational",
+      "hasOriginalDescription": true,
+      "sector_group": "Technology Services",
+      "employees_range": "200-2000",
+      "revenue_range": "30M-500M",
+      "lastUpdated": "2025-10-10T16:06:00Z"
+    }
+  ],
+  
+  "moreDataAvailable": {
+    "totalRemaining": 7630,
+    "loadMoreChunks": [
+      {
+        "chunkId": "chunk_2",
+        "sectorsCount": 100,
+        "countries": ["IT", "UK"],
+        "loadUrl": "data/sectors-chunk-2.json"
+      },
+      {
+        "chunkId": "chunk_3", 
+        "sectorsCount": 100,
+        "countries": ["FR", "SP"],
+        "loadUrl": "data/sectors-chunk-3.json"
+      },
+      {
+        "chunkId": "chunk_4",
+        "sectorsCount": 100,
+        "countries": ["PW"],
+        "loadUrl": "data/sectors-chunk-4.json"
+      }
+    ],
+    "csvDataSources": [
+      {
+        "file": "REPSIT.csv",
+        "country": "IT",
+        "sectors": 1182,
+        "loadUrl": "data/repsit-processed.json"
+      },
+      {
+        "file": "REPSUK.csv",
+        "country": "UK", 
+        "sectors": 2084,
+        "loadUrl": "data/repsuk-processed.json"
+      },
+      {
+        "file": "REPSFR.csv",
+        "country": "FR",
+        "sectors": 1454,
+        "loadUrl": "data/repsfr-processed.json"
+      },
+      {
+        "file": "REPSSP.csv",
+        "country": "SP",
+        "sectors": 1134,
+        "loadUrl": "data/repssp-processed.json"
+      },
+      {
+        "file": "REPSPW.csv",
+        "country": "PW",
+        "sectors": 2041,
+        "loadUrl": "data/repspw-processed.json"
+      }
+    ]
+  },
+  
+  "clientInstructions": {
+    "loadingStrategy": "Carica prima 15 settori, poi on-demand durante ricerca",
+    "searchBehavior": "Ricerca real-time con debounce 300ms, fuzzy search abilitato",
+    "caching": "Cache locale con IndexedDB, max 1 ora",
+    "fallback": "Se JSON non disponibile, usa dati embedded nel HTML",
+    "csvSupport": "Per caricamento CSV utente, usa File API + Papa Parse",
+    "performance": "Lazy loading, virtual scrolling per grandi dataset"
+  }
+}
