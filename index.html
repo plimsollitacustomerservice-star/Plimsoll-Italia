@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Supply Chain Plimsoll - Studi Correlati</title>
+    <title>Database Studi Plimsoll - Tutti i Mercati</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="assets/css/plimsoll-supply-chain.css" rel="stylesheet">
@@ -14,7 +14,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <i class="fas fa-industry"></i> Plimsoll Italia - Supply Chain System
+            <i class="fas fa-industry"></i> Database Studi Plimsoll
         </a>
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="https://www.plimsoll.it" target="_blank">
@@ -32,46 +32,68 @@
     
     <!-- Stats Bar -->
     <div class="row mb-4">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="stat-card">
-                <h3 id="totalStudies">1,182</h3>
-                <p>Studi Disponibili</p>
+                <h3 id="totalStudies">8,247</h3>
+                <p>Studi Totali</p>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="stat-card">
-                <h3 id="industriesCount">6</h3>
-                <p>Filiere Mappate</p>
+                <h3 id="availableStudies">0</h3>
+                <p>Disponibili</p>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="stat-card">
-                <h3 id="correlationsCount">2,400+</h3>
-                <p>Correlazioni Identify</p>
+                <h3 id="missingStudies">0</h3>
+                <p>Su Richiesta</p>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="stat-card">
                 <h3 id="marketsCount">5</h3>
-                <p>Mercati Coperti</p>
+                <p>Mercati</p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="stat-card">
+                <h3 id="industriesCount">12</h3>
+                <p>Filiere</p>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="stat-card">
+                <h3 id="correlationsCount">15K+</h3>
+                <p>Correlazioni</p>
             </div>
         </div>
     </div>
 
-    <!-- Search Bar -->
-    <div class="search-section mb-4">
+    <!-- Filters and Search -->
+    <div class="filters-section mb-4">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                     <input type="text" class="form-control" id="searchInput" 
-                           placeholder="Cerca per settore, prodotto o codice (es: automotive, food, 29.32.01)">
+                           placeholder="Cerca per nome, settore o codice...">
                     <button class="btn btn-outline-secondary" id="clearSearch">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
+                <select class="form-select" id="marketFilter">
+                    <option value="">Tutti i Mercati</option>
+                    <option value="IT">🇮🇹 Italia</option>
+                    <option value="UK">🇬🇧 Regno Unito</option>
+                    <option value="FR">🇫🇷 Francia</option>
+                    <option value="SP">🇪🇸 Spagna</option>
+                    <option value="Global">🌍 Globale</option>
+                </select>
+            </div>
+            <div class="col-md-3">
                 <select class="form-select" id="industryFilter">
                     <option value="">Tutte le Filiere</option>
                     <option value="AUTOMOTIVE">🚗 Automotive</option>
@@ -79,153 +101,180 @@
                     <option value="CONSTRUCTION">🏗️ Costruzioni</option>
                     <option value="TEXTILE_FASHION">👗 Tessile e Moda</option>
                     <option value="PHARMACEUTICAL">💊 Farmaceutica</option>
-                    <option value="ENERGY">⚡ Energetica</option>
+                    <option value="ENERGY">⚡ Energia</option>
+                    <option value="TECHNOLOGY">💻 Tecnologia</option>
+                    <option value="SERVICES">🏢 Servizi</option>
+                    <option value="MANUFACTURING">🏭 Manifatturiero</option>
+                    <option value="LOGISTICS">🚛 Logistica</option>
+                    <option value="FINANCE">💰 Servizi Finanziari</option>
+                    <option value="HEALTHCARE">🏥 Sanità</option>
                 </select>
             </div>
+            <div class="col-md-2">
+                <select class="form-select" id="statusFilter">
+                    <option value="">Tutti gli Status</option>
+                    <option value="available">🟢 Disponibili</option>
+                    <option value="missing">🟡 Su Richiesta</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-secondary w-100" id="resetFilters">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- Studies Table -->
-    <div class="table-section">
+    <!-- Studies List -->
+    <div class="studies-section">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4><i class="fas fa-table"></i> Studi Industriali</h4>
+            <h4><i class="fas fa-list"></i> Studi per Settore Industriale</h4>
             <div class="results-info">
-                Visualizzati: <span id="resultsCount">0</span> di <span id="totalCount">1,182</span> studi
+                Visualizzati: <span id="resultsCount">0</span> di <span id="totalCount">8,247</span> studi
             </div>
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Studio Industriale</th>
-                        <th>Codici</th>
-                        <th>Status</th>
-                        <th>Filiera</th>
-                        <th>Studi Correlati</th>
-                        <th>Azioni</th>
-                    </tr>
-                </thead>
-                <tbody id="studiesTableBody">
-                    <!-- Populated by JavaScript -->
-                </tbody>
-            </table>
+        <!-- Loading State -->
+        <div id="loadingState" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Caricamento studi...</span>
+            </div>
+            <p class="mt-3 text-muted">Caricamento database studi in corso...</p>
+        </div>
+
+        <!-- Studies Grid -->
+        <div id="studiesGrid" class="row" style="display: none;">
+            <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- No Results -->
+        <div id="noResults" class="text-center py-5" style="display: none;">
+            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+            <h5>Nessuno studio trovato</h5>
+            <p class="text-muted">Modifica i criteri di ricerca o contatta Plimsoll per richiedere studi specifici.</p>
+            <a href="mailto:info@plimsoll.it" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Contatta Plimsoll
+            </a>
         </div>
     </div>
 
-    <!-- Supply Chain Explorer Modal -->
-    <div class="modal fade" id="supplyChainModal" tabindex="-1">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="fas fa-sitemap"></i> 
-                        Filiera Supply Chain: <span id="modalStudyTitle"></span>
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<!-- Study Detail Modal -->
+<div class="modal fade" id="studyDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-info-circle"></i> 
+                    <span id="modalStudyTitle"></span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Study Details -->
+                <div id="studyDetailsSection">
+                    <!-- Populated by JavaScript -->
                 </div>
-                <div class="modal-body">
-                    <!-- Current Study -->
-                    <div class="current-study-section mb-4">
-                        <h6><i class="fas fa-crosshairs"></i> Studio Selezionato</h6>
-                        <div id="currentStudyCard" class="study-card current-study">
-                            <!-- Populated by JavaScript -->
-                        </div>
-                    </div>
 
-                    <!-- Supply Chain Flow -->
-                    <div class="supply-chain-flow">
-                        <div class="row">
-                            <!-- Upstream -->
-                            <div class="col-md-4">
-                                <h6><i class="fas fa-arrow-left text-info"></i> Upstream (Fornitori)</h6>
-                                <div id="upstreamStudies" class="supply-chain-section">
-                                    <!-- Populated by JavaScript -->
-                                </div>
-                            </div>
-
-                            <!-- Same Level -->
-                            <div class="col-md-4">
-                                <h6><i class="fas fa-equals text-warning"></i> Stesso Livello</h6>
-                                <div id="sameLevelStudies" class="supply-chain-section">
-                                    <!-- Populated by JavaScript -->
-                                </div>
-                            </div>
-
-                            <!-- Downstream -->
-                            <div class="col-md-4">
-                                <h6><i class="fas fa-arrow-right text-success"></i> Downstream (Clienti)</h6>
-                                <div id="downstreamStudies" class="supply-chain-section">
-                                    <!-- Populated by JavaScript -->
-                                </div>
+                <!-- Supply Chain & Related Studies -->
+                <div id="relatedStudiesSection" class="mt-4">
+                    <h6><i class="fas fa-sitemap"></i> Studi Correlati e Filiera</h6>
+                    
+                    <div class="row">
+                        <!-- Same Market Related -->
+                        <div class="col-md-6">
+                            <h6 class="text-primary"><i class="fas fa-link"></i> Studi Correlati (Stesso Mercato)</h6>
+                            <div id="sameMarketRelated" class="related-studies-container">
+                                <!-- Populated by JavaScript -->
                             </div>
                         </div>
 
-                        <!-- Cross Market -->
-                        <div class="cross-market-section mt-4">
-                            <h6><i class="fas fa-globe"></i> Altri Mercati</h6>
-                            <div id="crossMarketStudies" class="supply-chain-section">
+                        <!-- Supply Chain -->
+                        <div class="col-md-6">
+                            <h6 class="text-success"><i class="fas fa-arrow-right"></i> Filiera Supply Chain</h6>
+                            <div id="supplyChainStudies" class="related-studies-container">
                                 <!-- Populated by JavaScript -->
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="https://www.plimsoll.it" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Visita Plimsoll
-                    </a>
-                    <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-outline-info">
-                        <i class="fas fa-info-circle"></i> Info Servizi
-                    </a>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Request Study Modal -->
-    <div class="modal fade" id="requestStudyModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="fas fa-envelope"></i> Richiedi Fattibilità Studio
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="requestStudyContent">
-                        <!-- Populated by JavaScript -->
+                    <!-- Cross Market Studies -->
+                    <div class="cross-market-section mt-4">
+                        <h6 class="text-info"><i class="fas fa-globe"></i> Altri Mercati</h6>
+                        <div id="crossMarketStudies" class="row">
+                            <!-- Populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <a id="sendEmailBtn" href="#" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Invia Email
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times"></i> Chiudi
+                    </button>
+                    <a id="plimsollSiteBtn" href="https://www.plimsoll.it" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Sito Plimsoll
                     </a>
+                    <a id="plimsollInfoBtn" href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-outline-info">
+                        <i class="fas fa-info-circle"></i> Info Servizi
+                    </a>
+                    <button id="requestStudyBtn" class="btn btn-warning" style="display: none;">
+                        <i class="fas fa-envelope"></i> Richiedi Studio
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
+<!-- Request Study Modal -->
+<div class="modal fade" id="requestStudyModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-envelope"></i> Richiedi Fattibilità Studio
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="requestStudyContent">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                <a id="sendEmailBtn" href="#" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Invia Email
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->
 <footer class="bg-dark text-light mt-5 py-4">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h6>🔗 Collegamenti Utili</h6>
+            <div class="col-md-4">
+                <h6>🔗 Collegamenti</h6>
                 <ul class="list-unstyled">
                     <li><a href="https://www.plimsoll.it" target="_blank" class="text-light">Sito Plimsoll Italia</a></li>
                     <li><a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="text-light">Servizi e Analisi</a></li>
-                    <li><a href="mailto:info@plimsoll.it" class="text-light">Contatti: info@plimsoll.it</a></li>
+                    <li><a href="mailto:info@plimsoll.it" class="text-light">Email: info@plimsoll.it</a></li>
                 </ul>
             </div>
-            <div class="col-md-6">
-                <h6>📊 Sistema Supply Chain</h6>
-                <p class="mb-1">Mappatura completa di filiere industriali con correlazioni automatiche.</p>
-                <p class="mb-0"><small>© 2025 Plimsoll Italia - Tutti i diritti riservati</small></p>
+            <div class="col-md-4">
+                <h6>📊 Database</h6>
+                <p class="mb-1">8,247 studi industriali mappati</p>
+                <p class="mb-1">5 mercati internazionali</p>
+                <p class="mb-0">12 filiere principali</p>
+            </div>
+            <div class="col-md-4">
+                <h6>🏭 Correlazioni Supply Chain</h6>
+                <p class="mb-0">Sistema automatico di identificazione studi correlati lungo le filiere industriali con mappatura ATECO/NACE completa.</p>
+                <p class="mt-2"><small>© 2025 Plimsoll Italia</small></p>
             </div>
         </div>
     </div>
@@ -233,6 +282,8 @@
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="data/all-markets-studies.json" type="application/json" id="studiesData"></script>
+<script src="data/supply-chain-correlations.json" type="application/json" id="correlationsData"></script>
 <script src="assets/js/supply-chain-data.js"></script>
 <script src="assets/js/supply-chain-system.js"></script>
 
