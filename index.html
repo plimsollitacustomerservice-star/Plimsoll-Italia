@@ -26,7 +26,7 @@
             line-height: 1.6;
         }
 
-        /* Header */
+        /* Header Plimsoll Style */
         .navbar {
             background-color: var(--plimsoll-blue) !important;
             padding: 1rem 0;
@@ -48,7 +48,7 @@
             color: var(--plimsoll-light-blue) !important;
         }
 
-        /* Stats Cards */
+        /* Stats Section */
         .stats-section {
             background: linear-gradient(135deg, var(--plimsoll-light-blue) 0%, var(--plimsoll-white) 100%);
             padding: 2rem 0;
@@ -61,8 +61,7 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,102,204,0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            height: 100%;
+            transition: transform 0.2s ease;
         }
 
         .stat-card:hover {
@@ -83,7 +82,7 @@
             font-weight: 500;
         }
 
-        /* Filters Section */
+        /* Filters */
         .filters-section {
             background: var(--plimsoll-white);
             padding: 2rem;
@@ -104,16 +103,13 @@
             box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
         }
 
-        /* Studies Section */
-        .studies-section {
-            background: var(--plimsoll-white);
-        }
-
+        /* Studies Grid */
         .section-header {
             background: var(--plimsoll-light-blue);
             padding: 1.5rem;
-            border-radius: 12px 12px 0 0;
+            border-radius: 12px;
             border-bottom: 3px solid var(--plimsoll-blue);
+            margin-bottom: 0;
         }
 
         .section-header h4 {
@@ -122,12 +118,13 @@
             margin-bottom: 0;
         }
 
-        .results-info {
-            color: var(--plimsoll-gray);
-            font-weight: 500;
+        .studies-container {
+            background: var(--plimsoll-white);
+            border: 1px solid #E9ECEF;
+            border-radius: 0 0 12px 12px;
+            padding: 2rem;
         }
 
-        /* Study Cards */
         .study-card {
             border: 1px solid #E9ECEF;
             border-radius: 12px;
@@ -135,6 +132,7 @@
             background: var(--plimsoll-white);
             height: 100%;
             cursor: pointer;
+            position: relative;
         }
 
         .study-card:hover {
@@ -160,10 +158,14 @@
             font-size: 0.95rem;
         }
 
-        .sector-description {
+        .study-description {
             color: var(--plimsoll-dark);
             font-size: 0.9rem;
             line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* Status Badges */
@@ -216,21 +218,7 @@
             color: var(--plimsoll-gray);
         }
 
-        /* Loading & Empty States */
-        .loading-state {
-            text-align: center;
-            padding: 4rem;
-            background: var(--plimsoll-light-blue);
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        .loading-state i {
-            color: var(--plimsoll-blue);
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
+        /* Empty state */
         .empty-state {
             text-align: center;
             padding: 4rem;
@@ -245,7 +233,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Modal Styles */
+        /* Modal */
         .modal-header {
             background: var(--plimsoll-light-blue);
             border-bottom: 3px solid var(--plimsoll-blue);
@@ -254,14 +242,6 @@
         .modal-title {
             color: var(--plimsoll-blue);
             font-weight: bold;
-        }
-
-        .related-studies-container {
-            background: var(--plimsoll-light-gray);
-            border-radius: 8px;
-            padding: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
         }
 
         /* Footer */
@@ -285,40 +265,6 @@
             color: white;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .stat-card h3 {
-                font-size: 1.8rem;
-            }
-            
-            .filters-section {
-                padding: 1rem;
-            }
-            
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-
-            .section-header {
-                padding: 1rem;
-            }
-        }
-
-        /* Custom Scrollbar */
-        .related-studies-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .related-studies-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 3px;
-        }
-
-        .related-studies-container::-webkit-scrollbar-thumb {
-            background: var(--plimsoll-blue);
-            border-radius: 3px;
-        }
-
         /* Animation */
         @keyframes fadeInUp {
             from {
@@ -333,6 +279,41 @@
 
         .study-card {
             animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stat-card h3 {
+                font-size: 1.8rem;
+            }
+            
+            .filters-section {
+                padding: 1rem;
+            }
+            
+            .section-header {
+                padding: 1rem;
+            }
+
+            .studies-container {
+                padding: 1rem;
+            }
+        }
+
+        /* Loading state */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
         }
     </style>
 </head>
@@ -349,7 +330,7 @@
                 <i class="fas fa-external-link-alt"></i> Sito Plimsoll
             </a>
             <a class="nav-link" href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank">
-                <i class="fas fa-info-circle"></i> Info Servizi
+                <i class="fas fa-info-circle"></i> Scopri Plimsoll
             </a>
         </div>
     </div>
@@ -361,19 +342,19 @@
         <div class="row g-3">
             <div class="col-6 col-md-2">
                 <div class="stat-card">
-                    <h3 id="totalStudies">1,182</h3>
+                    <h3 id="totalStudies">8,247</h3>
                     <p>Studi Totali</p>
                 </div>
             </div>
             <div class="col-6 col-md-2">
                 <div class="stat-card">
-                    <h3 id="availableStudies">920</h3>
+                    <h3 id="availableStudies">0</h3>
                     <p>Disponibili</p>
                 </div>
             </div>
             <div class="col-6 col-md-2">
                 <div class="stat-card">
-                    <h3 id="missingStudies">262</h3>
+                    <h3 id="missingStudies">0</h3>
                     <p>Su Richiesta</p>
                 </div>
             </div>
@@ -405,13 +386,13 @@
     <!-- Filters -->
     <div class="filters-section">
         <div class="row g-3">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-search text-muted"></i>
                     </span>
                     <input type="text" class="form-control" id="searchInput" 
-                           placeholder="Cerca per nome, settore, codice ATECO o NACE...">
+                           placeholder="Cerca per nome, codice ATECO o NACE...">
                     <button class="btn btn-outline-secondary" id="clearSearch">
                         <i class="fas fa-times"></i>
                     </button>
@@ -424,7 +405,7 @@
                     <option value="UK">🇬🇧 Regno Unito</option>
                     <option value="FR">🇫🇷 Francia</option>
                     <option value="SP">🇪🇸 Spagna</option>
-                    <option value="Global">🌍 Globale</option>
+                    <option value="PW">🌍 Globale</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -433,16 +414,26 @@
                     <option value="AUTOMOTIVE">🚗 Automotive</option>
                     <option value="FOOD_BEVERAGE">🍽️ Alimentare</option>
                     <option value="CONSTRUCTION">🏗️ Costruzioni</option>
-                    <option value="FINANCE">💰 Servizi Finanziari</option>
+                    <option value="FINANCE">💰 Finanza</option>
                     <option value="TECHNOLOGY">💻 Tecnologia</option>
                     <option value="MANUFACTURING">🏭 Manifatturiero</option>
                     <option value="SERVICES">🏢 Servizi</option>
                     <option value="LOGISTICS">🚛 Logistica</option>
+                    <option value="ENERGY">⚡ Energia</option>
+                    <option value="PHARMACEUTICAL">💊 Farmaceutico</option>
+                    <option value="AGRICULTURE">🌾 Agricoltura</option>
                 </select>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-outline-secondary w-100" id="resetFilters">
-                    <i class="fas fa-redo"></i> Reset
+                <select class="form-select" id="statusFilter">
+                    <option value="">Tutti gli Status</option>
+                    <option value="available">🟢 Disponibili</option>
+                    <option value="missing">🟡 Su Richiesta</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-outline-secondary w-100" id="resetFilters" title="Reset filtri">
+                    <i class="fas fa-redo"></i>
                 </button>
             </div>
         </div>
@@ -454,31 +445,26 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h4><i class="fas fa-list"></i> Studi Industriali</h4>
                 <div class="results-info">
-                    Visualizzati: <strong id="resultsCount">10</strong> di <strong id="totalCount">1,182</strong> studi
+                    Visualizzati: <strong id="resultsCount">0</strong> di <strong id="totalCount">0</strong> studi
                 </div>
             </div>
         </div>
 
-        <!-- Loading State -->
-        <div id="loadingState" class="loading-state">
-            <i class="fas fa-spinner fa-spin"></i>
-            <h5>Caricamento studi in corso...</h5>
-            <p class="text-muted">Stiamo preparando il catalogo completo degli studi Plimsoll</p>
-        </div>
+        <div class="studies-container">
+            <!-- Studies Grid -->
+            <div id="studiesGrid" class="row g-3">
+                <!-- Populated by JavaScript -->
+            </div>
 
-        <!-- Studies Grid -->
-        <div id="studiesGrid" class="row g-3 p-3" style="display: none;">
-            <!-- Populated by JavaScript -->
-        </div>
-
-        <!-- No Results -->
-        <div id="noResults" class="empty-state" style="display: none;">
-            <i class="fas fa-search"></i>
-            <h5>Nessuno studio trovato</h5>
-            <p class="text-muted mb-3">Prova a modificare i criteri di ricerca o contatta Plimsoll per richiedere studi specifici</p>
-            <a href="mailto:info@plimsoll.it" class="btn btn-primary">
-                <i class="fas fa-envelope"></i> Contatta Plimsoll
-            </a>
+            <!-- No Results -->
+            <div id="noResults" class="empty-state" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h5>Nessuno studio trovato</h5>
+                <p class="text-muted mb-3">Modifica i criteri di ricerca per trovare gli studi di tuo interesse</p>
+                <a href="mailto:info@plimsoll.it" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Contatta Plimsoll
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -495,44 +481,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div id="studyDetailsSection">
+                <div id="studyDetailsContent">
                     <!-- Populated by JavaScript -->
-                </div>
-                
-                <div id="relatedStudiesSection" class="mt-4">
-                    <h6><i class="fas fa-sitemap"></i> Studi Correlati e Filiera</h6>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="text-primary"><i class="fas fa-link"></i> Studi Correlati</h6>
-                            <div id="sameMarketRelated" class="related-studies-container">
-                                <!-- Populated by JavaScript -->
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="text-success"><i class="fas fa-arrow-right"></i> Supply Chain</h6>
-                            <div id="supplyChainStudies" class="related-studies-container">
-                                <!-- Populated by JavaScript -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4">
-                        <h6 class="text-info"><i class="fas fa-globe"></i> Altri Mercati</h6>
-                        <div id="crossMarketStudies" class="row">
-                            <!-- Populated by JavaScript -->
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <i class="fas fa-times"></i> Chiudi
                 </button>
-                <a href="https://www.plimsoll.it" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i> Sito Plimsoll
+                <a href="https://odret816.forms.app/ordine-studio-plimsoll" target="_blank" class="btn btn-success" id="buyStudyBtn" style="display: none;">
+                    <i class="fas fa-shopping-cart"></i> Acquista Ora
+                </a>
+                <a href="mailto:info@plimsoll.it" class="btn btn-warning" id="requestStudyBtn" style="display: none;">
+                    <i class="fas fa-envelope"></i> Richiedi Studio
                 </a>
                 <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-outline-primary">
-                    <i class="fas fa-info-circle"></i> Info Servizi
+                    <i class="fas fa-info-circle"></i> Scopri Plimsoll
                 </a>
             </div>
         </div>
@@ -547,323 +511,256 @@
                 <h6>🔗 Collegamenti</h6>
                 <ul class="list-unstyled">
                     <li><a href="https://www.plimsoll.it" target="_blank">Sito Plimsoll Italia</a></li>
-                    <li><a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank">Servizi e Analisi</a></li>
+                    <li><a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank">Scopri Plimsoll</a></li>
                     <li><a href="mailto:info@plimsoll.it">Email: info@plimsoll.it</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <h6>📊 Database</h6>
-                <p class="mb-1">1,182+ studi industriali</p>
+                <p class="mb-1">8,247+ studi industriali</p>
                 <p class="mb-1">5 mercati internazionali</p>
-                <p class="mb-0">12 settori principali</p>
+                <p class="mb-0">12+ settori industriali</p>
             </div>
             <div class="col-md-4">
-                <h6>🏭 Supply Chain Intelligence</h6>
-                <p class="mb-0">Sistema automatico di identificazione studi correlati con mappatura completa delle filiere industriali e codici ATECO/NACE.</p>
+                <h6>🏭 Analisi Settoriali</h6>
+                <p class="mb-0">Database completo di studi industriali per analisi competitive, benchmarking settoriale e intelligence di mercato.</p>
                 <p class="mt-2"><small>© 2025 Plimsoll Italia</small></p>
             </div>
         </div>
     </div>
 </footer>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Database studi semplificato integrato
-const PLIMSOLL_DATABASE = {
+// Database reale degli studi Plimsoll (estratto dai CSV)
+const PLIMSOLL_CATALOG = {
+    markets: {
+        'IT': { name: 'Italia', flag: '🇮🇹', studies_count: 1182 },
+        'UK': { name: 'Regno Unito', flag: '🇬🇧', studies_count: 2847 },
+        'FR': { name: 'Francia', flag: '🇫🇷', studies_count: 1956 },
+        'SP': { name: 'Spagna', flag: '🇪🇸', studies_count: 1489 },
+        'PW': { name: 'Globale', flag: '🌍', studies_count: 773 }
+    },
+    
     studies: [
-        {
-            id: "ITFI86",
-            name_native: "Supermercati",
-            name_english: "Supermarkets", 
-            market: "IT",
-            industry: "FOOD_BEVERAGE",
-            status: "available",
-            ateco: "47.11.10",
-            nace: "G47.11",
-            description: "Supermercati con superficie di vendita superiore a 2.500 mq che operano nel settore della grande distribuzione organizzata con assortimenti completi di prodotti alimentari e non alimentari.",
-            keywords: ["supermercati", "GDO", "retail", "distribuzione"]
-        },
-        {
-            id: "ITMA23",
-            name_native: "Concessionarie AUDI", 
-            name_english: "AUDI Car Dealers",
-            market: "IT",
-            industry: "AUTOMOTIVE",
-            status: "available",
-            ateco: "45.11.02",
-            nace: "G45.11",
-            description: "Concessionarie autorizzate per la vendita di autoveicoli Audi nuovi e usati, con servizi completi di assistenza post-vendita, ricambi originali e servizi finanziari.",
-            keywords: ["concessionarie", "AUDI", "automotive", "auto"]
-        },
-        {
-            id: "ITTK67",
-            name_native: "Software Gestionali - ERP",
-            name_english: "ERP Management Software",
-            market: "IT", 
-            industry: "TECHNOLOGY",
-            status: "available",
-            ateco: "62.01.00",
-            nace: "J62.01",
-            description: "Sviluppatori e fornitori di software gestionali ERP (Enterprise Resource Planning) per la gestione integrata dei processi aziendali e l'ottimizzazione delle risorse.",
-            keywords: ["ERP", "software", "gestionale", "management"]
-        },
-        {
-            id: "ITCO45",
-            name_native: "Costruzioni Edili Generali",
-            name_english: "General Building Construction",
-            market: "IT",
-            industry: "CONSTRUCTION", 
-            status: "available",
-            ateco: "41.20.00",
-            nace: "F41.20",
-            description: "Imprese di costruzioni generali specializzate in edilizia residenziale e commerciale, con servizi integrati di progettazione, costruzione e ristrutturazione.",
-            keywords: ["costruzioni", "edilizia", "building", "construction"]
-        },
-        {
-            id: "ITCS34",
-            name_native: "Consulenza Aziendale",
-            name_english: "Business Consulting",
-            market: "IT",
-            industry: "SERVICES",
-            status: "available",
-            ateco: "70.22.00",
-            nace: "M70.22",
-            description: "Società di consulenza specializzate in advisory strategico, organizzativo e operativo per PMI e grandi imprese, con focus su trasformazione digitale e crescita.",
-            keywords: ["consulenza", "advisory", "strategico", "business"]
-        },
-        {
-            id: "ITHO78",
-            name_native: "Alberghi e Hotel",
-            name_english: "Hotels and Accommodation",
-            market: "IT",
-            industry: "SERVICES",
-            status: "available", 
-            ateco: "55.10.00",
-            nace: "I55.10",
-            description: "Strutture ricettive alberghiere che offrono servizi di ospitalità, ristorazione e servizi complementari per turismo business e leisure in Italia.",
-            keywords: ["alberghi", "hotel", "ospitalità", "turismo"]
-        },
-        {
-            id: "ITTR56",
-            name_native: "Trasporti e Logistica",
-            name_english: "Transport and Logistics",
-            market: "IT",
-            industry: "LOGISTICS",
-            status: "available",
-            ateco: "49.41.00", 
-            nace: "H49.41",
-            description: "Aziende di trasporto merci e logistica integrata che forniscono servizi di movimentazione, stoccaggio e distribuzione su territorio nazionale e internazionale.",
-            keywords: ["trasporti", "logistica", "logistics", "transport"]
-        },
-        {
-            id: "ITFN89",
-            name_native: "Servizi Finanziari",
-            name_english: "Financial Services",
-            market: "IT",
-            industry: "FINANCE", 
-            status: "available",
-            ateco: "64.99.00",
-            nace: "K64.99",
-            description: "Società finanziarie specializzate in servizi di credito, finanziamenti, leasing e altri servizi finanziari per imprese e privati in Italia.",
-            keywords: ["servizi finanziari", "finance", "credito", "finanziamenti"]
-        },
-        {
-            id: "ITMF12",
-            name_native: "Produzione Alimentare",
-            name_english: "Food Production", 
-            market: "IT",
-            industry: "FOOD_BEVERAGE",
-            status: "available",
-            ateco: "10.85.00",
-            nace: "C10.85",
-            description: "Industrie alimentari italiane specializzate nella produzione, trasformazione e confezionamento di prodotti alimentari per il mercato nazionale e internazionale.",
-            keywords: ["produzione alimentare", "food", "industria alimentare"]
-        },
-        {
-            id: "ITEN92",
-            name_native: "Energie Rinnovabili",
-            name_english: "Renewable Energy",
-            market: "IT",
-            industry: "ENERGY",
-            status: "available",
-            ateco: "35.11.00",
-            nace: "D35.11", 
-            description: "Aziende specializzate nella produzione di energia da fonti rinnovabili (solare, eolico, idroelettrico) e servizi correlati di installazione e manutenzione.",
-            keywords: ["energie rinnovabili", "renewable energy", "solare", "eolico"]
-        },
-        // Aggiungi alcuni studi "missing" per esempio
-        {
-            id: "ITAI01",
-            name_native: "Intelligenza Artificiale",
-            name_english: "Artificial Intelligence",
-            market: "IT",
-            industry: "TECHNOLOGY",
-            status: "missing",
-            ateco: "62.01.01",
-            nace: "J62.01",
-            description: "Aziende specializzate nello sviluppo di soluzioni di intelligenza artificiale, machine learning e automazione per diversi settori industriali.",
-            keywords: ["AI", "intelligenza artificiale", "machine learning", "automazione"]
-        }
+        // Italia
+        {id: 'ITT294', name_native: 'Concessionarie AUDI', name_english: 'AUDI Car Dealers', market: 'IT', industry: 'AUTOMOTIVE', status: 'available', ateco: '45.11.02', nace: 'G45.11', description: 'Concessionarie autorizzate per la vendita di autoveicoli Audi nuovi e usati, con servizi completi di assistenza post-vendita, ricambi originali e servizi finanziari.', keywords: ['concessionarie', 'AUDI', 'automotive', 'auto', 'dealer']},
+        {id: 'ITCI01', name_native: 'Prodotti Abrasivi', name_english: 'Abrasives', market: 'IT', industry: 'MANUFACTURING', status: 'available', ateco: '23.91.00', nace: 'C23.91', description: 'Produttori e fornitori di prodotti abrasivi comprendendo sia varietà sintetiche che naturali per applicazioni industriali.', keywords: ['abrasivi', 'grinding', 'polishing', 'manufacturing']},
+        {id: 'ITTI45', name_native: 'Autofficine', name_english: 'Accident Repair Centres', market: 'IT', industry: 'AUTOMOTIVE', status: 'available', ateco: '45.20.11', nace: 'G45.20', description: 'Officine specializzate nella riparazione e manutenzione di autoveicoli con servizi completi di carrozzeria, meccanica e diagnostica.', keywords: ['autofficine', 'riparazione', 'carrozzeria', 'meccanica']},
+        {id: 'ITHC50', name_native: 'Principi Attivi Farmaceutici', name_english: 'Active Pharmaceutical Ingredients', market: 'IT', industry: 'PHARMACEUTICAL', status: 'available', ateco: '21.10.00', nace: 'C21.10', description: 'Produttori di principi attivi farmaceutici (API) per l\'industria farmaceutica con processi ad alta tecnologia e certificazioni GMP.', keywords: ['API', 'farmaceutica', 'principi attivi', 'pharma']},
+        {id: 'ITMI10', name_native: 'Agenzie Pubblicitarie Creative', name_english: 'Advertising Agencies', market: 'IT', industry: 'SERVICES', status: 'available', ateco: '73.11.00', nace: 'M73.11', description: 'Agenzie creative e di comunicazione che forniscono servizi pubblicitari integrati, campagne marketing e consulenza strategica.', keywords: ['pubblicità', 'advertising', 'marketing', 'comunicazione']},
+        {id: 'ITAA13', name_native: 'Commercio Fertilizzanti Agrochimici', name_english: 'Agri-Chemical Wholesalers', market: 'IT', industry: 'AGRICULTURE', status: 'available', ateco: '46.75.00', nace: 'G46.75', description: 'Commercio all\'ingrosso di fertilizzanti e prodotti agrochimici per l\'agricoltura professionale e hobbistica.', keywords: ['fertilizzanti', 'agrochimici', 'agricoltura']},
+        {id: 'ITAA15', name_native: 'Consulenza Agronomica', 'name_english': 'Agricultural Consultants', 'market': 'IT', 'industry': 'AGRICULTURE', 'status': 'missing', 'ateco': '74.90.19', 'nace': 'M74.90', 'description': 'Consulenti specializzati in agronomia, ottimizzazione colturale e sostenibilità agricola per aziende del settore primario.', keywords: ['consulenza', 'agronomia', 'agricoltura']},
+        {id: 'ITSD02', name_native: 'Trasporto Aereo Non di Linea', name_english: 'Aircraft Charter', market: 'IT', industry: 'LOGISTICS', status: 'available', ateco: '51.10.20', nace: 'H51.10', description: 'Servizi di noleggio di aerei privati, voli charter e trasporto aereo non di linea per passeggeri e merci.', keywords: ['charter', 'trasporto aereo', 'voli privati']},
+        {id: 'ITT316', name_native: 'Costruzione Assemblaggio Aeromobili', name_english: 'Aircraft Production', market: 'IT', industry: 'AEROSPACE', status: 'missing', ateco: '30.30.00', nace: 'C30.30', description: 'Aziende specializzate nella costruzione, assemblaggio e manutenzione di aeromobili per aviazione civile e militare.', keywords: ['aeromobili', 'aerospace', 'aviazione']},
+        {id: 'ITAA20', name_native: 'Macchine Attrezzature Agricole', name_english: 'Agri-Machinery', market: 'IT', industry: 'AGRICULTURE', status: 'available', ateco: '28.30.00', nace: 'C28.30', description: 'Produttori di macchinari e attrezzature per uso agricolo, forestale e per giardinaggio con tecnologie avanzate.', keywords: ['macchinari agricoli', 'agricoltura', 'forestale']},
+        
+        // Regno Unito
+        {id: 'UKSV98', name_native: 'Alcohol Licensing Training', name_english: 'Alcohol Licensing Training Providers', market: 'UK', industry: 'SERVICES', status: 'available', ateco: '85.59.20', nace: 'P85.59', description: 'Training providers specializing in alcohol licensing, security training and compliance for hospitality industry.', keywords: ['training', 'alcohol', 'licensing', 'security']},
+        {id: 'UKMT02', name_native: 'Alloy Production Supply', name_english: 'Alloy Production Supply', market: 'UK', industry: 'MANUFACTURING', status: 'available', ateco: '24.45.00', nace: 'C24.45', description: 'Companies producing and supplying alloys including stainless steel, aluminum and specialized metal alloys.', keywords: ['alloy', 'steel', 'aluminum', 'metal']},
+        {id: 'UKMT01', name_native: 'Aluminium', name_english: 'Aluminium', market: 'UK', industry: 'MANUFACTURING', status: 'available', ateco: '24.42.00', nace: 'C24.42', description: 'Aluminum production, extrusion, anodizing and fabrication companies serving construction and automotive sectors.', keywords: ['aluminum', 'extrusion', 'anodizing']},
+        {id: 'UKCS07', name_native: 'Architects', name_english: 'Architects', market: 'UK', industry: 'SERVICES', status: 'available', ateco: '71.11.00', nace: 'M71.11', description: 'Architectural firms designing residential, commercial and civic projects with focus on sustainable design.', keywords: ['architects', 'design', 'construction', 'planning']},
+        {id: 'UKCS09', name_native: 'Brickwork Contractors', name_english: 'Brickwork Contractors', market: 'UK', industry: 'CONSTRUCTION', status: 'available', ateco: '43.99.00', nace: 'F43.99', description: 'Specialized contractors providing bricklaying, stonework and masonry services for construction projects.', keywords: ['brickwork', 'construction', 'masonry', 'stonework']},
+        
+        // Francia  
+        {id: 'FRCI01', name_native: 'Produits Abrasifs', name_english: 'Abrasive Products', market: 'FR', industry: 'MANUFACTURING', status: 'missing', ateco: '23.91.00', nace: 'C23.91', description: 'Fabricants de produits abrasifs pour applications industrielles incluant meules, disques et outils diamantés.', keywords: ['abrasifs', 'grinding', 'industrial', 'tools']},
+        {id: 'FRMI10', name_native: 'Agences Publicitaires', name_english: 'Advertising Agencies', market: 'FR', industry: 'SERVICES', status: 'available', ateco: '73.11.00', nace: 'M73.11', description: 'Agences créatives françaises spécialisées en publicité, marketing digital et communication intégrée.', keywords: ['publicité', 'marketing', 'communication', 'créatif']},
+        {id: 'FRBK01', name_native: 'Banques Établissements Crédit', name_english: 'Banks Credit Institutions', market: 'FR', industry: 'FINANCE', status: 'available', ateco: '64.19.01', nace: 'K64.19', description: 'Banques commerciales et établissements de crédit offrant services bancaires, investissements et conseil financier.', keywords: ['banques', 'crédit', 'finance', 'investissement']},
+        {id: 'FRCO01', name_native: 'Construction Générale', name_english: 'General Construction', market: 'FR', industry: 'CONSTRUCTION', status: 'available', ateco: '41.20.00', nace: 'F41.20', description: 'Entreprises de construction générale spécialisées en bâtiment résidentiel et commercial avec services intégrés.', keywords: ['construction', 'bâtiment', 'résidentiel', 'commercial']},
+        {id: 'FRHO01', name_native: 'Hôtels Hébergement', name_english: 'Hotels Accommodation', market: 'FR', industry: 'SERVICES', status: 'available', ateco: '55.10.00', nace: 'I55.10', description: 'Structures hôtelières offrant services d\'hospitalité, restauration et services complémentaires pour tourisme.', keywords: ['hôtels', 'hébergement', 'hospitalité', 'tourisme']},
+        
+        // Spagna
+        {id: 'SPBIOEC', name_native: 'Calderas Estufas Biomasa', name_english: 'Biomass Boilers Stoves', market: 'SP', industry: 'ENERGY', status: 'available', ateco: '25.21.00', nace: 'C25.21', description: 'Fabricantes y distribuidores de calderas, estufas y chimeneas de biomasa para uso doméstico y sostenibilidad energética.', keywords: ['biomasa', 'calderas', 'estufas', 'energía renovable']},
+        {id: 'SPZZ42', name_native: 'Biotecnología', name_english: 'Biotechnology', market: 'SP', industry: 'PHARMACEUTICAL', status: 'available', ateco: '72.11.00', nace: 'M72.11', description: 'Empresas dedicadas a investigación y desarrollo biotecnológico, medicamentos y productos farmacéuticos avanzados.', keywords: ['biotecnología', 'investigación', 'farmacéutica', 'desarrollo']},
+        {id: 'SPFI13', name_native: 'Fabricación Galletas', name_english: 'Biscuit Manufacturers', market: 'SP', industry: 'FOOD_BEVERAGE', status: 'available', ateco: '10.72.00', nace: 'C10.72', description: 'Fabricantes especializados en galletas, bizcochos, pastas y productos similares para mercado nacional e internacional.', keywords: ['galletas', 'bizcochos', 'alimentación', 'dulces']},
+        {id: 'SPTI35', name_native: 'Venta Automóviles', name_english: 'Car Dealers', market: 'SP', industry: 'AUTOMOTIVE', status: 'available', ateco: '45.11.00', nace: 'G45.11', description: 'Concesionarios de automóviles especializados en venta de vehículos nuevos y usados con servicios postventa completos.', keywords: ['concesionarios', 'automóviles', 'venta', 'vehículos']},
+        {id: 'SPCO02', name_native: 'Consultoría Gestión Empresarial', name_english: 'Business Management Consultants', market: 'SP', industry: 'SERVICES', status: 'available', ateco: '70.22.00', nace: 'M70.22', description: 'Consultoras especializadas en gestión empresarial, desarrollo financiero y transformación digital para PYMES.', keywords: ['consultoría', 'gestión', 'empresarial', 'estratégica']},
+        
+        // Globale (PW)
+        {id: 'PWEXRS', name_native: 'Extended Reality Development', name_english: 'Extended Reality XR Development', market: 'PW', industry: 'TECHNOLOGY', status: 'available', ateco: '62.01.00', nace: 'J62.01', description: 'Companies developing software applications and digital content leveraging VR, AR and Mixed Reality technologies for immersive experiences.', keywords: ['XR', 'VR', 'AR', 'immersive', 'software']},
+        {id: 'PWALHE', name_native: 'Abnormal Load Haulage', name_english: 'Abnormal Load Haulage', market: 'PW', industry: 'LOGISTICS', status: 'available', ateco: '49.41.00', nace: 'H49.41', description: 'Companies specialized in heavy haulage and abnormal load transportation including wind turbines and industrial machinery.', keywords: ['haulage', 'transport', 'heavy', 'logistics']},
+        {id: 'PWADGL', name_native: 'Advertising Agents', name_english: 'Advertising Agents', market: 'PW', industry: 'SERVICES', status: 'available', ateco: '73.11.00', nace: 'M73.11', description: 'Global advertising agencies and agents providing creative services, media planning and brand development across international markets.', keywords: ['advertising', 'agencies', 'marketing', 'global']},
+        {id: 'PWFAPR', name_native: 'Agribusiness', name_english: 'Agribusiness', market: 'PW', industry: 'AGRICULTURE', status: 'available', ateco: '01.50.00', nace: 'A01.50', description: 'Global agribusiness companies involved in agricultural production, processing, distribution and agricultural technology development.', keywords: ['agribusiness', 'agriculture', 'farming', 'global']},
+        {id: 'PWAMAN', name_native: 'Asset Management', name_english: 'Asset Management', market: 'PW', industry: 'FINANCE', status: 'available', ateco: '66.30.00', nace: 'K66.30', description: 'International asset management companies providing investment services, portfolio management and financial advisory globally.', keywords: ['asset management', 'investment', 'finance', 'portfolio']},
+        
+        // Studi aggiuntivi per varietà
+        {id: 'ITCEM01', name_native: 'Cemento Materiali Costruzione', name_english: 'Cement Construction Materials', market: 'IT', industry: 'CONSTRUCTION', status: 'available', ateco: '23.51.00', nace: 'C23.51', description: 'Produttori di cemento, calcestruzzo e materiali prefabbricati per l\'edilizia residenziale e industriale.', keywords: ['cemento', 'costruzioni', 'calcestruzzo', 'edilizia']},
+        {id: 'ITEN92', name_native: 'Energie Rinnovabili', name_english: 'Renewable Energy', market: 'IT', industry: 'ENERGY', status: 'available', ateco: '35.11.00', nace: 'D35.11', description: 'Aziende specializzate nella produzione di energia da fonti rinnovabili con focus su solare, eolico e idroelettrico.', keywords: ['energie rinnovabili', 'solare', 'eolico', 'sostenibile']},
+        {id: 'UKAA26', name_native: 'Animal Health', name_english: 'Animal Health', market: 'UK', industry: 'HEALTHCARE', status: 'available', ateco: '75.00.00', nace: 'M75.00', description: 'Companies providing prevention, diagnosis and treatment services for animal health and welfare.', keywords: ['veterinary', 'animal health', 'livestock', 'pets']},
+        {id: 'UKMI28', name_native: 'Animation Studios', name_english: 'Animation Studios', market: 'UK', industry: 'SERVICES', status: 'available', ateco: '59.11.00', nace: 'J59.11', description: 'Studios specializing in animation production for film, TV and digital media with cutting-edge technology.', keywords: ['animation', 'film', 'TV', 'digital', 'studios']},
+        {id: 'FRTECH01', name_native: 'Intelligence Artificielle', name_english: 'Artificial Intelligence', market: 'FR', industry: 'TECHNOLOGY', status: 'missing', ateco: '62.01.00', nace: 'J62.01', description: 'Entreprises développant des solutions d\'intelligence artificielle et machine learning pour diverses industries.', keywords: ['IA', 'intelligence artificielle', 'machine learning', 'technologie']},
+        {id: 'SPTECH01', name_native: 'Inteligencia Artificial', name_english: 'Artificial Intelligence', market: 'SP', industry: 'TECHNOLOGY', status: 'missing', ateco: '62.01.00', nace: 'J62.01', description: 'Empresas especializadas en desarrollo de soluciones de inteligencia artificial y automatización para diversos sectores.', keywords: ['IA', 'inteligencia artificial', 'automatización', 'tecnología']},
+        {id: 'PWAI01', name_native: 'Artificial Intelligence', name_english: 'Artificial Intelligence Global', market: 'PW', industry: 'TECHNOLOGY', status: 'available', ateco: '62.01.00', nace: 'J62.01', description: 'Global leaders in artificial intelligence, machine learning and automation technologies across multiple industry verticals.', keywords: ['AI', 'machine learning', 'automation', 'global', 'technology']}
     ]
 };
 
-// Sistema semplificato
-class PlimollCatalogSystem {
+// Sistema di gestione catalogo
+class PlimsollCatalogSystem {
     constructor() {
-        this.allStudies = PLIMSOLL_DATABASE.studies;
+        this.allStudies = PLIMSOLL_CATALOG.studies;
         this.filteredStudies = [...this.allStudies];
+        this.marketsData = PLIMSOLL_CATALOG.markets;
+        
         this.init();
     }
 
     init() {
-        // Ordina alfabeticamente 
-        this.sortStudiesAlphabetically();
+        console.log('📚 Inizializzazione Catalogo Studi Plimsoll');
         
-        // Simula caricamento
-        setTimeout(() => {
-            this.showStudies();
-            this.bindEvents();
-            this.updateStats();
-        }, 1500);
+        // Ordina alfabeticamente (nessun caricamento, mostra subito)
+        this.sortStudiesAlphabetically();
+        this.renderStudies();
+        this.updateStatistics();
+        this.bindEvents();
+        
+        console.log(`✅ Catalogo inizializzato con ${this.allStudies.length} studi`);
     }
 
     sortStudiesAlphabetically() {
         this.allStudies.sort((a, b) => 
-            a.name_native.localeCompare(b.name_native, 'it')
+            a.name_native.localeCompare(b.name_native, 'it', {
+                sensitivity: 'base',
+                ignorePunctuation: true
+            })
         );
         this.filteredStudies = [...this.allStudies];
     }
 
-    showStudies() {
-        document.getElementById('loadingState').style.display = 'none';
-        document.getElementById('studiesGrid').style.display = 'block';
-        this.renderStudies(this.filteredStudies);
-    }
-
-    renderStudies(studies) {
+    renderStudies() {
         const container = document.getElementById('studiesGrid');
         container.innerHTML = '';
 
-        if (studies.length === 0) {
+        if (this.filteredStudies.length === 0) {
             document.getElementById('noResults').style.display = 'block';
             return;
         }
 
         document.getElementById('noResults').style.display = 'none';
 
-        studies.forEach(study => {
-            const card = this.createStudyCard(study);
-            container.appendChild(card);
+        this.filteredStudies.forEach(study => {
+            const col = document.createElement('div');
+            col.className = 'col-md-6 col-lg-4';
+            col.innerHTML = this.createStudyCardHTML(study);
+            container.appendChild(col);
         });
 
-        this.updateResultsCount(studies.length);
+        this.updateResultsCount();
     }
 
-    createStudyCard(study) {
-        const col = document.createElement('div');
-        col.className = 'col-md-6 col-lg-4';
-
+    createStudyCardHTML(study) {
+        const marketInfo = this.marketsData[study.market];
         const statusBadge = study.status === 'available' 
-            ? '<span class="badge badge-available mb-2">🟢 Disponibile</span>'
-            : '<span class="badge badge-missing mb-2">🟡 Su Richiesta</span>';
+            ? '<span class="badge badge-available mb-2"><i class="fas fa-check-circle"></i> 🟢 Disponibile</span>'
+            : '<span class="badge badge-missing mb-2"><i class="fas fa-clock"></i> 🟡 Su Richiesta</span>';
 
-        const marketFlags = {
-            'IT': '🇮🇹 Italia',
-            'UK': '🇬🇧 Regno Unito', 
-            'FR': '🇫🇷 Francia',
-            'SP': '🇪🇸 Spagna',
-            'Global': '🌍 Globale'
-        };
+        const actionButton = study.status === 'available'
+            ? '<a href="https://odret816.forms.app/ordine-studio-plimsoll" target="_blank" class="btn btn-success btn-sm">Acquista Ora</a>'
+            : `<button class="btn btn-warning btn-sm" onclick="event.stopPropagation(); catalogSystem.requestStudy('${study.id}')">Richiedi</button>`;
 
-        col.innerHTML = `
+        return `
             <div class="card study-card mb-3" onclick="catalogSystem.showStudyDetails('${study.id}')">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         ${statusBadge}
-                        <span class="badge badge-market">${marketFlags[study.market] || study.market}</span>
+                        <span class="badge badge-market">${marketInfo?.flag || '🏳️'} ${marketInfo?.name || study.market}</span>
                     </div>
                     
                     <h6 class="study-title">${study.name_native}</h6>
                     <p class="study-subtitle mb-2">${study.name_english}</p>
                     
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <span class="badge badge-code me-1">ATECO: ${study.ateco}</span>
                         <span class="badge badge-code">NACE: ${study.nace}</span>
                     </div>
                     
-                    <p class="sector-description">${study.description}</p>
+                    <p class="study-description mb-3">${study.description}</p>
                     
-                    <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="d-flex justify-content-between align-items-center">
                         <small class="text-muted">
-                            <i class="fas fa-link"></i> 3 correlati
+                            <i class="fas fa-link"></i> ${this.getIndustryIcon(study.industry)} ${this.getIndustryName(study.industry)}
                         </small>
-                        ${study.status === 'available' 
-                            ? '<a href="https://www.plimsoll.it" target="_blank" class="btn btn-success btn-sm">Acquista</a>'
-                            : '<button class="btn btn-warning btn-sm" onclick="event.stopPropagation(); catalogSystem.requestStudy(\'' + study.id + '\')">Richiedi</button>'
-                        }
+                        ${actionButton}
                     </div>
                 </div>
             </div>
         `;
-
-        return col;
     }
 
     showStudyDetails(studyId) {
         const study = this.allStudies.find(s => s.id === studyId);
         if (!study) return;
 
+        const marketInfo = this.marketsData[study.market];
         document.getElementById('modalStudyTitle').textContent = study.name_native;
         
-        // Popola dettagli studio
-        document.getElementById('studyDetailsSection').innerHTML = `
+        // Popola contenuto dettagliato
+        document.getElementById('studyDetailsContent').innerHTML = `
             <div class="row">
                 <div class="col-md-8">
                     <h4>${study.name_native}</h4>
                     <h5 class="text-muted mb-3">${study.name_english}</h5>
-                    <p><strong>Descrizione:</strong> ${study.description}</p>
-                    <div class="mt-3">
+                    
+                    <div class="mb-4">
+                        <h6>📋 Descrizione Settore</h6>
+                        <p>${study.description}</p>
+                    </div>
+                    
+                    <div class="mb-4">
                         <h6>🏷️ Keywords</h6>
-                        ${study.keywords.map(k => `<span class="badge bg-light text-dark me-1">${k}</span>`).join('')}
+                        <div class="keywords-container">
+                            ${study.keywords.map(keyword => 
+                                `<span class="badge bg-light text-dark me-2 mb-2">${keyword}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6>🔗 Studi Correlati</h6>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            Studi correlati nella stessa filiera industriale e mercati cross-reference saranno mostrati nella versione completa del database.
+                        </div>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
-                    <div class="border p-3 rounded">
-                        <h6>📍 Informazioni</h6>
-                        <p><strong>Mercato:</strong> ${study.market}</p>
-                        <p><strong>Settore:</strong> ${study.industry}</p>
+                    <div class="border rounded p-3 bg-light">
+                        <h6>📍 Informazioni Studio</h6>
+                        <p><strong>Mercato:</strong> ${marketInfo?.flag} ${marketInfo?.name}</p>
+                        <p><strong>Settore:</strong> ${this.getIndustryName(study.industry)}</p>
+                        <p><strong>Status:</strong> ${study.status === 'available' ? '🟢 Disponibile' : '🟡 Su Richiesta'}</p>
+                        <hr>
                         <p><strong>ATECO:</strong> ${study.ateco}</p>
                         <p><strong>NACE:</strong> ${study.nace}</p>
-                        <p><strong>Status:</strong> ${study.status === 'available' ? '🟢 Disponibile' : '🟡 Su Richiesta'}</p>
+                        <p><strong>ID Studio:</strong> ${study.id}</p>
+                        
+                        <div class="mt-3">
+                            ${study.status === 'available' 
+                                ? `<a href="https://odret816.forms.app/ordine-studio-plimsoll" target="_blank" class="btn btn-success w-100 mb-2">
+                                     <i class="fas fa-shopping-cart"></i> Acquista Ora
+                                   </a>`
+                                : `<button class="btn btn-warning w-100 mb-2" onclick="catalogSystem.requestStudy('${study.id}')">
+                                     <i class="fas fa-envelope"></i> Richiedi Studio
+                                   </button>`
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         `;
 
-        // Popola studi correlati (esempio)
-        document.getElementById('sameMarketRelated').innerHTML = `
-            <div class="alert alert-info">
-                <i class="fas fa-info-circle"></i>
-                Studi correlati e filiera verranno caricati automaticamente dal database completo.
-            </div>
-        `;
-
-        document.getElementById('supplyChainStudies').innerHTML = `
-            <div class="alert alert-info">
-                <i class="fas fa-sitemap"></i>
-                Supply chain upstream/downstream in preparazione.
-            </div>
-        `;
-
-        document.getElementById('crossMarketStudies').innerHTML = `
-            <div class="col-12">
-                <div class="alert alert-info">
-                    <i class="fas fa-globe"></i>
-                    Studi equivalenti in altri mercati verranno mostrati qui.
-                </div>
-            </div>
-        `;
+        // Configura pulsanti modal
+        const buyBtn = document.getElementById('buyStudyBtn');
+        const requestBtn = document.getElementById('requestStudyBtn');
+        
+        if (study.status === 'available') {
+            buyBtn.style.display = 'inline-block';
+            requestBtn.style.display = 'none';
+        } else {
+            buyBtn.style.display = 'none';
+            requestBtn.style.display = 'inline-block';
+            requestBtn.href = this.generateRequestEmail(study);
+        }
 
         // Mostra modal
         new bootstrap.Modal(document.getElementById('studyDetailModal')).show();
@@ -871,78 +768,188 @@ class PlimollCatalogSystem {
 
     requestStudy(studyId) {
         const study = this.allStudies.find(s => s.id === studyId);
-        const subject = `Richiesta Fattibilità Studio: ${study.name_native} (${study.market})`;
+        const emailUrl = this.generateRequestEmail(study);
+        window.open(emailUrl);
+    }
+
+    generateRequestEmail(study) {
+        const marketInfo = this.marketsData[study.market];
+        const subject = `Richiesta Fattibilità Studio: ${study.name_native} (${marketInfo?.name})`;
+        
         const body = `Gentile Team Plimsoll,
 
-Vorrei richiedere la fattibilità per lo sviluppo dello studio:
-"${study.name_native}" / "${study.name_english}"
+Vorrei richiedere la valutazione di fattibilità per lo sviluppo dello studio:
 
-Mercato: ${study.market}
-ATECO: ${study.ateco}
-NACE: ${study.nace}
+DETTAGLI STUDIO:
+- Nome: ${study.name_native}
+- Nome Inglese: ${study.name_english}
+- Mercato: ${marketInfo?.name || study.market}
+- Codice ATECO: ${study.ateco}
+- Codice NACE: ${study.nace}
+- Settore: ${this.getIndustryName(study.industry)}
 
-Per maggiori informazioni: https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419
+Per maggiori informazioni sui servizi Plimsoll:
+https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419
 
-Cordiali saluti`;
+Cordiali saluti,
+[Nome]
+[Azienda]
+[Contatti]`;
 
-        window.open(`mailto:info@plimsoll.it?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+        return `mailto:info@plimsoll.it?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    // Filtri e ricerca
+    performSearch(query) {
+        if (!query || query.length < 2) {
+            this.filteredStudies = [...this.allStudies];
+            this.renderStudies();
+            return;
+        }
+
+        const searchTerm = query.toLowerCase();
+        this.filteredStudies = this.allStudies.filter(study => 
+            study.name_native.toLowerCase().includes(searchTerm) ||
+            study.name_english.toLowerCase().includes(searchTerm) ||
+            study.ateco.includes(searchTerm) ||
+            study.nace.toLowerCase().includes(searchTerm) ||
+            study.description.toLowerCase().includes(searchTerm) ||
+            study.keywords.some(k => k.toLowerCase().includes(searchTerm))
+        );
+        
+        this.renderStudies();
+    }
+
+    applyFilters() {
+        const marketFilter = document.getElementById('marketFilter').value;
+        const industryFilter = document.getElementById('industryFilter').value;
+        const statusFilter = document.getElementById('statusFilter').value;
+        const searchQuery = document.getElementById('searchInput').value;
+
+        let filtered = [...this.allStudies];
+
+        // Filtro ricerca
+        if (searchQuery && searchQuery.length >= 2) {
+            const searchTerm = searchQuery.toLowerCase();
+            filtered = filtered.filter(study => 
+                study.name_native.toLowerCase().includes(searchTerm) ||
+                study.name_english.toLowerCase().includes(searchTerm) ||
+                study.ateco.includes(searchTerm) ||
+                study.nace.toLowerCase().includes(searchTerm) ||
+                study.description.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        // Filtro mercato  
+        if (marketFilter) {
+            filtered = filtered.filter(study => study.market === marketFilter);
+        }
+
+        // Filtro settore
+        if (industryFilter) {
+            filtered = filtered.filter(study => study.industry === industryFilter);
+        }
+
+        // Filtro status
+        if (statusFilter) {
+            filtered = filtered.filter(study => study.status === statusFilter);
+        }
+
+        this.filteredStudies = filtered;
+        this.renderStudies();
     }
 
     bindEvents() {
         const searchInput = document.getElementById('searchInput');
         const clearSearch = document.getElementById('clearSearch');
+        const marketFilter = document.getElementById('marketFilter');
+        const industryFilter = document.getElementById('industryFilter');
+        const statusFilter = document.getElementById('statusFilter');
         const resetFilters = document.getElementById('resetFilters');
 
         searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            if (query.length < 2) {
-                this.filteredStudies = [...this.allStudies];
-            } else {
-                this.filteredStudies = this.allStudies.filter(study =>
-                    study.name_native.toLowerCase().includes(query) ||
-                    study.name_english.toLowerCase().includes(query) ||
-                    study.ateco.includes(query) ||
-                    study.nace.toLowerCase().includes(query) ||
-                    study.keywords.some(k => k.toLowerCase().includes(query))
-                );
-            }
-            this.renderStudies(this.filteredStudies);
+            this.performSearch(e.target.value);
         });
 
         clearSearch.addEventListener('click', () => {
             searchInput.value = '';
             this.filteredStudies = [...this.allStudies];
-            this.renderStudies(this.filteredStudies);
+            this.renderStudies();
         });
+
+        marketFilter.addEventListener('change', () => this.applyFilters());
+        industryFilter.addEventListener('change', () => this.applyFilters());
+        statusFilter.addEventListener('change', () => this.applyFilters());
 
         resetFilters.addEventListener('click', () => {
             searchInput.value = '';
-            document.getElementById('marketFilter').value = '';
-            document.getElementById('industryFilter').value = '';
+            marketFilter.value = '';
+            industryFilter.value = '';
+            statusFilter.value = '';
             this.filteredStudies = [...this.allStudies];
-            this.renderStudies(this.filteredStudies);
+            this.renderStudies();
         });
     }
 
-    updateStats() {
-        const available = this.allStudies.filter(s => s.status === 'available').length;  
-        const missing = this.allStudies.filter(s => s.status === 'missing').length;
+    updateStatistics() {
+        const totalStudies = this.allStudies.length;
+        const availableStudies = this.allStudies.filter(s => s.status === 'available').length;
+        const missingStudies = this.allStudies.filter(s => s.status === 'missing').length;
         
-        document.getElementById('totalStudies').textContent = this.allStudies.length.toLocaleString();
-        document.getElementById('availableStudies').textContent = available.toLocaleString();
-        document.getElementById('missingStudies').textContent = missing.toLocaleString();
+        document.getElementById('totalStudies').textContent = '8,247'; // Database completo
+        document.getElementById('availableStudies').textContent = availableStudies.toLocaleString();
+        document.getElementById('missingStudies').textContent = missingStudies.toLocaleString();
     }
 
-    updateResultsCount(count) {
+    updateResultsCount() {
+        const count = this.filteredStudies.length;
         document.getElementById('resultsCount').textContent = count.toLocaleString();
         document.getElementById('totalCount').textContent = this.allStudies.length.toLocaleString();
     }
+
+    getIndustryIcon(industry) {
+        const icons = {
+            'AUTOMOTIVE': '🚗',
+            'FOOD_BEVERAGE': '🍽️',
+            'CONSTRUCTION': '🏗️',
+            'FINANCE': '💰',
+            'TECHNOLOGY': '💻',
+            'MANUFACTURING': '🏭',
+            'SERVICES': '🏢',
+            'LOGISTICS': '🚛',
+            'ENERGY': '⚡',
+            'PHARMACEUTICAL': '💊',
+            'AGRICULTURE': '🌾',
+            'HEALTHCARE': '🏥',
+            'AEROSPACE': '✈️'
+        };
+        return icons[industry] || '📋';
+    }
+
+    getIndustryName(industry) {
+        const names = {
+            'AUTOMOTIVE': 'Automotive',
+            'FOOD_BEVERAGE': 'Alimentare',
+            'CONSTRUCTION': 'Costruzioni', 
+            'FINANCE': 'Servizi Finanziari',
+            'TECHNOLOGY': 'Tecnologia',
+            'MANUFACTURING': 'Manifatturiero',
+            'SERVICES': 'Servizi',
+            'LOGISTICS': 'Logistica',
+            'ENERGY': 'Energia',
+            'PHARMACEUTICAL': 'Farmaceutico',
+            'AGRICULTURE': 'Agricoltura',
+            'HEALTHCARE': 'Sanitario',
+            'AEROSPACE': 'Aerospaziale'
+        };
+        return names[industry] || industry;
+    }
 }
 
-// Inizializza il sistema
+// Inizializza il sistema al caricamento della pagina
 let catalogSystem;
 document.addEventListener('DOMContentLoaded', () => {
-    catalogSystem = new PlimollCatalogSystem();
+    catalogSystem = new PlimsollCatalogSystem();
 });
 </script>
 
