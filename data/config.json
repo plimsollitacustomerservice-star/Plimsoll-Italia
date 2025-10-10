@@ -1,0 +1,23 @@
+# data/config.json
+{
+  "version": "1.0.0",
+  "name": "Catalogo Plimsoll",
+  "description": "Catalogo completo degli studi di settore Plimsoll",
+  "contact": {
+    "email": "info@plimsoll.it",
+    "website": "https://www.plimsoll.it"
+  },
+  "settings": {
+    "itemsPerPage": 50,
+    "autoSave": true,
+    "backupRetention": 30,
+    "supportedFormats": [".csv", ".xlsx", ".xls"],
+    "defaultLanguage": "it"
+  },
+  "github": {
+    "repository": "plimsoll-catalog",
+    "branch": "main",
+    "autoSync": true,
+    "syncInterval": "daily"
+  }
+}
