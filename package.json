@@ -1,0 +1,85 @@
+{
+  "name": "plimsoll-supply-chain-system",
+  "version": "1.0.0",
+  "description": "Sistema completo di Supply Chain per Database Plimsoll con mappatura di 8000+ studi",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build", 
+    "start": "next start",
+    "lint": "next lint",
+    "generate-mappings": "node scripts/generate-supply-chain-mappings.js",
+    "optimize-keywords": "node scripts/optimize-keywords.js",
+    "update-csv-data": "node scripts/update-csv-data.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-bootstrap": "^2.9.0",
+    "bootstrap": "^5.3.0",
+    "axios": "^1.5.0",
+    "lodash": "^4.17.21",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "papaparse": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "jest": "^29.0.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^6.0.0"
+  },
+  "keywords": [
+    "plimsoll",
+    "supply-chain",
+    "industrial-analysis", 
+    "market-research",
+    "business-intelligence",
+    "filiere-industriali",
+    "correlazione-studi"
+  ],
+  "author": "Plimsoll Italia <info@plimsoll.it>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plimsoll-italia/supply-chain-system.git"
+  },
+  "homepage": "https://www.plimsoll.it",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "plimsoll": {
+    "version": "2025.1",
+    "industries_mapped": 6,
+    "studies_total": 8000,
+    "markets": [
+      "IT",
+      "UK", 
+      "FR",
+      "SP", 
+      "DE",
+      "Global"
+    ],
+    "features": [
+      "supply-chain-mapping",
+      "studies-correlation",
+      "missing-studies-detection",
+      "cross-market-analysis",
+      "ateco-nace-mapping",
+      "email-request-system"
+    ],
+    "links": {
+      "main_site": "https://www.plimsoll.it",
+      "info_services": "https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419",
+      "contact_email": "info@plimsoll.it"
+    }
+  }
+}
