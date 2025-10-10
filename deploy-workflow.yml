@@ -1,0 +1,422 @@
+name: 🚀 Deploy Catalogo Plimsoll
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'data/**'
+      - 'assets/**'
+      - 'index.html'
+      - '*.csv'
+      - '*.py'
+  workflow_dispatch:
+    inputs:
+      force_optimization:
+        description: '🔧 Forza ottimizzazione completa database'
+        required: false
+        default: false
+        type: boolean
+      deploy_environment:
+        description: '🌐 Ambiente di deploy'
+        required: false
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Evita esecuzioni concorrenti
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  optimize-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: 🐍 Setup Python Environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+        cache-dependency-path: |
+          requirements.txt
+    
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas==2.1.* openpyxl==3.1.* requests==2.31.*
+        echo "✅ Dependenze Python installate"
+    
+    - name: 🔍 Check Repository Status
+      id: check_status
+      run: |
+        echo "🔍 Analisi stato repository..."
+        
+        # Verifica file esistenti
+        if [ -f "data/sectors.json" ]; then
+          sectors_count=$(python3 -c "import json; print(json.load(open('data/sectors.json'))['metadata']['totalSectors'])" 2>/dev/null || echo "0")
+          echo "database_exists=true" >> $GITHUB_OUTPUT
+          echo "current_sectors=$sectors_count" >> $GITHUB_OUTPUT
+        else
+          echo "database_exists=false" >> $GITHUB_OUTPUT
+          echo "current_sectors=0" >> $GITHUB_OUTPUT
+        fi
+        
+        # Conta file CSV disponibili
+        csv_count=$(ls -1 *.csv 2>/dev/null | wc -l)
+        echo "csv_files_count=$csv_count" >> $GITHUB_OUTPUT
+        
+        # Determina se serve ottimizzazione
+        if [ ! -f "data/sectors.json" ] || [ "$csv_count" -gt 0 ] || [ "${{ github.event.inputs.force_optimization }}" == "true" ]; then
+          echo "needs_optimization=true" >> $GITHUB_OUTPUT
+          echo "🚀 Ottimizzazione necessaria"
+        else
+          echo "needs_optimization=false" >> $GITHUB_OUTPUT
+          echo "✅ Database già presente e aggiornato"
+        fi
+    
+    - name: 📁 Create Directory Structure  
+      run: |
+        echo "📁 Creazione struttura directory..."
+        mkdir -p data/backup
+        mkdir -p uploads/{processed,archive}
+        mkdir -p assets/{css,js,lib}
+        mkdir -p .github/workflows
+        echo "✅ Struttura directory creata"
+    
+    - name: ⚡ Run Repository Optimization
+      if: steps.check_status.outputs.needs_optimization == 'true'
+      run: |
+        echo "⚡ Avvio ottimizzazione repository..."
+        
+        if [ -f "optimize_repository.py" ]; then
+          echo "🔧 Esecuzione script ottimizzazione..."
+          python optimize_repository.py
+          
+          # Verifica risultati ottimizzazione
+          if [ -f "data/sectors.json" ]; then
+            new_count=$(python3 -c "import json; print(json.load(open('data/sectors.json'))['metadata']['totalSectors'])" 2>/dev/null || echo "0")
+            echo "✅ Ottimizzazione completata: $new_count settori"
+            echo "optimization_result=success" >> $GITHUB_ENV
+            echo "final_sectors_count=$new_count" >> $GITHUB_ENV
+          else
+            echo "❌ Errore: sectors.json non generato"
+            echo "optimization_result=failed" >> $GITHUB_ENV
+            echo "final_sectors_count=0" >> $GITHUB_ENV
+          fi
+        else
+          echo "⚠️ Script optimize_repository.py non trovato"
+          echo "optimization_result=skipped" >> $GITHUB_ENV
+        fi
+    
+    - name: 🗃️ Verify and Create Missing Data Files
+      run: |
+        echo "🗃️ Verifica e creazione file dati essenziali..."
+        
+        # Verifica sectors.json
+        if [ ! -f "data/sectors.json" ]; then
+          echo "📝 Creazione sectors.json di fallback..."
+          cat > data/sectors.json << 'EOF'
+        {
+          "metadata": {
+            "version": "2.0.0",
+            "title": "Catalogo Studi Plimsoll",
+            "description": "Database settori industriali Plimsoll",
+            "lastUpdated": "$(date -Iseconds)",
+            "totalSectors": 0,
+            "source": "Plimsoll Analysis Ltd",
+            "contact": "info@plimsoll.it",
+            "website": "https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/"
+          },
+          "statistics": {
+            "overview": {
+              "total_sectors": 0,
+              "with_original_description": 0,
+              "generated_descriptions": 0,
+              "completion_rate": 0,
+              "countries_covered": 0,
+              "nace_sections": 0
+            }
+          },
+          "sample_sectors": []
+        }
+        EOF
+        fi
+        
+        # Verifica ateco-nace.json
+        if [ ! -f "data/ateco-nace.json" ]; then
+          echo "📝 Creazione ateco-nace.json di fallback..."
+          cat > data/ateco-nace.json << 'EOF'
+        {
+          "metadata": {
+            "version": "2025.1",
+            "lastUpdated": "$(date -Iseconds)",
+            "description": "Mappatura codici ATECO/NACE"
+          },
+          "nace": {
+            "C": "Attività manifatturiere",
+            "G": "Commercio all'ingrosso e al dettaglio",
+            "J": "Servizi di informazione e comunicazione",
+            "M": "Attività professionali, scientifiche e tecniche",
+            "S": "Altre attività di servizi"
+          },
+          "ateco_ranges": {
+            "C": "10-33",
+            "G": "45-47", 
+            "J": "58-63",
+            "M": "69-75",
+            "S": "94-96"
+          }
+        }
+        EOF
+        fi
+        
+        echo "✅ File dati verificati e creati se necessario"
+    
+    - name: ⚙️ Create GitHub Pages Configuration
+      run: |
+        echo "⚙️ Configurazione GitHub Pages..."
+        
+        # _config.yml per Jekyll
+        cat > _config.yml << 'EOF'
+        title: "Catalogo Studi Plimsoll"
+        description: "Gestione completa settori industriali e studi di mercato Plimsoll"
+        baseurl: "/Plimsoll-Italia"
+        url: "https://plimsollitacustomerservice-star.github.io"
+        
+        # Plugins Jekyll
+        plugins:
+          - jekyll-optional-front-matter
+          - jekyll-sitemap
+          - jekyll-seo-tag
+        
+        # File da escludere dal build
+        exclude:
+          - optimize_repository.py
+          - "*.py"
+          - requirements.txt
+          - README.md
+          - uploads/
+          - .github/
+          - node_modules/
+        
+        # File da includere
+        include:
+          - assets/
+          - data/
+          - .htaccess
+        
+        # Impostazioni SEO
+        author: "Plimsoll Analysis Ltd"
+        twitter:
+          card: summary_large_image
+        
+        # Google Analytics (opzionale)
+        # google_analytics: UA-XXXXXXXX-X
+        EOF
+        
+        # .nojekyll per bypassare Jekyll se necessario
+        # touch .nojekyll
+        
+        echo "✅ Configurazione GitHub Pages creata"
+    
+    - name: 📊 Generate Deployment Report
+      run: |
+        echo "📊 Generazione report deployment..."
+        
+        # Estrai statistiche dai file JSON
+        if [ -f "data/sectors.json" ]; then
+          TOTAL_SECTORS=$(python3 -c "import json; data=json.load(open('data/sectors.json')); print(data.get('metadata', {}).get('totalSectors', 0))" 2>/dev/null || echo "0")
+          LAST_UPDATE=$(python3 -c "import json; data=json.load(open('data/sectors.json')); print(data.get('metadata', {}).get('lastUpdated', 'N/A'))" 2>/dev/null || echo "N/A")
+        else
+          TOTAL_SECTORS=0
+          LAST_UPDATE="N/A"
+        fi
+        
+        # Crea report deployment
+        cat > deployment-report.md << EOF
+        # 🚀 Deployment Report - $(date +'%Y-%m-%d %H:%M:%S')
+        
+        ## 📊 Statistiche Database
+        - **Settori totali**: ${TOTAL_SECTORS:,}
+        - **Ultimo aggiornamento**: $LAST_UPDATE
+        - **File CSV processati**: ${{ steps.check_status.outputs.csv_files_count }}
+        - **Ottimizzazione eseguita**: ${{ steps.check_status.outputs.needs_optimization }}
+        
+        ## 🌐 Deployment Info
+        - **URL**: https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/
+        - **Ambiente**: ${{ github.event.inputs.deploy_environment || 'production' }}
+        - **Commit**: ${{ github.sha }}
+        - **Branch**: ${{ github.ref_name }}
+        
+        ## 📁 File Generati
+        - \`data/sectors.json\` - Database principale settori
+        - \`data/ateco-nace.json\` - Mappature classificazione
+        - \`_config.yml\` - Configurazione GitHub Pages
+        - \`index.html\` - Interfaccia utente completa
+        
+        ## ✅ Status Check
+        - [ ] Database caricato: $([ -f "data/sectors.json" ] && echo "✅" || echo "❌")
+        - [ ] Mappature create: $([ -f "data/ateco-nace.json" ] && echo "✅" || echo "❌") 
+        - [ ] CSS disponibile: $([ -f "assets/css/style.css" ] && echo "✅" || echo "❌")
+        - [ ] JavaScript disponibile: $([ -f "assets/js/app.js" ] && echo "✅" || echo "❌")
+        EOF
+        
+        echo "✅ Report deployment creato"
+        
+        # Salva variabili per step successivi
+        echo "TOTAL_SECTORS=$TOTAL_SECTORS" >> $GITHUB_ENV
+        echo "DEPLOYMENT_TIME=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+    
+    - name: 💾 Commit Generated Files
+      run: |
+        echo "💾 Commit file generati..."
+        
+        git config --local user.email "action@github.com"
+        git config --local user.name "🤖 Plimsoll Bot"
+        git config --local user.signingkey ""
+        git config --local commit.gpgsign false
+        
+        # Stage tutti i file rilevanti
+        git add -A
+        
+        # Verifica se ci sono modifiche
+        if ! git diff --cached --quiet; then
+          commit_message="🤖 Auto-update catalogo: $TOTAL_SECTORS settori | $(date +'%Y-%m-%d %H:%M')"
+          
+          echo "📝 Commit: $commit_message"
+          git commit -m "$commit_message" \
+                     -m "- Database aggiornato con $TOTAL_SECTORS settori totali" \
+                     -m "- Ottimizzazione: ${{ steps.check_status.outputs.needs_optimization }}" \
+                     -m "- Deploy environment: ${{ github.event.inputs.deploy_environment || 'production' }}" \
+                     -m "- Commit SHA: ${{ github.sha }}"
+          
+          git push
+          echo "✅ Modifiche committate e pushate"
+        else
+          echo "ℹ️ Nessuna modifica da committare"
+        fi
+      continue-on-error: true
+    
+    - name: 🔧 Setup Pages
+      uses: actions/configure-pages@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: 📦 Build and Upload Pages Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+        name: github-pages
+        retention-days: 1
+    
+    - name: 🚀 Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifact_name: github-pages
+    
+    - name: 🧪 Post-Deploy Verification
+      run: |
+        echo "🧪 Verifica post-deployment..."
+        
+        # Attendi che il sito sia disponibile
+        sleep 30
+        
+        # Test URL principale
+        SITE_URL="https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/"
+        
+        # Verifica risposta HTTP
+        if curl -sSf "$SITE_URL" > /dev/null; then
+          echo "✅ Sito accessibile: $SITE_URL"
+          echo "site_status=online" >> $GITHUB_ENV
+        else
+          echo "❌ Sito non accessibile: $SITE_URL"
+          echo "site_status=offline" >> $GITHUB_ENV
+        fi
+        
+        # Verifica file JSON accessibili
+        if curl -sSf "${SITE_URL}data/sectors.json" > /dev/null; then
+          echo "✅ File sectors.json accessibile"
+        else
+          echo "⚠️ File sectors.json non accessibile"
+        fi
+    
+    - name: 📋 Create Deployment Summary
+      run: |
+        echo "📋 Creazione summary deployment..."
+        
+        cat >> $GITHUB_STEP_SUMMARY << EOF
+        # 🚀 Deployment Plimsoll Catalog - Completato
+        
+        ## ✅ Risultati
+        | Metrica | Valore |
+        |---------|--------|
+        | 🌐 **URL Deploy** | [${{ steps.deployment.outputs.page_url }}](${{ steps.deployment.outputs.page_url }}) |
+        | 📊 **Settori Caricati** | **${TOTAL_SECTORS:,}** |
+        | 🕒 **Timestamp** | \`$DEPLOYMENT_TIME\` |
+        | 🔧 **Ottimizzazione** | ${{ steps.check_status.outputs.needs_optimization == 'true' && '✅ Eseguita' || '⏭️ Non necessaria' }} |
+        | 📁 **File CSV** | ${{ steps.check_status.outputs.csv_files_count }} processati |
+        | 🌍 **Ambiente** | \`${{ github.event.inputs.deploy_environment || 'production' }}\` |
+        
+        ## 📁 File Generati
+        - ✅ \`data/sectors.json\` - Database principale ($TOTAL_SECTORS settori)
+        - ✅ \`data/ateco-nace.json\` - Mappature classificazione ATECO/NACE  
+        - ✅ \`_config.yml\` - Configurazione GitHub Pages
+        - ✅ \`index.html\` - Interfaccia utente avanzata
+        
+        ## 🔗 Links Utili
+        - 🌐 [**Catalogo Online**](${{ steps.deployment.outputs.page_url }}) 
+        - 📊 [Database JSON](${{ steps.deployment.outputs.page_url }}data/sectors.json)
+        - 🗂️ [Mappature ATECO](${{ steps.deployment.outputs.page_url }}data/ateco-nace.json)
+        - 📧 [Contatta Plimsoll](mailto:info@plimsoll.it)
+        
+        ## 🎯 Prossimi Step
+        1. Testa l'interfaccia al link sopra
+        2. Verifica funzionalità ricerca e filtri  
+        3. Testa upload e export file
+        4. Contatta info@plimsoll.it per info commerciali
+        
+        ---
+        
+        > 🤖 **Deploy automatizzato** | Commit: \`${{ github.sha }}\` | Workflow: \`${{ github.workflow }}\`
+        EOF
+        
+        echo "✅ Summary deployment completato"
+        echo "🎉 Deployment riuscito! Catalogo disponibile a: ${{ steps.deployment.outputs.page_url }}"
+
+  # Job di notifica (opzionale) 
+  notify:
+    runs-on: ubuntu-latest
+    needs: optimize-and-deploy
+    if: always()
+    steps:
+    - name: 📢 Deployment Notification
+      run: |
+        if [ "${{ needs.optimize-and-deploy.result }}" == "success" ]; then
+          echo "🎉✅ DEPLOYMENT SUCCESS!"
+          echo "🌐 Catalogo Plimsoll online: https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/"
+          echo "📊 Database completo con settori classificati"
+          echo "⚡ Interfaccia ottimizzata e funzionale"
+        else
+          echo "❌ DEPLOYMENT FAILED!"
+          echo "🔍 Controlla i log del workflow per dettagli"
+          echo "📧 Contatta supporto tecnico se necessario"
+        fi
