@@ -1,0 +1,234 @@
+{
+  "markets": {
+    "IT": {
+      "name": "Italia",
+      "flag": "🇮🇹",
+      "studies_count": 1182
+    },
+    "UK": {
+      "name": "Regno Unito", 
+      "flag": "🇬🇧",
+      "studies_count": 2847
+    },
+    "FR": {
+      "name": "Francia",
+      "flag": "🇫🇷", 
+      "studies_count": 1956
+    },
+    "SP": {
+      "name": "Spagna",
+      "flag": "🇪🇸",
+      "studies_count": 1489
+    },
+    "Global": {
+      "name": "Globale",
+      "flag": "🌍",
+      "studies_count": 773
+    }
+  },
+  
+  "studies": [
+    {
+      "id": "ITACC01",
+      "name_native": "Accessori Auto",
+      "name_english": "Automotive Accessories",
+      "market": "IT", 
+      "industry": "AUTOMOTIVE",
+      "level": 2,
+      "status": "available",
+      "ateco": "29.32.01",
+      "nace": "C29.32",
+      "description_native": "Produttori e distributori di accessori per autoveicoli, inclusi sistemi audio, navigatori, sedili personalizzati e componenti aftermarket per il miglioramento estetico e funzionale dei veicoli.",
+      "description_english": "Manufacturers and distributors of automotive accessories, including audio systems, navigators, custom seats and aftermarket components for vehicle aesthetic and functional enhancement.",
+      "keywords": ["accessori auto", "automotive accessories", "aftermarket", "tuning", "car audio"],
+      "sector_description": "Il settore degli accessori automotive comprende tutti i componenti non originali che migliorano comfort, estetica e funzionalità dei veicoli. Include sistemi multimediali, accessori esterni e interni, componenti per il tuning e personalizzazione."
+    },
+    {
+      "id": "ITACC02", 
+      "name_native": "Acciaio e Siderurgia",
+      "name_english": "Steel and Iron Industry",
+      "market": "IT",
+      "industry": "MANUFACTURING",
+      "level": 1, 
+      "status": "available",
+      "ateco": "24.10.01",
+      "nace": "C24.10", 
+      "description_native": "Aziende siderurgiche specializzate nella produzione di acciaio, laminati, tubi e profilati metallici per l'industria edile, automotive, navale e manifatturiera italiana.",
+      "description_english": "Steel companies specialized in the production of steel, rolled products, tubes and metal profiles for the Italian construction, automotive, naval and manufacturing industries.",
+      "keywords": ["acciaio", "steel", "siderurgia", "laminati", "metallurgia"],
+      "sector_description": "L'industria siderurgica italiana produce acciaio grezzo, semilavorati e prodotti finiti per vari settori industriali. Comprende acciaierie integrate, mini-mill e aziende di trasformazione dell'acciaio."
+    },
+    {
+      "id": "ITADV01",
+      "name_native": "Agenzie Pubblicitarie",
+      "name_english": "Advertising Agencies", 
+      "market": "IT",
+      "industry": "SERVICES",
+      "level": 5,
+      "status": "available",
+      "ateco": "73.11.01",
+      "nace": "M73.11",
+      "description_native": "Agenzie creative e di comunicazione che forniscono servizi pubblicitari integrati, campagne marketing, branding, digital advertising e consulenza strategica per aziende e istituzioni.",
+      "description_english": "Creative and communication agencies providing integrated advertising services, marketing campaigns, branding, digital advertising and strategic consulting for companies and institutions.",
+      "keywords": ["pubblicità", "advertising", "marketing", "comunicazione", "branding"],
+      "sector_description": "Il settore pubblicitario comprende agenzie creative, centrali media, consulenti di comunicazione e fornitori di servizi pubblicitari digitali e tradizionali."
+    },
+    {
+      "id": "ITAGO01",
+      "name_native": "Agenti di Commercio",
+      "name_english": "Commercial Agents",
+      "market": "IT", 
+      "industry": "SERVICES",
+      "level": 4,
+      "status": "missing",
+      "ateco": "46.19.01", 
+      "nace": "G46.19",
+      "description_native": "Agenti di commercio e rappresentanti che operano per conto di aziende produttrici nella vendita di beni industriali, consumer e servizi su territorio nazionale e internazionale.",
+      "description_english": "Commercial agents and representatives operating on behalf of manufacturing companies in the sale of industrial goods, consumer products and services nationally and internationally.",
+      "keywords": ["agenti commercio", "rappresentanti", "vendita", "intermediazione"],
+      "sector_description": "La rete degli agenti di commercio facilita la distribuzione di prodotti attraverso la rappresentanza commerciale, fornendo servizi di vendita, promozione e supporto clienti."
+    },
+    {
+      "id": "ITAIR01",
+      "name_native": "Aeroporti e Servizi Aeroportuali", 
+      "name_english": "Airports and Airport Services",
+      "market": "IT",
+      "industry": "TRANSPORTATION",
+      "level": 3,
+      "status": "available",
+      "ateco": "52.23.01",
+      "nace": "H52.23",
+      "description_native": "Gestori aeroportuali e fornitori di servizi aeroportuali inclusi handling, catering, manutenzione aeromobili, sicurezza, pulizie e servizi passeggeri negli scali italiani.",
+      "description_english": "Airport operators and providers of airport services including handling, catering, aircraft maintenance, security, cleaning and passenger services at Italian airports.",
+      "keywords": ["aeroporti", "airports", "handling", "aviazione", "trasporto aereo"],
+      "sector_description": "Il settore aeroportuale comprende la gestione degli scali, i servizi di terra, l'assistenza ai passeggeri e tutte le attività di supporto al trasporto aereo civile e commerciale."
+    },
+
+    // UK Studies
+    {
+      "id": "UKACC01",
+      "name_native": "Accessori Auto",  
+      "name_english": "Automotive Accessories",
+      "market": "UK",
+      "industry": "AUTOMOTIVE", 
+      "level": 2,
+      "status": "available",
+      "ateco": "29.32.01",
+      "nace": "C29.32",
+      "description_native": "Produttori e distributori britannici di accessori per autoveicoli, componenti aftermarket e sistemi di personalizzazione per il mercato UK e europeo.",
+      "description_english": "British manufacturers and distributors of automotive accessories, aftermarket components and customization systems for the UK and European market.",
+      "keywords": ["car accessories", "aftermarket", "automotive parts", "UK automotive"],
+      "sector_description": "Il mercato britannico degli accessori auto è caratterizzato da forte innovazione tecnologica e elevata domanda di personalizzazione veicoli."
+    },
+    {
+      "id": "UKADV01",
+      "name_native": "Agenzie Pubblicitarie",
+      "name_english": "Advertising Agencies",
+      "market": "UK", 
+      "industry": "SERVICES",
+      "level": 5,
+      "status": "available",
+      "ateco": "73.11.01", 
+      "nace": "M73.11",
+      "description_native": "Agenzie pubblicitarie britanniche leader nel settore creativo globale, specializzate in advertising, digital marketing e comunicazione integrata.",
+      "description_english": "British advertising agencies leading the global creative sector, specialized in advertising, digital marketing and integrated communication.",
+      "keywords": ["advertising", "marketing", "creative agencies", "UK advertising"],
+      "sector_description": "Londra è uno dei principali hub pubblicitari mondiali, con agenzie che servono mercati globali attraverso creatività e innovazione digitale."
+    },
+
+    // French Studies  
+    {
+      "id": "FRACC01",
+      "name_native": "Accessori Auto",
+      "name_english": "Accessoires Automobiles", 
+      "market": "FR",
+      "industry": "AUTOMOTIVE",
+      "level": 2,
+      "status": "missing",
+      "ateco": "29.32.01",
+      "nace": "C29.32", 
+      "description_native": "Produttori francesi di accessori automotive per il mercato europeo, con focus su design, qualità e innovazione tecnologica per veicoli premium.",
+      "description_english": "French automotive accessories manufacturers for the European market, focusing on design, quality and technological innovation for premium vehicles.",
+      "keywords": ["accessoires auto", "équipementiers", "automotive français"],
+      "sector_description": "Il settore francese degli accessori auto beneficia della presenza di costruttori premium e della tradizione nell'industria automotive francese."
+    },
+
+    // Spanish Studies
+    {
+      "id": "SPACC01", 
+      "name_native": "Accessori Auto",
+      "name_english": "Accesorios de Automóvil",
+      "market": "SP",
+      "industry": "AUTOMOTIVE",
+      "level": 2, 
+      "status": "available",
+      "ateco": "29.32.01",
+      "nace": "C29.32",
+      "description_native": "Produttori spagnoli di accessori per autoveicoli, componenti aftermarket e sistemi di tuning per il mercato iberico e latino-americano.",
+      "description_english": "Spanish manufacturers of automotive accessories, aftermarket components and tuning systems for the Iberian and Latin American markets.",
+      "keywords": ["accesorios automóvil", "aftermarket", "tuning", "automotive español"],
+      "sector_description": "Il mercato spagnolo degli accessori auto serve sia il mercato interno che l'export verso America Latina, con forte crescita nel segmento premium."
+    },
+
+    // Global Studies
+    {
+      "id": "GLACC01",
+      "name_native": "Accessori Auto",
+      "name_english": "Global Automotive Accessories",
+      "market": "Global", 
+      "industry": "AUTOMOTIVE",
+      "level": 2,
+      "status": "available",
+      "ateco": "29.32.01", 
+      "nace": "C29.32",
+      "description_native": "Mercato globale degli accessori automotive con analisi dei principali player internazionali, trend tecnologici e opportunità di crescita nei mercati emergenti.",
+      "description_english": "Global automotive accessories market with analysis of major international players, technological trends and growth opportunities in emerging markets.", 
+      "keywords": ["global automotive", "accessories market", "international players"],
+      "sector_description": "Il mercato globale degli accessori auto è guidato dall'innovazione tecnologica, personalizzazione veicoli e crescita dei mercati emergenti."
+    },
+
+    // Additional sample studies for comprehensive coverage
+    {
+      "id": "ITBAK01",
+      "name_native": "Banche e Istituti di Credito",
+      "name_english": "Banks and Credit Institutions", 
+      "market": "IT",
+      "industry": "FINANCE",
+      "level": 3,
+      "status": "available",
+      "ateco": "64.19.01",
+      "nace": "K64.19",
+      "description_native": "Banche commerciali, istituti di credito e intermediari finanziari che operano nel sistema bancario italiano, inclusi servizi di credito, investimenti e consulenza finanziaria.",
+      "description_english": "Commercial banks, credit institutions and financial intermediaries operating in the Italian banking system, including credit services, investments and financial advisory.",
+      "keywords": ["banche", "banking", "credito", "finanza", "istituti creditizi"],
+      "sector_description": "Il sistema bancario italiano è caratterizzato da consolidamento, digitalizzazione e focus su PMI e retail banking."
+    },
+    {
+      "id": "ITCEM01",
+      "name_native": "Cemento e Materiali da Costruzione",
+      "name_english": "Cement and Construction Materials",
+      "market": "IT", 
+      "industry": "CONSTRUCTION",
+      "level": 1,
+      "status": "available",
+      "ateco": "23.51.01", 
+      "nace": "C23.51",
+      "description_native": "Produttori di cemento, calcestruzzo, materiali prefabbricati e soluzioni per l'edilizia, servendo il mercato delle costruzioni residenziali, commerciali e infrastrutturali.",
+      "description_english": "Manufacturers of cement, concrete, prefabricated materials and construction solutions, serving the residential, commercial and infrastructure construction market.",
+      "keywords": ["cemento", "cement", "costruzioni", "calcestruzzo", "edilizia"],
+      "sector_description": "L'industria cementiera italiana è leader europea nella produzione di cementi speciali e soluzioni innovative per l'edilizia sostenibile."
+    }
+  ],
+
+  "metadata": {
+    "total_studies": 8247,
+    "last_updated": "2025-10-10",
+    "version": "2025.1",
+    "coverage": {
+      "markets": 5,
+      "industries": 12, 
+      "available_studies": 5894,
+      "missing_studies": 2353
+    }
+  }
+}
