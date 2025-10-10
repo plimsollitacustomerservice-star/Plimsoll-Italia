@@ -3,1865 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo Studi Plimsoll Italia - Business Intelligence Industriale</title>
-    <meta name="description" content="Catalogo completo degli studi industriali Plimsoll per il mercato italiano. Ricerca avanzata, dettagli settoriali e accesso ai servizi di business intelligence.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD///8A">
-    
-    <style>
-        /* ===== PLIMSOLL ITALIA BRAND SYSTEM ===== */
-        :root {
-            --plimsoll-primary: #1a365d;
-            --plimsoll-secondary: #2d3748;
-            --plimsoll-accent: #00a0b0;
-            --plimsoll-gold: #d69e2e;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --info: #17a2b8;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-accent: #e2e8f0;
-            --text-primary: #212529;
-            --text-secondary: #6c757d;
-            --text-muted: #868e96;
-            --border-color: #dee2e6;
-            --shadow-sm: 0 0.125rem 0.25rem rgba(26, 54, 93, 0.075);
-            --shadow-md: 0 0.5rem 1rem rgba(26, 54, 93, 0.15);
-            --shadow-lg: 0 1rem 3rem rgba(26, 54, 93, 0.175);
-            --radius-sm: 0.25rem;
-            --radius-md: 0.375rem;
-            --radius-lg: 0.5rem;
-            --radius-xl: 0.75rem;
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-        }
-
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-lg);
-        }
-
-        /* ===== HEADER PLIMSOLL UFFICIALE ===== */
-        .header {
-            background: linear-gradient(135deg, var(--plimsoll-primary) 0%, var(--plimsoll-accent) 100%);
-            color: white;
-            padding: var(--spacing-lg) 0;
-            box-shadow: var(--shadow-md);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-        }
-
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-        }
-
-        .header-brand img {
-            height: 50px;
-            width: auto;
-        }
-
-        .header-brand h1 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: var(--spacing-xs);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .header-subtitle {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            font-weight: 300;
-            margin-top: var(--spacing-xs);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: var(--spacing-sm);
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .header-contact {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xs);
-            font-size: 0.8rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-
-        .contact-item a:hover { 
-            opacity: 1; 
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            background: linear-gradient(135deg, var(--plimsoll-accent) 0%, var(--plimsoll-primary) 100%);
-            color: white;
-            padding: var(--spacing-2xl) 0;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto var(--spacing-lg);
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: var(--spacing-2xl);
-            flex-wrap: wrap;
-            margin-top: var(--spacing-xl);
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-number {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .hero-stat-label {
-            font-size: 0.875rem;
-            opacity: 0.9;
-            margin-top: var(--spacing-xs);
-        }
-
-        /* ===== BUTTONS SYSTEM ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            padding: var(--spacing-sm) var(--spacing-md);
-            border: none;
-            border-radius: var(--radius-md);
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .btn-sm {
-            padding: var(--spacing-xs) var(--spacing-sm);
-            font-size: 0.75rem;
-        }
-
-        .btn-lg {
-            padding: var(--spacing-md) var(--spacing-xl);
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--plimsoll-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--plimsoll-secondary);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: var(--plimsoll-secondary);
-            color: white;
-        }
-
-        .btn-accent {
-            background: var(--plimsoll-accent);
-            color: white;
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-warning {
-            background: var(--warning);
-            color: white;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--plimsoll-primary);
-            border: 2px solid var(--plimsoll-primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--plimsoll-primary);
-            color: white;
-        }
-
-        /* ===== DASHBOARD ===== */
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-lg);
-            margin: var(--spacing-xl) 0;
-        }
-
-        .stat-card {
-            background: var(--bg-primary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--plimsoll-accent);
-        }
-
-        .stat-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .stat-info h3 {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-sm);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .stat-number {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: var(--plimsoll-primary);
-            line-height: 1;
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .stat-detail {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .stat-icon {
-            font-size: 2rem;
-            color: var(--plimsoll-accent);
-            opacity: 0.7;
-        }
-
-        /* ===== SEARCH SECTION ===== */
-        .search-section {
-            background: var(--bg-primary);
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .search-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--spacing-lg);
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-        }
-
-        .search-title {
-            color: var(--plimsoll-primary);
-            font-size: 1.25rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .search-input {
-            width: 100%;
-            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 2.5rem;
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-md);
-            font-size: 1rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .search-input:focus {
-            border-color: var(--plimsoll-accent);
-            box-shadow: 0 0 0 3px rgba(0, 160, 176, 0.1);
-            outline: none;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: var(--spacing-md);
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-
-        .search-filters {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-md);
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xs);
-        }
-
-        .filter-label {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .filter-select {
-            padding: var(--spacing-sm);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            background: white;
-            font-size: 0.875rem;
-        }
-
-        /* ===== TABLE SYSTEM ===== */
-        .table-section {
-            background: var(--bg-primary);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .table-header {
-            padding: var(--spacing-xl);
-            border-bottom: 1px solid var(--border-color);
-            background: var(--bg-secondary);
-        }
-
-        .table-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-        }
-
-        .table-title h3 {
-            color: var(--plimsoll-primary);
-            font-size: 1.25rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .table-container {
-            overflow-x: auto;
-        }
-
-        .sectors-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.875rem;
-        }
-
-        .sectors-table th {
-            padding: var(--spacing-md);
-            text-align: left;
-            font-weight: 600;
-            color: var(--plimsoll-primary);
-            border-bottom: 2px solid var(--border-color);
-            background: var(--bg-secondary);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .sectors-table td {
-            padding: var(--spacing-md);
-            border-bottom: 1px solid var(--border-color);
-            vertical-align: top;
-        }
-
-        .sectors-table tbody tr {
-            transition: background-color 0.2s;
-        }
-
-        .sectors-table tbody tr:hover {
-            background: rgba(26, 54, 93, 0.02);
-        }
-
-        .sector-name {
-            font-weight: 600;
-            color: var(--plimsoll-primary);
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .sector-name:hover {
-            color: var(--plimsoll-accent);
-        }
-
-        .country-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 8px;
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .code-badge {
-            font-family: 'Monaco', 'Consolas', monospace;
-            background: var(--plimsoll-primary);
-            color: white;
-            padding: 4px 8px;
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .nace-badge {
-            background: var(--plimsoll-accent);
-        }
-
-        .plimsoll-badge {
-            background: var(--plimsoll-gold);
-        }
-
-        .description-cell {
-            max-width: 300px;
-            line-height: 1.4;
-        }
-
-        /* ===== MODAL SYSTEM ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-        }
-
-        .modal-content {
-            background: white;
-            margin: 2% auto;
-            border-radius: var(--radius-lg);
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .modal-header {
-            padding: var(--spacing-xl);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-secondary);
-        }
-
-        .modal-title {
-            color: var(--plimsoll-primary);
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-            padding: var(--spacing-sm);
-        }
-
-        .modal-body {
-            padding: var(--spacing-xl);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--plimsoll-primary);
-            color: white;
-            margin-top: var(--spacing-2xl);
-            padding: var(--spacing-2xl) 0 var(--spacing-xl);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-xl);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .footer-section h4 {
-            color: var(--plimsoll-accent);
-            margin-bottom: var(--spacing-md);
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .footer-section p,
-        .footer-section li {
-            opacity: 0.9;
-            line-height: 1.6;
-            margin-bottom: var(--spacing-sm);
-            font-size: 0.875rem;
-        }
-
-        .footer-section a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .footer-section a:hover {
-            opacity: 0.8;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: var(--spacing-lg);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.8;
-            font-size: 0.875rem;
-        }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 768px) {
-            .container { 
-                padding: 0 var(--spacing-md); 
-            }
-            .header-content { 
-                flex-direction: column; 
-                text-align: center; 
-            }
-            .hero h2 { 
-                font-size: 2rem; 
-            }
-            .dashboard { 
-                grid-template-columns: 1fr; 
-            }
-            .search-filters { 
-                grid-template-columns: 1fr; 
-            }
-            .table-container { 
-                font-size: 0.75rem; 
-            }
-            .hero-stats { 
-                gap: var(--spacing-lg); 
-            }
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .loading { 
-            animation: pulse 1.5s infinite; 
-        }
-        
-        .fade-in { 
-            animation: fadeIn 0.5s ease-out; 
-        }
-
-        /* ===== UTILITY CLASSES ===== */
-        .hidden { display: none !important; }
-        .text-center { text-align: center; }
-        .text-right { text-align: right; }
-        .font-bold { font-weight: 700; }
-        .font-medium { font-weight: 500; }
-        .text-sm { font-size: 0.875rem; }
-        .text-xs { font-size: 0.75rem; }
-        .mb-0 { margin-bottom: 0; }
-        .mb-1 { margin-bottom: var(--spacing-xs); }
-        .mb-2 { margin-bottom: var(--spacing-sm); }
-        .mb-3 { margin-bottom: var(--spacing-md); }
-        .mb-4 { margin-bottom: var(--spacing-lg); }
-        .mt-1 { margin-top: var(--spacing-xs); }
-        .mt-2 { margin-top: var(--spacing-sm); }
-        .mt-3 { margin-top: var(--spacing-md); }
-        .mt-4 { margin-top: var(--spacing-lg); }
-        .p-2 { padding: var(--spacing-sm); }
-        .p-3 { padding: var(--spacing-md); }
-        .p-4 { padding: var(--spacing-lg); }
-
-        /* ===== TOAST NOTIFICATIONS ===== */
-        .toast {
-            position: fixed;
-            bottom: var(--spacing-xl);
-            right: var(--spacing-xl);
-            background: var(--success);
-            color: white;
-            padding: var(--spacing-md) var(--spacing-lg);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            transform: translateX(100%);
-            transition: transform 0.3s;
-            z-index: 3000;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .toast.error {
-            background: var(--danger);
-        }
-
-        .toast.warning {
-            background: var(--warning);
-        }
-
-        .toast.info {
-            background: var(--info);
-        }
-
-        /* ===== ERROR STYLES ===== */
-        .error-section {
-            background: var(--bg-primary);
-            border: 2px solid var(--danger);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-2xl);
-            text-align: center;
-            margin: var(--spacing-xl) 0;
-        }
-
-        .error-icon {
-            font-size: 4rem;
-            color: var(--danger);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .error-title {
-            color: var(--danger);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .detail-item {
-            background: var(--bg-secondary);
-            padding: var(--spacing-md);
-            border-radius: var(--radius-md);
-        }
-
-        .detail-label {
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-xs);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-        }
-
-        .detail-value {
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-    </style>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Sistema Supply Chain Plimsoll - Studi Correlati</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/plimsoll-supply-chain.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-brand">
-                    <h1>
-                        <i class="fas fa-chart-network"></i>
-                        Catalogo Studi Plimsoll Italia
-                    </h1>
-                    <div class="header-subtitle">
-                        Business Intelligence Industriale • Database Completo Settori • Collegamento Diretto ai Servizi Plimsoll
-                    </div>
-                </div>
-                
-                <div class="header-actions">
-                    <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-accent btn-lg">
-                        <i class="fas fa-qrcode"></i>
-                        Scopri Plimsoll
-                    </a>
-                    
-                    <div class="header-contact">
-                        <div class="contact-item">
-                            <i class="fas fa-globe"></i>
-                            <a href="https://www.plimsoll.it" target="_blank" rel="noopener">www.plimsoll.it</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@plimsoll.it">info@plimsoll.it</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+390694800175">06 9480 0175</a>
-                        </div>
-                    </div>
-                </div>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-industry"></i> Plimsoll Italia - Supply Chain System
+        </a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="https://www.plimsoll.it" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Sito Plimsoll
+            </a>
+            <a class="nav-link" href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank">
+                <i class="fas fa-info-circle"></i> Info Servizi
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-4">
+    
+    <!-- Stats Bar -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h3 id="totalStudies">1,182</h3>
+                <p>Studi Disponibili</p>
             </div>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h2>Scopri le opportunità • Anticipa i trend • Acquista studi specializzati</h2>
-            <p>
-                Catalogo completo degli studi industriali Plimsoll per il mercato italiano. 
-                Esplora settori, visualizza dettagli e accedi direttamente ai prodotti e servizi 
-                di business intelligence Plimsoll.
-            </p>
-            
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="hero-stat-number" id="heroTotalSectors">1,182</span>
-                    <div class="hero-stat-label">Studi Italia Disponibili</div>
-                </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number">7,895</span>
-                    <div class="hero-stat-label">Studi Globali Plimsoll</div>
-                </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number">5M+</span>
-                    <div class="hero-stat-label">Aziende Monitorate</div>
-                </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number">37</span>
-                    <div class="hero-stat-label">Anni di Esperienza</div>
-                </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h3 id="industriesCount">6</h3>
+                <p>Filiere Mappate</p>
             </div>
         </div>
-    </section>
-
-    <main class="container">
-        <!-- Dashboard -->
-        <section class="dashboard">
+        <div class="col-md-3">
             <div class="stat-card">
-                <div class="stat-content">
-                    <div class="stat-info">
-                        <h3>Studi Italia Disponibili</h3>
-                        <div class="stat-number" id="totalSectors">1,182</div>
-                        <div class="stat-detail">Database settori industriali italiani</div>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="fas fa-flag"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-content">
-                    <div class="stat-info">
-                        <h3>Copertura Settoriale</h3>
-                        <div class="stat-number" id="sectorCoverage">920</div>
-                        <div class="stat-detail">Settori analizzati e monitorati</div>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-content">
-                    <div class="stat-info">
-                        <h3>Aziende Monitorate</h3>
-                        <div class="stat-number" id="companiesMonitored">150K+</div>
-                        <div class="stat-detail">Aziende italiane nel database</div>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-content">
-                    <div class="stat-info">
-                        <h3>Aggiornamento Studi</h3>
-                        <div class="stat-number" id="updateFrequency">12x</div>
-                        <div class="stat-detail">Aggiornamenti annuali dati</div>
-                    </div>
-                    <div class="stat-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Advanced Search -->
-        <section class="search-section">
-            <div class="search-header">
-                <h3 class="search-title">
-                    <i class="fas fa-search-plus"></i>
-                    Ricerca Studi Industriali
-                </h3>
-                <div class="btn-group">
-                    <a href="https://www.plimsoll.it/analisi" target="_blank" class="btn btn-primary btn-sm">
-                        <i class="fas fa-external-link-alt"></i>
-                        Tutti gli Studi
-                    </a>
-                    <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-accent btn-sm">
-                        <i class="fas fa-qrcode"></i>
-                        Scopri Plimsoll
-                    </a>
-                </div>
-            </div>
-            
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" 
-                       id="searchInput" 
-                       class="search-input"
-                       placeholder="Cerca studi per nome settore, codice ATECO/NACE, parole chiave...">
-            </div>
-            
-            <div class="search-filters">
-                <div class="filter-group">
-                    <label class="filter-label">Sezione NACE</label>
-                    <select id="naceFilter" class="filter-select">
-                        <option value="">Tutte le Sezioni</option>
-                        <option value="A">A - Agricoltura e Pesca</option>
-                        <option value="B">B - Estrazione Minerali</option>
-                        <option value="C">C - Attività Manifatturiere</option>
-                        <option value="D">D - Fornitura Energia</option>
-                        <option value="E">E - Fornitura Acqua e Rifiuti</option>
-                        <option value="F">F - Costruzioni</option>
-                        <option value="G">G - Commercio Ingrosso/Dettaglio</option>
-                        <option value="H">H - Trasporto e Magazzinaggio</option>
-                        <option value="I">I - Servizi Alloggio/Ristorazione</option>
-                        <option value="J">J - Servizi Informazione/Comunicazione</option>
-                        <option value="K">K - Attività Finanziarie/Assicurative</option>
-                        <option value="L">L - Attività Immobiliari</option>
-                        <option value="M">M - Attività Professionali/Scientifiche</option>
-                        <option value="N">N - Noleggio e Servizi Supporto</option>
-                        <option value="O">O - Amministrazione Pubblica</option>
-                        <option value="P">P - Istruzione</option>
-                        <option value="Q">Q - Sanità e Assistenza Sociale</option>
-                        <option value="R">R - Attività Artistiche/Sportive</option>
-                        <option value="S">S - Altre Attività di Servizi</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label class="filter-label">Tipo Analisi</label>
-                    <select id="analysisTypeFilter" class="filter-select">
-                        <option value="">Tutte le Analisi</option>
-                        <option value="financial">Analisi Finanziaria</option>
-                        <option value="competitive">Analisi Competitiva</option>
-                        <option value="market">Analisi di Mercato</option>
-                        <option value="risk">Analisi del Rischio</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label class="filter-label">Dimensione Aziende</label>
-                    <select id="companySizeFilter" class="filter-select">
-                        <option value="">Tutte le Dimensioni</option>
-                        <option value="large">Grandi Imprese</option>
-                        <option value="medium">Medie Imprese</option>
-                        <option value="small">Piccole Imprese</option>
-                        <option value="micro">Micro Imprese</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label class="filter-label">Area Geografica</label>
-                    <select id="regionFilter" class="filter-select">
-                        <option value="">Tutte le Regioni</option>
-                        <option value="nord">Nord Italia</option>
-                        <option value="centro">Centro Italia</option>
-                        <option value="sud">Sud Italia</option>
-                        <option value="isole">Isole</option>
-                    </select>
-                </div>
-            </div>
-        </section>
-
-        <!-- Studies Table -->
-        <section class="table-section">
-            <div class="table-header">
-                <div class="table-title">
-                    <h3>
-                        <i class="fas fa-table"></i>
-                        Studi Industriali Disponibili
-                    </h3>
-                    <div style="display: flex; gap: var(--spacing-sm); align-items: center;">
-                        <span id="resultsCount" class="text-sm text-secondary">
-                            Visualizzati: <strong id="visibleCount">10</strong> di <strong id="totalCount">1,182</strong> studi
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="table-container">
-                <table class="sectors-table">
-                    <thead>
-                        <tr>
-                            <th>Studio Industriale</th>
-                            <th>Sezione NACE</th>
-                            <th>Codice ATECO</th>
-                            <th>Codice Plimsoll</th>
-                            <th>Descrizione</th>
-                            <th>Studi Correlati</th>
-                            <th>Acquista</th>
-                        </tr>
-                    </thead>
-                    <tbody id="sectorsTableBody">
-                        <!-- Studi di esempio -->
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITFI86')">Supermercati</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">G</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">47.11.10</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITFI86</span>
-                            </td>
-                            <td class="description-cell">
-                                Supermercati con superficie di vendita superiore a 2.500 mq che operano nel settore della grande distribuzione organizzata con assortimenti completi di prodotti alimentari e non alimentari.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITFI86')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 5 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITFI86" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITMA23')">Concessionarie AUDI</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">G</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">45.11.02</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITMA23</span>
-                            </td>
-                            <td class="description-cell">
-                                Concessionarie autorizzate per la vendita di autoveicoli Audi nuovi e usati, con servizi completi di assistenza post-vendita, ricambi originali e servizi finanziari.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITMA23')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 8 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITMA23" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITTK67')">Software Gestionali - ERP</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">J</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">62.01.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITTK67</span>
-                            </td>
-                            <td class="description-cell">
-                                Sviluppatori e fornitori di software gestionali ERP (Enterprise Resource Planning) per la gestione integrata dei processi aziendali e l'ottimizzazione delle risorse.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITTK67')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 12 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITTK67" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITCO45')">Costruzioni Edili Generali</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">F</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">41.20.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITCO45</span>
-                            </td>
-                            <td class="description-cell">
-                                Imprese di costruzioni generali specializzate in edilizia residenziale e commerciale, con servizi integrati di progettazione, costruzione e ristrutturazione.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITCO45')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 15 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITCO45" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITCS34')">Consulenza Aziendale</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">M</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">70.22.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITCS34</span>
-                            </td>
-                            <td class="description-cell">
-                                Società di consulenza specializzate in advisory strategico, organizzativo e operativo per PMI e grandi imprese, con focus su trasformazione digitale e crescita.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITCS34')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 7 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITCS34" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITHO78')">Alberghi e Hotel</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">I</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">55.10.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITHO78</span>
-                            </td>
-                            <td class="description-cell">
-                                Strutture ricettive alberghiere che offrono servizi di ospitalità, ristorazione e servizi complementari per turismo business e leisure in Italia.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITHO78')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 9 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITHO78" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITTR56')">Trasporti e Logistica</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">H</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">49.41.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITTR56</span>
-                            </td>
-                            <td class="description-cell">
-                                Aziende di trasporto merci e logistica integrata che forniscono servizi di movimentazione, stoccaggio e distribuzione su territorio nazionale e internazionale.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITTR56')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 11 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITTR56" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITFN89')">Servizi Finanziari</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">K</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">64.99.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITFN89</span>
-                            </td>
-                            <td class="description-cell">
-                                Società finanziarie specializzate in servizi di credito, finanziamenti, leasing e altri servizi finanziari per imprese e privati in Italia.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITFN89')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 6 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITFN89" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITMF12')">Produzione Alimentare</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">C</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">10.85.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITMF12</span>
-                            </td>
-                            <td class="description-cell">
-                                Industrie alimentari italiane specializzate nella produzione, trasformazione e confezionamento di prodotti alimentari per il mercato nazionale e internazionale.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITMF12')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 18 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITMF12" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <tr class="sector-row">
-                            <td>
-                                <div class="sector-name" onclick="showStudyDetails('ITEN92')">Energie Rinnovabili</div>
-                            </td>
-                            <td>
-                                <span class="code-badge nace-badge">D</span>
-                            </td>
-                            <td>
-                                <span class="code-badge">35.11.00</span>
-                            </td>
-                            <td>
-                                <span class="code-badge plimsoll-badge">ITEN92</span>
-                            </td>
-                            <td class="description-cell">
-                                Aziende specializzate nella produzione di energia da fonti rinnovabili (solare, eolico, idroelettrico) e servizi correlati di installazione e manutenzione.
-                            </td>
-                            <td>
-                                <button onclick="showRelatedStudies('ITEN92')" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-link"></i> 14 correlati
-                                </button>
-                            </td>
-                            <td>
-                                <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=ITEN92" target="_blank" class="btn btn-sm btn-success">
-                                    <i class="fas fa-shopping-cart"></i> Acquista
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="table-footer p-4 text-center" style="background: var(--bg-secondary); border-top: 1px solid var(--border-color);">
-                <p class="mb-3">
-                    <strong>Database Completo Plimsoll Italia:</strong> Accedi a tutti i 1,182 studi disponibili e scopri i servizi completi di business intelligence
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://www.plimsoll.it/analisi" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        Tutti gli Studi Plimsoll
-                    </a>
-                    <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" class="btn btn-accent" target="_blank">
-                        <i class="fas fa-qrcode"></i>
-                        Scopri Tutti i Servizi
-                    </a>
-                    <a href="mailto:info@plimsoll.it" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Contatta info@plimsoll.it
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Plimsoll Publishing Ltd Italia</h4>
-                    <p>
-                        Leader mondiale nell'analisi settoriale industriale dal 1987. Specialisti in business intelligence 
-                        con oltre 1,182 studi dedicati al mercato italiano e 7,895 studi globali.
-                    </p>
-                    <div class="mt-3">
-                        <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
-                            <i class="fas fa-globe"></i>
-                            <a href="https://www.plimsoll.it" target="_blank">www.plimsoll.it</a>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@plimsoll.it">info@plimsoll.it</a>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+390694800175">06 9480 0175</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Servizi di Business Intelligence</h4>
-                    <ul style="list-style: none;">
-                        <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Studi di Settore Specializzati</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Analisi Finanziarie Approfondite</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Valutazioni Aziendali</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Identificazione Acquisizioni</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Monitoraggio Competitivo</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--plimsoll-accent);"></i> Analisi del Rischio</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Copertura Database Italia</h4>
-                    <ul style="list-style: none;">
-                        <li style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                            <span>🏭 Settori Manifatturieri</span> <strong>420 studi</strong>
-                        </li>
-                        <li style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                            <span>🛍️ Commercio e Servizi</span> <strong>380 studi</strong>
-                        </li>
-                        <li style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                            <span>🏗️ Costruzioni e Immobiliare</span> <strong>125 studi</strong>
-                        </li>
-                        <li style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                            <span>💻 ICT e Digitale</span> <strong>98 studi</strong>
-                        </li>
-                        <li style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                            <span>🌱 Altri Settori</span> <strong>159 studi</strong>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Efficacia Modello Plimsoll</h4>
-                    <p>
-                        <strong>9 società su 10 fallite</strong> sono state segnalate da Plimsoll come "A Rischio" 
-                        con <strong>2 anni di anticipo</strong> rispetto all'effettiva uscita dal mercato.
-                    </p>
-                    <div class="mt-3">
-                        <div><strong>📊 Accuratezza Predittiva: 91.2%</strong></div>
-                        <div><strong>🎯 Anticipo Segnalazioni: 24 mesi</strong></div>
-                        <div><strong>🔍 Aziende Monitorate Italia: 150K+</strong></div>
-                        <div><strong>⏰ Esperienza: 37 anni</strong></div>
-                    </div>
-                    
-                    <div style="margin-top: var(--spacing-lg); padding-top: var(--spacing-md); border-top: 1px solid rgba(255,255,255,0.2);">
-                        <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-accent">
-                            <i class="fas fa-qrcode"></i>
-                            Scopri Tutti i Servizi Plimsoll
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Plimsoll Publishing Ltd. Tutti i diritti riservati.</p>
-                <p>Database aggiornato: 10 Gennaio 2025 • Catalogo Studi Italia v1.0</p>
+                <h3 id="correlationsCount">2,400+</h3>
+                <p>Correlazioni Identify</p>
             </div>
         </div>
-    </footer>
-
-    <!-- Study Details Modal -->
-    <div id="studyDetailsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="studyDetailsTitle">Dettagli Studio</h3>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body" id="studyDetailsBody">
-                <!-- Study details populated by JavaScript -->
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h3 id="marketsCount">5</h3>
+                <p>Mercati Coperti</p>
             </div>
         </div>
     </div>
 
-    <!-- Related Studies Modal -->
-    <div id="relatedStudiesModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Studi Correlati</h3>
-                <button class="modal-close">&times;</button>
+    <!-- Search Bar -->
+    <div class="search-section mb-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input type="text" class="form-control" id="searchInput" 
+                           placeholder="Cerca per settore, prodotto o codice (es: automotive, food, 29.32.01)">
+                    <button class="btn btn-outline-secondary" id="clearSearch">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
-            <div class="modal-body" id="relatedStudiesBody">
-                <!-- Related studies populated by JavaScript -->
+            <div class="col-md-4">
+                <select class="form-select" id="industryFilter">
+                    <option value="">Tutte le Filiere</option>
+                    <option value="AUTOMOTIVE">🚗 Automotive</option>
+                    <option value="FOOD_BEVERAGE">🍽️ Agroalimentare</option>
+                    <option value="CONSTRUCTION">🏗️ Costruzioni</option>
+                    <option value="TEXTILE_FASHION">👗 Tessile e Moda</option>
+                    <option value="PHARMACEUTICAL">💊 Farmaceutica</option>
+                    <option value="ENERGY">⚡ Energetica</option>
+                </select>
             </div>
         </div>
     </div>
 
-    <!-- Toast Notifications -->
-    <div id="toast" class="toast">
-        <i class="fas fa-info-circle"></i>
-        <span id="toastMessage">Informazione</span>
+    <!-- Studies Table -->
+    <div class="table-section">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4><i class="fas fa-table"></i> Studi Industriali</h4>
+            <div class="results-info">
+                Visualizzati: <span id="resultsCount">0</span> di <span id="totalCount">1,182</span> studi
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Studio Industriale</th>
+                        <th>Codici</th>
+                        <th>Status</th>
+                        <th>Filiera</th>
+                        <th>Studi Correlati</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody id="studiesTableBody">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <script>
-        // ===== PLIMSOLL CATALOG CLIENT SYSTEM =====
-        class PlimsollCatalogClient {
-            constructor() {
-                this.sectors = [];
-                this.filteredSectors = [];
-                this.isLoading = false;
-                
-                this.initializeSystem();
-            }
-
-            async initializeSystem() {
-                console.log('🚀 Inizializzazione Catalogo Plimsoll Italia');
-                
-                // Carica dati demo
-                this.loadDemoData();
-                
-                // Inizializza event listeners
-                this.initializeEventListeners();
-                
-                // Render interfaccia
-                this.renderInterface();
-                
-                console.log('✅ Catalogo caricato correttamente');
-                this.showToast('Catalogo Plimsoll Italia caricato', 'success');
-            }
-
-            loadDemoData() {
-                // Dati demo rappresentativi per il catalogo Italia
-                this.sectors = [
-                    {
-                        id: 'ITFI86',
-                        name: 'Supermercati',
-                        nace: 'G',
-                        ateco: '47.11.10',
-                        plimsollCode: 'ITFI86',
-                        description: 'Supermercati con superficie di vendita superiore a 2.500 mq che operano nel settore della grande distribuzione organizzata con assortimenti completi di prodotti alimentari e non alimentari.',
-                        descriptionEnglish: 'Supermarkets with sales area over 2,500 sqm operating in organized retail distribution with complete assortments of food and non-food products.',
-                        keywords: 'supermercati, grande distribuzione, retail, alimentari, GDO',
-                        keywordsEnglish: 'supermarkets, retail distribution, food retail, GDO',
-                        relatedStudies: ['ITFI87', 'ITFI88', 'ITCO12', 'ITTR45', 'ITMF67'],
-                        companiesCount: 245,
-                        marketSize: '€15.2 miliardi',
-                        topCompanies: ['Conad', 'Coop Italia', 'Esselunga', 'Carrefour Italia', 'Eurospin']
-                    },
-                    {
-                        id: 'ITMA23',
-                        name: 'Concessionarie AUDI',
-                        nace: 'G',
-                        ateco: '45.11.02',
-                        plimsollCode: 'ITMA23',
-                        description: 'Concessionarie autorizzate per la vendita di autoveicoli Audi nuovi e usati, con servizi completi di assistenza post-vendita, ricambi originali e servizi finanziari.',
-                        descriptionEnglish: 'Authorized dealerships for new and used Audi vehicles with complete after-sales service, original parts and financial services.',
-                        keywords: 'audi, concessionarie, automotive, auto premium, dealership',
-                        keywordsEnglish: 'audi, dealerships, automotive, premium cars, luxury',
-                        relatedStudies: ['ITMA24', 'ITMA25', 'ITMA26', 'ITFN78', 'ITCS90'],
-                        companiesCount: 89,
-                        marketSize: '€2.8 miliardi',
-                        topCompanies: ['Audi Center Milano', 'Gruppo Eurocar Italia', 'Autotorino', 'Motor Village', 'Audi Zentrum']
-                    }
-                    // Altri settori aggiunti dinamicamente...
-                ];
-
-                this.filteredSectors = [...this.sectors];
-            }
-
-            initializeEventListeners() {
-                // Ricerca
-                const searchInput = document.getElementById('searchInput');
-                if (searchInput) {
-                    searchInput.addEventListener('input', (e) => {
-                        this.handleSearch(e.target.value);
-                    });
-                }
-
-                // Filtri
-                const naceFilter = document.getElementById('naceFilter');
-                if (naceFilter) {
-                    naceFilter.addEventListener('change', () => this.applyFilters());
-                }
-
-                const analysisTypeFilter = document.getElementById('analysisTypeFilter');
-                if (analysisTypeFilter) {
-                    analysisTypeFilter.addEventListener('change', () => this.applyFilters());
-                }
-
-                const companySizeFilter = document.getElementById('companySizeFilter');
-                if (companySizeFilter) {
-                    companySizeFilter.addEventListener('change', () => this.applyFilters());
-                }
-
-                const regionFilter = document.getElementById('regionFilter');
-                if (regionFilter) {
-                    regionFilter.addEventListener('change', () => this.applyFilters());
-                }
-
-                // Modal close
-                document.querySelectorAll('.modal-close').forEach(closeBtn => {
-                    closeBtn.addEventListener('click', (e) => {
-                        this.closeModal(e.target.closest('.modal'));
-                    });
-                });
-
-                // Click fuori dal modal per chiudere
-                window.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('modal')) {
-                        this.closeModal(e.target);
-                    }
-                });
-            }
-
-            handleSearch(query) {
-                if (!query.trim()) {
-                    this.filteredSectors = [...this.sectors];
-                } else {
-                    const searchTerm = query.toLowerCase();
-                    this.filteredSectors = this.sectors.filter(sector => {
-                        return (
-                            sector.name?.toLowerCase().includes(searchTerm) ||
-                            sector.ateco?.includes(searchTerm) ||
-                            sector.nace?.toLowerCase().includes(searchTerm) ||
-                            sector.plimsollCode?.toLowerCase().includes(searchTerm) ||
-                            sector.keywords?.toLowerCase().includes(searchTerm) ||
-                            sector.keywordsEnglish?.toLowerCase().includes(searchTerm) ||
-                            sector.description?.toLowerCase().includes(searchTerm)
-                        );
-                    });
-                }
-                this.updateResultsCount();
-                this.highlightSearchResults(query);
-            }
-
-            applyFilters() {
-                let filtered = [...this.sectors];
-
-                const nace = document.getElementById('naceFilter')?.value;
-                const analysisType = document.getElementById('analysisTypeFilter')?.value;
-                const companySize = document.getElementById('companySizeFilter')?.value;
-                const region = document.getElementById('regionFilter')?.value;
-
-                if (nace) {
-                    filtered = filtered.filter(sector => sector.nace === nace);
-                }
-
-                // Altri filtri possono essere implementati qui
-
-                this.filteredSectors = filtered;
-                this.updateResultsCount();
-            }
-
-            renderInterface() {
-                this.updateResultsCount();
-            }
-
-            updateResultsCount() {
-                const visibleCountEl = document.getElementById('visibleCount');
-                const totalCountEl = document.getElementById('totalCount');
-                
-                if (visibleCountEl) visibleCountEl.textContent = this.filteredSectors.length.toLocaleString();
-                if (totalCountEl) totalCountEl.textContent = this.sectors.length.toLocaleString();
-            }
-
-            highlightSearchResults(query) {
-                if (!query.trim()) return;
-                
-                // Evidenzia i risultati nella tabella
-                document.querySelectorAll('.sector-row').forEach(row => {
-                    const nameCell = row.querySelector('.sector-name');
-                    const descCell = row.querySelector('.description-cell');
-                    
-                    if (nameCell && nameCell.textContent.toLowerCase().includes(query.toLowerCase())) {
-                        nameCell.style.backgroundColor = 'rgba(0, 160, 176, 0.1)';
-                    } else if (nameCell) {
-                        nameCell.style.backgroundColor = '';
-                    }
-                });
-            }
-
-            // Funzioni globali per i bottoni
-            showStudyDetails(studyId) {
-                const studies = {
-                    'ITFI86': {
-                        name: 'Supermercati',
-                        nace: 'G - Commercio all\'ingrosso e al dettaglio',
-                        ateco: '47.11.10 - Commercio al dettaglio in esercizi non specializzati con prevalenza di prodotti alimentari e bevande (superficie di vendita superiore a 2500 mq)',
-                        plimsollCode: 'ITFI86',
-                        description: 'Studio completo sul settore dei supermercati italiani con superficie di vendita superiore a 2.500 mq. Include analisi delle 245 principali catene della grande distribuzione organizzata, con focus su performance finanziarie, quota di mercato, strategie competitive e trend del settore.',
-                        descriptionEnglish: 'Comprehensive study on Italian supermarket sector with sales area over 2,500 sqm. Includes analysis of 245 main organized retail distribution chains, focusing on financial performance, market share, competitive strategies and sector trends.',
-                        companiesAnalyzed: 245,
-                        marketValue: '€15.2 miliardi',
-                        marketShare: 'Top 5: 67% del mercato totale',
-                        keyInsights: [
-                            'Consolidamento del mercato con focus su format innovativi',
-                            'Crescita dell\'e-commerce grocery del +23% annuo',
-                            'Investimenti in sostenibilità e private label',
-                            'Espansione nei centri urbani con format di prossimità'
-                        ],
-                        topCompanies: ['Conad Soc. Coop.', 'Coop Italia', 'Esselunga S.p.A.', 'Carrefour Italia', 'Eurospin Italia'],
-                        relatedStudies: [
-                            'Discount Alimentari (ITFI87)',
-                            'Cash and Carry (ITFI88)', 
-                            'E-commerce Alimentare (ITCO12)',
-                            'Logistica Distributiva (ITTR45)',
-                            'Private Label (ITMF67)'
-                        ]
-                    },
-                    'ITMA23': {
-                        name: 'Concessionarie AUDI',
-                        nace: 'G - Commercio all\'ingrosso e al dettaglio',
-                        ateco: '45.11.02 - Commercio di autoveicoli',
-                        plimsollCode: 'ITMA23',
-                        description: 'Analisi specializzata delle concessionarie Audi autorizzate in Italia. Studio su 89 dealer ufficiali con focus su performance commerciali, redditività, evoluzione del mercato premium e strategie di vendita post-COVID.',
-                        descriptionEnglish: 'Specialized analysis of authorized Audi dealerships in Italy. Study on 89 official dealers focusing on commercial performance, profitability, premium market evolution and post-COVID sales strategies.',
-                        companiesAnalyzed: 89,
-                        marketValue: '€2.8 miliardi',
-                        marketShare: 'Audi: 8.2% mercato premium Italia',
-                        keyInsights: [
-                            'Transizione verso elettrificazione con e-tron',
-                            'Digitalizzazione customer experience',
-                            'Servizi post-vendita ad alto margine',
-                            'Crescita segmento SUV premium del +15%'
-                        ],
-                        topCompanies: ['Audi Center Milano', 'Gruppo Eurocar Italia', 'Autotorino S.p.A.', 'Motor Village', 'Audi Zentrum Roma'],
-                        relatedStudies: [
-                            'Concessionarie BMW (ITMA24)',
-                            'Concessionarie Mercedes (ITMA25)',
-                            'Officine Autorizzate Premium (ITMA26)',
-                            'Leasing Auto (ITFN78)',
-                            'Assicurazioni Auto (ITCS90)'
-                        ]
-                    }
-                };
-
-                const study = studies[studyId];
-                if (!study) {
-                    this.showToast('Studio non trovato', 'error');
-                    return;
-                }
-
-                document.getElementById('studyDetailsTitle').textContent = `Studio ${study.plimsollCode} - ${study.name}`;
-                document.getElementById('studyDetailsBody').innerHTML = `
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <div class="detail-label">Codice Plimsoll</div>
-                            <div class="detail-value"><strong>${study.plimsollCode}</strong></div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Settore NACE</div>
-                            <div class="detail-value">${study.nace}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Codice ATECO</div>
-                            <div class="detail-value">${study.ateco}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Aziende Analizzate</div>
-                            <div class="detail-value">${study.companiesAnalyzed}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Valore Mercato</div>
-                            <div class="detail-value">${study.marketValue}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Quota Mercato</div>
-                            <div class="detail-value">${study.marketShare}</div>
-                        </div>
-                    </div>
-
-                    <h5 style="color: var(--plimsoll-primary); margin: var(--spacing-lg) 0 var(--spacing-md);">
-                        Descrizione Studio
+    <!-- Supply Chain Explorer Modal -->
+    <div class="modal fade" id="supplyChainModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-sitemap"></i> 
+                        Filiera Supply Chain: <span id="modalStudyTitle"></span>
                     </h5>
-                    <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                        ${study.description}
-                    </div>
-
-                    <h5 style="color: var(--plimsoll-primary); margin: var(--spacing-md) 0;">
-                        Key Insights del Settore
-                    </h5>
-                    <ul style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                        ${study.keyInsights.map(insight => `<li style="margin-bottom: var(--spacing-xs);">${insight}</li>`).join('')}
-                    </ul>
-
-                    <h5 style="color: var(--plimsoll-primary); margin: var(--spacing-md) 0;">
-                        Principali Aziende nel Settore
-                    </h5>
-                    <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                        ${study.topCompanies.map((company, index) => `<div style="margin-bottom: var(--spacing-xs);"><strong>${index + 1}.</strong> ${company}</div>`).join('')}
-                    </div>
-
-                    <h5 style="color: var(--plimsoll-primary); margin: var(--spacing-md) 0;">
-                        Studi Correlati
-                    </h5>
-                    <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-xl);">
-                        ${study.relatedStudies.map(related => `<div style="margin-bottom: var(--spacing-xs);">• ${related}</div>`).join('')}
-                    </div>
-
-                    <div style="text-align: center; padding-top: var(--spacing-md); border-top: 1px solid var(--border-color);">
-                        <div style="margin-bottom: var(--spacing-md);">
-                            <strong>Interessato a questo studio?</strong><br>
-                            <span style="color: var(--text-secondary);">Acquista l'analisi completa con tutti i dati finanziari e le valutazioni aziendali</span>
-                        </div>
-                        <div style="display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap;">
-                            <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=${study.plimsollCode}" target="_blank" class="btn btn-success btn-lg">
-                                <i class="fas fa-shopping-cart"></i> Acquista Studio ${study.plimsollCode}
-                            </a>
-                            <a href="https://www.plimsoll.it/analisi" target="_blank" class="btn btn-primary">
-                                <i class="fas fa-external-link-alt"></i> Tutti gli Studi
-                            </a>
-                            <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-accent">
-                                <i class="fas fa-qrcode"></i> Scopri Plimsoll
-                            </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Current Study -->
+                    <div class="current-study-section mb-4">
+                        <h6><i class="fas fa-crosshairs"></i> Studio Selezionato</h6>
+                        <div id="currentStudyCard" class="study-card current-study">
+                            <!-- Populated by JavaScript -->
                         </div>
                     </div>
-                `;
 
-                document.getElementById('studyDetailsModal').style.display = 'block';
-            }
-
-            showRelatedStudies(studyId) {
-                const relatedData = {
-                    'ITFI86': [
-                        { code: 'ITFI87', name: 'Discount Alimentari', relation: 'Competitor diretto' },
-                        { code: 'ITFI88', name: 'Cash and Carry', relation: 'Canale B2B' },
-                        { code: 'ITCO12', name: 'E-commerce Alimentare', relation: 'Canale digitale' },
-                        { code: 'ITTR45', name: 'Logistica Distributiva', relation: 'Supply chain' },
-                        { code: 'ITMF67', name: 'Private Label', relation: 'Fornitori MDD' }
-                    ],
-                    'ITMA23': [
-                        { code: 'ITMA24', name: 'Concessionarie BMW', relation: 'Competitor premium' },
-                        { code: 'ITMA25', name: 'Concessionarie Mercedes', relation: 'Competitor luxury' },
-                        { code: 'ITMA26', name: 'Officine Autorizzate Premium', relation: 'Post-vendita' },
-                        { code: 'ITFN78', name: 'Leasing Auto', relation: 'Servizi finanziari' },
-                        { code: 'ITCS90', name: 'Assicurazioni Auto', relation: 'Servizi accessori' }
-                    ]
-                };
-
-                const studies = relatedData[studyId] || [];
-
-                document.getElementById('relatedStudiesBody').innerHTML = `
-                    <p style="margin-bottom: var(--spacing-lg); color: var(--text-secondary);">
-                        Studi correlati al settore <strong>${studyId}</strong> per una visione completa della catena del valore e del panorama competitivo:
-                    </p>
-                    
-                    ${studies.map(study => `
-                        <div style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); margin-bottom: var(--spacing-md); border-left: 4px solid var(--plimsoll-accent);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-sm);">
-                                <div>
-                                    <div style="font-weight: 600; color: var(--plimsoll-primary);">${study.name}</div>
-                                    <div style="font-size: 0.875rem; color: var(--text-secondary);">${study.code} • ${study.relation}</div>
+                    <!-- Supply Chain Flow -->
+                    <div class="supply-chain-flow">
+                        <div class="row">
+                            <!-- Upstream -->
+                            <div class="col-md-4">
+                                <h6><i class="fas fa-arrow-left text-info"></i> Upstream (Fornitori)</h6>
+                                <div id="upstreamStudies" class="supply-chain-section">
+                                    <!-- Populated by JavaScript -->
                                 </div>
-                                <div style="display: flex; gap: var(--spacing-xs);">
-                                    <button onclick="plimsollClient.showStudyDetails('${study.code}')" class="btn btn-sm btn-secondary">
-                                        <i class="fas fa-eye"></i> Dettagli
-                                    </button>
-                                    <a href="https://odret816.forms.app/ordine-studio-plimsoll?code=${study.code}" target="_blank" class="btn btn-sm btn-success">
-                                        <i class="fas fa-shopping-cart"></i> Acquista
-                                    </a>
+                            </div>
+
+                            <!-- Same Level -->
+                            <div class="col-md-4">
+                                <h6><i class="fas fa-equals text-warning"></i> Stesso Livello</h6>
+                                <div id="sameLevelStudies" class="supply-chain-section">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+
+                            <!-- Downstream -->
+                            <div class="col-md-4">
+                                <h6><i class="fas fa-arrow-right text-success"></i> Downstream (Clienti)</h6>
+                                <div id="downstreamStudies" class="supply-chain-section">
+                                    <!-- Populated by JavaScript -->
                                 </div>
                             </div>
                         </div>
-                    `).join('')}
-                    
-                    <div style="text-align: center; margin-top: var(--spacing-xl); padding-top: var(--spacing-md); border-top: 1px solid var(--border-color);">
-                        <p style="margin-bottom: var(--spacing-md); color: var(--text-secondary);">
-                            Vuoi esplorare più studi correlati o richiedere un'analisi personalizzata?
-                        </p>
-                        <div style="display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap;">
-                            <a href="https://www.plimsoll.it/analisi" target="_blank" class="btn btn-primary">
-                                <i class="fas fa-search"></i> Esplora Tutti gli Studi
-                            </a>
-                            <a href="mailto:info@plimsoll.it" class="btn btn-secondary">
-                                <i class="fas fa-envelope"></i> Richiedi Analisi Personalizzata
-                            </a>
+
+                        <!-- Cross Market -->
+                        <div class="cross-market-section mt-4">
+                            <h6><i class="fas fa-globe"></i> Altri Mercati</h6>
+                            <div id="crossMarketStudies" class="supply-chain-section">
+                                <!-- Populated by JavaScript -->
+                            </div>
                         </div>
                     </div>
-                `;
+                </div>
+                <div class="modal-footer">
+                    <a href="https://www.plimsoll.it" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Visita Plimsoll
+                    </a>
+                    <a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="btn btn-outline-info">
+                        <i class="fas fa-info-circle"></i> Info Servizi
+                    </a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                document.getElementById('relatedStudiesModal').style.display = 'block';
-            }
+    <!-- Request Study Modal -->
+    <div class="modal fade" id="requestStudyModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-envelope"></i> Richiedi Fattibilità Studio
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="requestStudyContent">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <a id="sendEmailBtn" href="#" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Invia Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            closeModal(modal) {
-                modal.style.display = 'none';
-            }
+</div>
 
-            showToast(message, type = 'info') {
-                const toast = document.getElementById('toast');
-                const messageEl = document.getElementById('toastMessage');
-                
-                messageEl.textContent = message;
-                toast.className = `toast ${type}`;
-                toast.classList.add('show');
+<!-- Footer -->
+<footer class="bg-dark text-light mt-5 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h6>🔗 Collegamenti Utili</h6>
+                <ul class="list-unstyled">
+                    <li><a href="https://www.plimsoll.it" target="_blank" class="text-light">Sito Plimsoll Italia</a></li>
+                    <li><a href="https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419" target="_blank" class="text-light">Servizi e Analisi</a></li>
+                    <li><a href="mailto:info@plimsoll.it" class="text-light">Contatti: info@plimsoll.it</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h6>📊 Sistema Supply Chain</h6>
+                <p class="mb-1">Mappatura completa di filiere industriali con correlazioni automatiche.</p>
+                <p class="mb-0"><small>© 2025 Plimsoll Italia - Tutti i diritti riservati</small></p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-            }
-        }
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/supply-chain-data.js"></script>
+<script src="assets/js/supply-chain-system.js"></script>
 
-        // Funzioni globali per compatibilità
-        let plimsollClient;
-
-        function showStudyDetails(studyId) {
-            plimsollClient.showStudyDetails(studyId);
-        }
-
-        function showRelatedStudies(studyId) {
-            plimsollClient.showRelatedStudies(studyId);
-        }
-
-        // Inizializzazione sistema
-        document.addEventListener('DOMContentLoaded', function() {
-            plimsollClient = new PlimsollCatalogClient();
-        });
-
-        // Tracking per analytics (opzionale)
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('a[href*="plimsoll.it"]') || e.target.closest('a[href*="odret816.forms.app"]')) {
-                console.log('Click su link Plimsoll:', e.target.href);
-                // Qui si può aggiungere tracking analytics
-            }
-        });
-    </script>
 </body>
 </html>
