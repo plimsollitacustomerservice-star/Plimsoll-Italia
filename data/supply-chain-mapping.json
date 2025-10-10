@@ -1,376 +1,68 @@
 {
-  "supply_chain_industries": {
-    "AUTOMOTIVE": {
-      "id": "automotive",
-      "name_it": "Filiera Automotive",
-      "name_en": "Automotive Supply Chain",
-      "description_it": "Catena del valore dell'industria automobilistica dalla progettazione alla vendita",
-      "description_en": "Automotive industry value chain from design to sales",
-      "icon": "🚗",
-      "color": "#FF6B35",
-      "levels": {
-        "RAW_MATERIALS": {
-          "level": 1,
-          "name_it": "Materie Prime e Metalli",
-          "name_en": "Raw Materials & Metals",
-          "studies": {
-            "available": [
-              {
-                "id": "STEEL_MANUFACTURING_GLOBAL",
-                "rep_code": "GLMETAL01",
-                "name_it": "Produttori di Acciaio",
-                "name_en": "Steel Manufacturing",
-                "market": "Global",
-                "ateco": "24.10.01",
-                "nace": "C24.10",
-                "status": "available",
-                "keywords": ["acciaio", "steel", "siderurgia", "metallurgia"]
-              },
-              {
-                "id": "ALUMINUM_WORKS_GLOBAL",
-                "rep_code": "GLMETAL02",
-                "name_it": "Lavorazione Alluminio",
-                "name_en": "Aluminum Works",
-                "market": "Global",
-                "ateco": "24.42.01",
-                "nace": "C24.42",
-                "status": "available",
-                "keywords": ["alluminio", "aluminum", "laminazione", "estrusione"]
-              },
-              {
-                "id": "RUBBER_PRODUCTS_IT",
-                "rep_code": "ITRUB01",
-                "name_it": "Prodotti in Gomma",
-                "name_en": "Rubber Products",
-                "market": "IT",
-                "ateco": "22.19.01",
-                "nace": "C22.19",
-                "status": "available",
-                "keywords": ["gomma", "rubber", "pneumatici", "guarnizioni"]
-              }
-            ],
-            "missing": [
-              {
-                "id": "SPECIALTY_METALS_AUTOMOTIVE_IT",
-                "rep_code": "ITAUTO01",
-                "name_it": "Metalli Speciali per Automotive",
-                "name_en": "Specialty Metals for Automotive",
-                "market": "IT",
-                "ateco": "24.45.01",
-                "nace": "C24.45",
-                "status": "missing",
-                "keywords": ["metalli speciali", "specialty metals", "leghe", "titanio"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Metalli%20Speciali%20per%20Automotive&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Metalli%20Speciali%20per%20Automotive%22%0A%0AFiliera:%20Automotive%20-%20Materie%20Prime%0ATarget%20aziende:%0A□%20Produttori%20metalli%20speciali%0A□%20Fornitori%20leghe%20automotive%0A□%20Lavorazioni%20titanio%20e%20magnesio%0A%0AMercato:%20Italia%0AATECO:%2024.45.01%0ANACE:%20C24.45%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              },
-              {
-                "id": "CARBON_FIBER_AUTOMOTIVE_UK",
-                "rep_code": "UKAUTO01",
-                "name_it": "Fibra di Carbonio Automotive",
-                "name_en": "Carbon Fiber for Automotive",
-                "market": "UK",
-                "ateco": "20.59.02",
-                "nace": "C20.59",
-                "status": "missing",
-                "keywords": ["fibra carbonio", "carbon fiber", "compositi", "lightweight"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Carbon%20Fiber%20Automotive&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Carbon%20Fiber%20for%20Automotive%22%0A%0AFiliera:%20Automotive%20-%20Materie%20Prime%0ATarget%20aziende:%0A□%20Produttori%20fibra%20di%20carbonio%0A□%20Materiali%20compositi%20automotive%0A□%20Tecnologie%20lightweight%0A%0AMercato:%20UK%0AATECO:%2020.59.02%0ANACE:%20C20.59%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              }
-            ]
-          }
-        },
-        "COMPONENTS": {
-          "level": 2,
-          "name_it": "Componentistica",
-          "name_en": "Components Manufacturing",
-          "studies": {
-            "available": [
-              {
-                "id": "AUTOMOTIVE_PARTS_IT",
-                "rep_code": "ITAUTO02",
-                "name_it": "Produttori Componenti Auto",
-                "name_en": "Automotive Parts Manufacturers",
-                "market": "IT",
-                "ateco": "29.32.01",
-                "nace": "C29.32",
-                "status": "available",
-                "keywords": ["componenti auto", "automotive parts", "ricambi", "OEM"]
-              },
-              {
-                "id": "AUTOMOTIVE_ELECTRONICS_IT",
-                "rep_code": "ITAUTO03",
-                "name_it": "Componentistica Elettronica Auto",
-                "name_en": "Automotive Electronic Parts",
-                "market": "IT",
-                "ateco": "29.31.01",
-                "nace": "C29.31",
-                "status": "available",
-                "keywords": ["elettronica auto", "automotive electronics", "ECU", "sensori"]
-              }
-            ],
-            "missing": [
-              {
-                "id": "AUTOMOTIVE_SENSORS_IT",
-                "rep_code": "ITAUTO04",
-                "name_it": "Sensori Automotive",
-                "name_en": "Automotive Sensors",
-                "market": "IT",
-                "ateco": "26.51.01",
-                "nace": "C26.51",
-                "status": "missing",
-                "keywords": ["sensori automotive", "automotive sensors", "ADAS", "smart sensors"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Sensori%20Automotive&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Sensori%20Automotive%22%0A%0AFiliera:%20Automotive%20-%20Componentistica%0ATarget%20aziende:%0A□%20Produttori%20sensori%20automotive%0A□%20Tecnologie%20ADAS%0A□%20Sensori%20per%20veicoli%20elettrici%0A%0AMercato:%20Italia%0AATECO:%2026.51.01%0ANACE:%20C26.51%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              }
-            ]
-          }
-        },
-        "ASSEMBLY": {
-          "level": 3,
-          "name_it": "Assemblaggio e Produzione",
-          "name_en": "Assembly & Production",
-          "studies": {
-            "available": [
-              {
-                "id": "CAR_MANUFACTURING_GLOBAL",
-                "rep_code": "GLACAR01",
-                "name_it": "Produzione Automobili",
-                "name_en": "Car Manufacturing",
-                "market": "Global",
-                "ateco": "29.10.01",
-                "nace": "C29.10",
-                "status": "available",
-                "keywords": ["produzione auto", "car manufacturing", "OEM", "automotive assembly"]
-              }
-            ],
-            "missing": [
-              {
-                "id": "INDUSTRY_40_AUTOMOTIVE_IT",
-                "rep_code": "ITAUTO05",
-                "name_it": "Industria 4.0 Automotive",
-                "name_en": "Automotive Industry 4.0",
-                "market": "IT",
-                "ateco": "29.10.02",
-                "nace": "C29.10",
-                "status": "missing",
-                "keywords": ["industria 4.0", "industry 4.0", "smart manufacturing", "IoT automotive"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Industria%204.0%20Automotive&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Industria%204.0%20Automotive%22%0A%0AFiliera:%20Automotive%20-%20Assemblaggio%0ATarget%20aziende:%0A□%20Fornitori%20tecnologie%20Industria%204.0%0A□%20Smart%20manufacturing%20automotive%0A□%20IoT%20e%20AI%20per%20produzione%20auto%0A%0AMercato:%20Italia%0AATECO:%2029.10.02%0ANACE:%20C29.10%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              }
-            ]
-          }
-        },
-        "DISTRIBUTION": {
-          "level": 4,
-          "name_it": "Distribuzione e Vendita",
-          "name_en": "Distribution & Sales",
-          "studies": {
-            "available": [
-              {
-                "id": "CAR_DEALERS_IT",
-                "rep_code": "ITCAR01",
-                "name_it": "Concessionarie Auto",
-                "name_en": "Car Dealers",
-                "market": "IT",
-                "ateco": "45.11.01",
-                "nace": "G45.11",
-                "status": "available",
-                "keywords": ["concessionarie", "car dealers", "vendita auto", "automotive retail"]
-              }
-            ],
-            "missing": [
-              {
-                "id": "ELECTRIC_CAR_DEALERS_IT",
-                "rep_code": "ITAUTO06",
-                "name_it": "Concessionarie Auto Elettriche",
-                "name_en": "Electric Car Dealerships",
-                "market": "IT",
-                "ateco": "45.11.02",
-                "nace": "G45.11",
-                "status": "missing",
-                "keywords": ["auto elettriche", "electric cars", "EV dealers", "mobilità elettrica"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Concessionarie%20Auto%20Elettriche&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Concessionarie%20Auto%20Elettriche%22%0A%0AFiliera:%20Automotive%20-%20Distribuzione%0ATarget%20aziende:%0A□%20Concessionarie%20veicoli%20elettrici%0A□%20Dealer%20mobilità%20sostenibile%0A□%20Reti%20vendita%20EV%0A%0AMercato:%20Italia%0AATECO:%2045.11.02%0ANACE:%20G45.11%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              }
-            ]
-          }
-        }
+  "ITFI86": {
+    "upstream": [
+      {
+        "code": "ITAL01",
+        "name_native": "Produttori Alimentari",
+        "name_en": "Food Producers",
+        "desc_native": "Aziende di trasformazione alimentare.",
+        "desc_en": "Food processing companies.",
+        "ateco": "10.11.00",
+        "nace": "C.10",
+        "status": "available"
       }
-    },
-    "FOOD_BEVERAGE": {
-      "id": "food_beverage",
-      "name_it": "Filiera Agroalimentare",
-      "name_en": "Food & Beverage Supply Chain",
-      "description_it": "Catena del valore agroalimentare dalla produzione primaria alla distribuzione",
-      "description_en": "Agri-food value chain from primary production to distribution",
-      "icon": "🍽️",
-      "color": "#2ECC71",
-      "levels": {
-        "AGRICULTURE": {
-          "level": 1,
-          "name_it": "Produzione Agricola",
-          "name_en": "Agricultural Production",
-          "studies": {
-            "available": [
-              {
-                "id": "DAIRY_PRODUCE_IT",
-                "rep_code": "ITDAI01",
-                "name_it": "Prodotti Lattiero-Caseari",
-                "name_en": "Dairy Produce",
-                "market": "IT",
-                "ateco": "10.51.01",
-                "nace": "C10.51",
-                "status": "available",
-                "keywords": ["latticini", "dairy", "formaggi", "latte"]
-              }
-            ],
-            "missing": [
-              {
-                "id": "PRECISION_AGRICULTURE_IT",
-                "rep_code": "ITFOOD01",
-                "name_it": "Agricoltura di Precisione",
-                "name_en": "Precision Agriculture",
-                "market": "IT",
-                "ateco": "01.11.02",
-                "nace": "A01.11",
-                "status": "missing",
-                "keywords": ["agricoltura precisione", "precision agriculture", "smart farming", "AgTech"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Agricoltura%20di%20Precisione&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Agricoltura%20di%20Precisione%22%0A%0AFiliera:%20Agroalimentare%20-%20Produzione%20Agricola%0ATarget%20aziende:%0A□%20Fornitori%20tecnologie%20AgTech%0A□%20Smart%20farming%20solutions%0A□%20Sensori%20e%20droni%20agricoli%0A%0AMercato:%20Italia%0AATECO:%2001.11.02%0ANACE:%20A01.11%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              }
-            ]
-          }
-        },
-        "PROCESSING": {
-          "level": 2,
-          "name_it": "Trasformazione Alimentare",
-          "name_en": "Food Processing",
-          "studies": {
-            "available": [
-              {
-                "id": "PASTA_MANUFACTURE_IT",
-                "rep_code": "ITPAS01",
-                "name_it": "Produzione Pasta",
-                "name_en": "Pasta Manufacture",
-                "market": "IT",
-                "ateco": "10.73.01",
-                "nace": "C10.73",
-                "status": "available",
-                "keywords": ["pasta", "pastifici", "semola", "grano duro"]
-              }
-            ],
-            "missing": [
-              {
-                "id": "ALTERNATIVE_PROTEIN_IT",
-                "rep_code": "ITFOOD02",
-                "name_it": "Proteine Alternative",
-                "name_en": "Alternative Protein Processing",
-                "market": "IT",
-                "ateco": "10.89.09",
-                "nace": "C10.89",
-                "status": "missing",
-                "keywords": ["proteine alternative", "alternative protein", "plant-based", "carne vegetale"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Proteine%20Alternative&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Proteine%20Alternative%22%0A%0AFiliera:%20Agroalimentare%20-%20Trasformazione%0ATarget%20aziende:%0A□%20Produttori%20proteine%20vegetali%0A□%20Plant-based%20food%20companies%0A□%20Alternative%20meat%20producers%0A%0AMercato:%20Italia%0AATECO:%2010.89.09%0ANACE:%20C10.89%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              }
-            ]
-          }
-        }
+    ],
+    "correlati": [
+      {
+        "code": "ITCO12",
+        "name_native": "E-commerce Alimentare",
+        "name_en": "Food E-commerce",
+        "desc_native": "Marketplace e-commerce settore food.",
+        "desc_en": "Food sector e-commerce marketplaces.",
+        "ateco": "47.91.10",
+        "nace": "G.47",
+        "status": "missing"
       }
-    },
-    "CONSTRUCTION": {
-      "id": "construction",
-      "name_it": "Filiera delle Costruzioni",
-      "name_en": "Construction Supply Chain",
-      "description_it": "Catena del valore dell'edilizia dai materiali alla costruzione finale",
-      "description_en": "Construction value chain from materials to final building",
-      "icon": "🏗️",
-      "color": "#F39C12",
-      "levels": {
-        "RAW_MATERIALS": {
-          "level": 1,
-          "name_it": "Materie Prime Edili",
-          "name_en": "Construction Raw Materials",
-          "studies": {
-            "available": [
-              {
-                "id": "CEMENT_MANUFACTURERS_IT",
-                "rep_code": "ITCEM01",
-                "name_it": "Produttori di Cemento",
-                "name_en": "Cement Manufacturers",
-                "market": "IT",
-                "ateco": "23.51.01",
-                "nace": "C23.51",
-                "status": "available",
-                "keywords": ["cemento", "cement", "calcestruzzo", "clinker"]
-              }
-            ],
-            "missing": [
-              {
-                "id": "SUSTAINABLE_MATERIALS_IT",
-                "rep_code": "ITCONST01",
-                "name_it": "Materiali Edili Sostenibili",
-                "name_en": "Sustainable Building Materials",
-                "market": "IT",
-                "ateco": "23.99.01",
-                "nace": "C23.99",
-                "status": "missing",
-                "keywords": ["materiali sostenibili", "sustainable materials", "green building", "eco-materials"],
-                "request_email": "mailto:info@plimsoll.it?subject=Richiesta%20Fattibilità%20Studio%20-%20Materiali%20Edili%20Sostenibili&body=Gentile%20Team%20Plimsoll,%0A%0AVorrei%20richiedere%20la%20fattibilità%20per%20lo%20sviluppo%20dello%20studio:%0A%22Materiali%20Edili%20Sostenibili%22%0A%0AFiliera:%20Costruzioni%20-%20Materie%20Prime%0ATarget%20aziende:%0A□%20Produttori%20materiali%20eco-sostenibili%0A□%20Green%20building%20materials%0A□%20Materiali%20da%20riciclo%20edili%0A%0AMercato:%20Italia%0AATECO:%2023.99.01%0ANACE:%20C23.99%0A%0APer%20maggiori%20informazioni:%20https://www.plimsoll.it%0A%0ACordiali%20saluti"
-              }
-            ]
-          }
-        }
+    ],
+    "downstream": [
+      {
+        "code": "ITTR45",
+        "name_native": "Logistica Distributiva",
+        "name_en": "Logistics & Distribution",
+        "desc_native": "Operatori logistica e distribuzione GDO.",
+        "desc_en": "Logistics operators for mass retail.",
+        "ateco": "52.29.00",
+        "nace": "H.52",
+        "status": "available"
       }
-    }
+    ]
   },
-  "correlation_rules": {
-    "upstream_downstream": {
-      "description": "Regole per identificare studi upstream e downstream nella filiera",
-      "rules": [
-        {
-          "if_level": 1,
-          "show_downstream": [2, 3],
-          "show_upstream": []
-        },
-        {
-          "if_level": 2,
-          "show_downstream": [3, 4],
-          "show_upstream": [1]
-        },
-        {
-          "if_level": 3,
-          "show_downstream": [4, 5],
-          "show_upstream": [1, 2]
-        },
-        {
-          "if_level": 4,
-          "show_downstream": [5],
-          "show_upstream": [2, 3]
-        },
-        {
-          "if_level": 5,
-          "show_downstream": [],
-          "show_upstream": [3, 4]
-        }
-      ]
-    },
-    "cross_market": {
-      "description": "Mostra stessi studi in mercati diversi",
-      "enabled": true,
-      "markets": ["IT", "UK", "FR", "SP", "DE", "Global"]
-    }
-  },
-  "ui_settings": {
-    "status_badges": {
-      "available": {
-        "text": "🟢 Disponibile",
-        "color": "success",
-        "action": "view_study"
-      },
-      "missing": {
-        "text": "🟡 Invia richiesta",
-        "color": "warning", 
-        "action": "request_study"
+  "ITMA23": {
+    "upstream": [
+      {
+        "code": "ITAP09",
+        "name_native": "Fornitori Ricambi Auto",
+        "name_en": "Auto Parts Suppliers",
+        "desc_native": "Produttori e grossisti di pezzi auto.",
+        "desc_en": "Car parts producers and wholesalers.",
+        "ateco": "45.32.00",
+        "nace": "G.45",
+        "status": "missing"
       }
-    },
-    "links": {
-      "plimsoll_info": "https://p0.me-page.com/project/289223/f52161219504742f83c20630d9133419",
-      "plimsoll_site": "https://www.plimsoll.it",
-      "contact_email": "info@plimsoll.it"
-    }
+    ],
+    "correlati": [
+      {
+        "code": "ITFN78",
+        "name_native": "Leasing Auto",
+        "name_en": "Car Leasing",
+        "desc_native": "Società di leasing e noleggio.",
+        "desc_en": "Car leasing and rental companies.",
+        "ateco": "64.91.00",
+        "nace": "K.64",
+        "status": "available"
+      }
+    ],
+    "downstream": []
   }
+  /* ...altri studi... */
 }
