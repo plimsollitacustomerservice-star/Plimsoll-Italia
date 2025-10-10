@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Studi Plimsoll - Database Completo Settori Industriali</title>
+    <meta name="description" content="Database completo di 7.895 settori industriali con analisi Plimsoll disponibili per Italia, Regno Unito, Francia, Spagna e mercati globali. Ricerca avanzata con classificazione ATECO/NACE.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Catalogo Studi Plimsoll - Database Settori Industriali">
+    <meta property="og:description" content="Accedi al database completo di 7.895 settori con studi di mercato Plimsoll. Ricerca avanzata, classificazione ATECO/NACE e analisi dettagliate.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://plimsollitacustomerservice-star.github.io/Plimsoll-Italia/">
+    <meta property="og:image" content="https://www.plimsoll.it/assets/images/plimsoll-logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://www.plimsoll.it/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/plimsoll-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+    <!-- Header Plimsoll -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-brand">
+                    <h1>
+                        <i class="fas fa-analytics"></i>
+                        Catalogo Studi Plimsoll
+                    </h1>
+                    <div class="header-subtitle">
+                        Database completo settori industriali • 7.895 studi disponibili • Classificazione ATECO/NACE
+                    </div>
+                </div>
+                
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <a href="https://www.plimsoll.it" target="_blank" rel="noopener">www.plimsoll.it</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@plimsoll.it">info@plimsoll.it</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+390694800175">06 9480 0175</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Scopri nuove opportunità • Anticipa i trend</h2>
+                <p>
+                    Informazioni di mercato per imprese di successo. Scopri come si sta evolvendo il tuo mercato 
+                    e i risultati conseguiti dalle imprese leader - in maniera intuitiva e rapida.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">7.895</span>
+                        <div class="hero-stat-label">Settori Analizzati</div>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">5</span>
+                        <div class="hero-stat-label">Mercati Internazionali</div>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">18</span>
+                        <div class="hero-stat-label">Sezioni NACE</div>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">5M+</span>
+                        <div class="hero-stat-label">Aziende Monitorate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Dashboard Statistiche -->
+        <section class="dashboard">
+            <div class="stat-card primary">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <h3>Settori Totali</h3>
+                        <div class="stat-number" id="totalSectors">7,895</div>
+                        <div class="stat-detail">Database completo</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card success">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <h3>Con Descrizione Completa</h3>
+                        <div class="stat-number" id="withDescription">4,922</div>
+                        <div class="stat-detail" id="completionRate">62.3% del totale</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card warning">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <h3>Descrizioni Generate</h3>
+                        <div class="stat-number" id="generatedDescriptions">2,973</div>
+                        <div class="stat-detail">Algoritmo AI avanzato</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card info">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <h3>Mercati Coperti</h3>
+                        <div class="stat-number" id="countriesCovered">5</div>
+                        <div class="stat-detail">IT • UK • FR • SP • PW</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione Ricerca e Filtri -->
+        <section class="filters-section">
+            <div class="filters-header">
+                <h3>
+                    <i class="fas fa-search"></i>
+                    Ricerca Settori Industriali
+                </h3>
+                <button id="resetFilters" class="btn secondary btn-sm">
+                    <i class="fas fa-undo"></i>
+                    Reset Filtri
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" 
+                           id="searchInput" 
+                           class="search-input"
+                           placeholder="Cerca per nome settore, descrizione, keywords o codici ATECO/NACE..."
+                           autocomplete="off">
+                </div>
+            </div>
+            
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="countryFilter">
+                        <i class="fas fa-flag"></i>
+                        Mercato/Paese
+                    </label>
+                    <select id="countryFilter">
+                        <option value="">Tutti i Mercati</option>
+                        <option value="IT">🇮🇹 Italia (1.182 settori)</option>
+                        <option value="UK">🇬🇧 Regno Unito (2.084 settori)</option>
+                        <option value="FR">🇫🇷 Francia (1.454 settori)</option>
+                        <option value="SP">🇪🇸 Spagna (1.134 settori)</option>
+                        <option value="PW">🌍 Mercato Globale (2.041 settori)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="naceFilter">
+                        <i class="fas fa-sitemap"></i>
+                        Sezione NACE
+                    </label>
+                    <select id="naceFilter">
+                        <option value="">Tutte le Sezioni</option>
+                        <option value="C">C - Attività manifatturiere (2.685)</option>
+                        <option value="S">S - Altre attività di servizi (2.666)</option>
+                        <option value="J">J - ICT e Comunicazione (800)</option>
+                        <option value="G">G - Commercio (249)</option>
+                        <option value="B">B - Estrazione mineraria (179)</option>
+                        <option value="I">I - Alloggio e Ristorazione (162)</option>
+                        <option value="A">A - Agricoltura e Pesca (161)</option>
+                        <option value="H">H - Trasporti (143)</option>
+                        <option value="F">F - Costruzioni (129)</option>
+                        <option value="M">M - Servizi Professionali (119)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="descriptionFilter">
+                        <i class="fas fa-info-circle"></i>
+                        Tipo Descrizione
+                    </label>
+                    <select id="descriptionFilter">
+                        <option value="">Tutte le Descrizioni</option>
+                        <option value="original">✅ Descrizione Originale Plimsoll</option>
+                        <option value="generated">🤖 Descrizione Generata AI</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sortBy">
+                        <i class="fas fa-sort"></i>
+                        Ordinamento
+                    </label>
+                    <select id="sortBy">
+                        <option value="name_asc">Nome A-Z</option>
+                        <option value="name_desc">Nome Z-A</option>
+                        <option value="country_asc">Paese A-Z</option>
+                        <option value="nace_asc">Sezione NACE</option>
+                        <option value="updated_desc">Ultimo Aggiornamento</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="resultsCount" class="text-center text-muted mt-3">
+                <i class="fas fa-chart-bar"></i>
+                <span id="filteredCount">7,895</span> settori trovati
+            </div>
+        </section>
+
+        <!-- Tabella Catalogo -->
+        <section class="table-section">
+            <div class="table-header">
+                <div class="table-title">
+                    <div>
+                        <h3>
+                            <i class="fas fa-table"></i>
+                            Catalogo Settori Industriali
+                        </h3>
+                        <div class="table-info">
+                            <span id="tableInfo">Visualizzazione settori 1-50 di 7,895</span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-actions">
+                        <button class="btn accent" onclick="window.open('https://www.plimsoll.it/analisi', '_blank')">
+                            <i class="fas fa-external-link-alt"></i>
+                            Acquista Studio
+                        </button>
+                        <button class="btn secondary" id="exportBtn">
+                            <i class="fas fa-download"></i>
+                            Esporta Risultati
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="sectors-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="name">
+                                <span>Nome Settore</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="country">
+                                <span>Mercato</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="nace">
+                                <span>NACE</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="ateco">
+                                <span>ATECO</span>
+                                <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="description-col">Descrizione Studio</th>
+                            <th class="keywords-col">Keywords</th>
+                            <th class="actions-col">Studio Disponibile</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sectorsTableBody">
+                        <!-- Dati caricati dinamicamente da JavaScript -->
+                        <tr>
+                            <td colspan="7" class="text-center p-5">
+                                <div class="loading">
+                                    <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                                    <div>Caricamento database settori...</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Paginazione -->
+            <div class="pagination">
+                <div class="pagination-info">
+                    <span id="pageInfo">Pagina 1 di 158</span>
+                    <div>
+                        <label for="itemsPerPage">Elementi per pagina:</label>
+                        <select id="itemsPerPage">
+                            <option value="25">25</option>
+                            <option value="50" selected>50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="pagination-controls">
+                    <button id="firstPage" class="btn secondary btn-sm" title="Prima pagina">
+                        <i class="fas fa-angle-double-left"></i>
+                    </button>
+                    <button id="prevPage" class="btn secondary btn-sm" title="Pagina precedente">
+                        <i class="fas fa-angle-left"></i>
+                        Precedente
+                    </button>
+                    
+                    <div class="page-numbers" id="pageNumbers">
+                        <!-- Numeri pagina generati dinamicamente -->
+                    </div>
+                    
+                    <button id="nextPage" class="btn secondary btn-sm" title="Pagina successiva">
+                        Successiva
+                        <i class="fas fa-angle-right"></i>
+                    </button>
+                    <button id="lastPage" class="btn secondary btn-sm" title="Ultima pagina">
+                        <i class="fas fa-angle-double-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione Info Plimsoll -->
+        <section class="info-section mt-5 mb-5">
+            <div class="bg-primary rounded-lg p-4 shadow-sm border">
+                <div class="text-center">
+                    <h4 class="text-primary mb-3">
+                        <i class="fas fa-lightbulb"></i>
+                        Perché le aziende scelgono Plimsoll?
+                    </h4>
+                    <p class="text-secondary mb-3">
+                        Manager e professionisti consultano le analisi Plimsoll per <strong>anticipare i trend di mercato</strong>, 
+                        <strong>monitorare la concorrenza</strong> e <strong>identificare nuove opportunità di sviluppo</strong>.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
+                        <div class="text-center">
+                            <i class="fas fa-chart-line fa-2x text-accent mb-2"></i>
+                            <div class="text-sm"><strong>Comparare</strong><br>i tuoi risultati</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-bullseye fa-2x text-accent mb-2"></i>
+                            <div class="text-sm"><strong>Individuare</strong><br>acquisizioni</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-bell fa-2x text-accent mb-2"></i>
+                            <div class="text-sm"><strong>Ricevere</strong><br>notifiche</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-exclamation-triangle fa-2x text-accent mb-2"></i>
+                            <div class="text-sm"><strong>Monitorare</strong><br>società a rischio</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-trophy fa-2x text-accent mb-2"></i>
+                            <div class="text-sm"><strong>Identificare</strong><br>aziende leader</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Plimsoll -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Plimsoll Publishing Ltd</h4>
+                    <p>
+                        Fondata nel 1987, Plimsoll analizza e monitora settori industriali in tutto il mondo. 
+                        Realizziamo studi settoriali su 5.000 mercati con analisi finanziarie dettagliate.
+                    </p>
+                    <div class="footer-contact">
+                        <div class="contact-info">
+                            <i class="fas fa-globe"></i>
+                            <a href="https://www.plimsoll.it" target="_blank" rel="noopener">www.plimsoll.it</a>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@plimsoll.it">info@plimsoll.it</a>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+390694800175">06 9480 0175</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Database Settori</h4>
+                    <ul>
+                        <li><i class="fas fa-flag"></i> 🇮🇹 Italia: 1.182 settori</li>
+                        <li><i class="fas fa-flag"></i> 🇬🇧 Regno Unito: 2.084 settori</li>
+                        <li><i class="fas fa-flag"></i> 🇫🇷 Francia: 1.454 settori</li>
+                        <li><i class="fas fa-flag"></i> 🇪🇸 Spagna: 1.134 settori</li>
+                        <li><i class="fas fa-globe"></i> 🌍 Mercato Globale: 2.041 settori</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Funzionalità Catalogo</h4>
+                    <ul>
+                        <li><i class="fas fa-search"></i> Ricerca avanzata multi-filtro</li>
+                        <li><i class="fas fa-tags"></i> Classificazione ATECO/NACE automatica</li>
+                        <li><i class="fas fa-download"></i> Export dati in CSV/Excel</li>
+                        <li><i class="fas fa-chart-bar"></i> Statistiche dettagliate per mercato</li>
+                        <li><i class="fas fa-robot"></i> Descrizioni AI per settori mancanti</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>L'Efficacia del Modello Plimsoll</h4>
+                    <p>
+                        A livello statistico, l'efficacia del rating Plimsoll è tale che 
+                        <strong>9 società su 10 fallite</strong> sono state segnalate da Plimsoll 
+                        come "A Rischio" con <strong>2 anni di anticipo</strong> rispetto all'effettiva uscita dal mercato.
+                    </p>
+                    <div class="mt-3">
+                        <strong>🎯 5 milioni di aziende monitorate</strong><br>
+                        <strong>📊 900 studi di settore Italia</strong><br>
+                        <strong>🌍 5.000 studi internazionali</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Plimsoll Publishing Ltd. Tutti i diritti riservati.</p>
+                <p>Database aggiornato: 10 Ottobre 2025 • Versione Catalogo: 2.0.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="assets/js/plimsoll-data-manager.js"></script>
+    <script src="assets/js/plimsoll-app.js"></script>
+    
+    <!-- Analytics (opzionale) -->
+    <script>
+        // Google Analytics o altri tracking tools possono essere inseriti qui
+        console.log('Catalogo Plimsoll caricato - Database: 7,895 settori');
+    </script>
+</body>
+</html>
