@@ -1,0 +1,33 @@
+source_label,target_hint,statement_section
+Ricavi delle vendite e delle prestazioni,Revenue / Sales,conto_economico
+Valore della produzione,Value of production,conto_economico
+Variazioni delle rimanenze,Inventory movements,conto_economico
+Incrementi di immobilizzazioni per lavori interni,Capitalised internal work,conto_economico
+Altri ricavi e proventi,Other income,conto_economico
+Costi della produzione,Production costs,conto_economico
+Costi per materie prime sussidiarie di consumo e merci,Materials and goods costs,conto_economico
+Costi per servizi,Services costs,conto_economico
+Costi per godimento di beni di terzi,Lease and third-party asset costs,conto_economico
+Costi per il personale,Personnel costs,conto_economico
+Salari e stipendi,Wages and salaries,conto_economico
+Oneri sociali,Social security costs,conto_economico
+Trattamento di fine rapporto,Employee severance indemnity,conto_economico
+Ammortamenti e svalutazioni,Depreciation amortisation and write-downs,conto_economico
+Proventi e oneri finanziari,Financial income and charges,conto_economico
+Interessi e altri oneri finanziari,Interest and other financial charges,conto_economico
+Imposte sul reddito dell'esercizio,Income taxes,conto_economico
+Utile dell'esercizio,Profit for the year,conto_economico
+Perdita dell'esercizio,Loss for the year,conto_economico
+Immobilizzazioni immateriali,Intangible fixed assets,stato_patrimoniale
+Immobilizzazioni materiali,Tangible fixed assets,stato_patrimoniale
+Immobilizzazioni finanziarie,Financial fixed assets,stato_patrimoniale
+Rimanenze,Inventories,stato_patrimoniale
+Crediti verso clienti,Trade receivables,stato_patrimoniale
+Disponibilita liquide,Cash and cash equivalents,stato_patrimoniale
+Patrimonio netto,Shareholders equity,stato_patrimoniale
+Debiti verso banche,Bank debt,stato_patrimoniale
+Debiti verso fornitori,Trade payables,stato_patrimoniale
+Debiti tributari,Tax payables,stato_patrimoniale
+Ratei e risconti attivi,Accrued income and prepaid expenses,stato_patrimoniale
+Ratei e risconti passivi,Accrued expenses and deferred income,stato_patrimoniale
+Fondi per rischi e oneri,Provisions for risks and charges,stato_patrimoniale
