@@ -16,9 +16,10 @@ This project is intentionally limited to the approved Phase 2 foundation:
 - Input file type detection and validation for supported account formats.
 - Basic CSV and XLSX local extraction for adjacent label/value tables.
 - Early deterministic mapping, CSV exports, local HTML report generation, normalization, and number-parsing utilities.
+- End-to-end CLI processing for simple CSV/XLSX adjacent label/value files.
 - Unit tests using synthetic/non-private data only.
 
-PDF/OCR/XBRL extraction, legacy XLS extraction, full review workflow, learned-correction UI, Excel COM recalculation, and Windows packaging are planned for later phases. See `QA_STATUS.md` for the current readiness checklist.
+PDF/OCR/XBRL extraction, legacy XLS extraction, full review workflow, learned-correction UI, Excel COM recalculation, and Windows packaging are planned for later phases. See `QA_STATUS.md`, `INSTALL_WINDOWS.md`, and `USER_GUIDE.md` for readiness and usage details.
 
 ## Local-only principle
 
@@ -51,3 +52,16 @@ Default settings live in `config/default_settings.toml`. They point to:
 - `C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\Output`
 
 The app warns when configured folders appear to be cloud-synced because the application processes locally, but OneDrive may independently sync files.
+
+## Process one implemented file type
+
+```bash
+python -m italian_accounts_reclassifier.cli \
+  --process-file "path/to/account.csv" \
+  --template "path/to/Template.xlsx" \
+  --output-dir "path/to/Output" \
+  --company-name "Company Name" \
+  --fiscal-year 2024
+```
+
+Current end-to-end processing is limited to simple CSV/XLSX files with adjacent account labels and values.
