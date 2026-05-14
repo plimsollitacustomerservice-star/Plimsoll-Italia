@@ -13,11 +13,12 @@ This project is intentionally limited to the approved Phase 2 foundation:
 - SQLite schema creation for mapping memory, learned corrections, audit trail, template targets, and settings.
 - Minimal PySide6 GUI shell with a visible privacy-mode indicator.
 - Template.xlsx inspection and copy-writing with formula preservation checks.
+- Input file type detection and validation for supported account formats.
 - Basic CSV and XLSX local extraction for adjacent label/value tables.
 - Early deterministic mapping, CSV exports, local HTML report generation, normalization, and number-parsing utilities.
 - Unit tests using synthetic/non-private data only.
 
-PDF/OCR/XBRL extraction, full review workflow, learned-correction UI, Excel COM recalculation, and Windows packaging are planned for later phases.
+PDF/OCR/XBRL extraction, legacy XLS extraction, full review workflow, learned-correction UI, Excel COM recalculation, and Windows packaging are planned for later phases. See `QA_STATUS.md` for the current readiness checklist.
 
 ## Local-only principle
 

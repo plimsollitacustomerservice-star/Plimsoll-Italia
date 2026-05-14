@@ -27,12 +27,24 @@ def parse_financial_number(value: str | int | float | None) -> float | None:
 
     last_comma = text.rfind(",")
     last_dot = text.rfind(".")
-    if last_comma > last_dot:
-        text = text.replace(".", "").replace(",", ".")
-    elif last_dot > last_comma:
-        text = text.replace(",", "")
-    else:
-        text = text.replace(",", "")
+    if last_comma > -1 and last_dot > -1:
+        if last_comma > last_dot:
+            text = text.replace(".", "").replace(",", ".")
+        else:
+            text = text.replace(",", "")
+    elif last_comma > -1:
+        text = _normalize_single_separator(text, ",")
+    elif last_dot > -1:
+        text = _normalize_single_separator(text, ".")
 
     number = float(text)
     return -number if negative else number
+
+
+def _normalize_single_separator(text: str, separator: str) -> str:
+    parts = text.split(separator)
+    if len(parts) == 2 and len(parts[1]) == 3 and len(parts[0]) <= 3:
+        return "".join(parts)
+    if len(parts) > 2 and all(len(part) == 3 for part in parts[1:]):
+        return "".join(parts)
+    return text.replace(separator, ".")
