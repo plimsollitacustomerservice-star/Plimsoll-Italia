@@ -1,0 +1,25 @@
+[paths]
+knowledge_base = "C:\\Users\\g.delia\\OneDrive - Plimsoll Publishing Ltd\\Documents\\Editing files\\Accounts update\\knowledge_base"
+output = "C:\\Users\\g.delia\\OneDrive - Plimsoll Publishing Ltd\\Documents\\Editing files\\Accounts update\\Output"
+database = "data/local_mapping_memory.sqlite3"
+temp = "data/temp"
+
+[privacy]
+privacy_mode_label = "Privacy mode: local processing only"
+allow_network_during_processing = false
+allow_cloud_ocr = false
+allow_cloud_ai = false
+allow_telemetry = false
+warn_on_cloud_synced_paths = true
+log_raw_financial_values = false
+
+[processing]
+confidence_auto_suggest_min = 90
+confidence_review_min = 70
+require_review_before_export = true
+allow_partial_export = true
+
+[tools]
+tesseract_executable = ""
+use_excel_com_recalculation = true
+libreoffice_executable = ""
