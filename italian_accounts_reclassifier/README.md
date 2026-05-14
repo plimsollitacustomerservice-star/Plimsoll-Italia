@@ -12,10 +12,12 @@ This project is intentionally limited to the approved Phase 2 foundation:
 - Local rotating file logging under the configured app data folder.
 - SQLite schema creation for mapping memory, learned corrections, audit trail, template targets, and settings.
 - Minimal PySide6 GUI shell with a visible privacy-mode indicator.
-- Early normalization and number-parsing utilities.
+- Template.xlsx inspection and copy-writing with formula preservation checks.
+- Basic CSV and XLSX local extraction for adjacent label/value tables.
+- Early deterministic mapping, CSV exports, local HTML report generation, normalization, and number-parsing utilities.
 - Unit tests using synthetic/non-private data only.
 
-Extraction engines, mapping engines, review workflow, and export writers are planned for later phases.
+PDF/OCR/XBRL extraction, full review workflow, learned-correction UI, Excel COM recalculation, and Windows packaging are planned for later phases.
 
 ## Local-only principle
 
@@ -29,6 +31,7 @@ python -m venv .venv
 .venv\Scripts\activate
 python -m pip install -e .[dev]
 python -m italian_accounts_reclassifier.cli --init-db --privacy-check
+python -m italian_accounts_reclassifier.cli --inspect-template "C:\path\to\Template.xlsx"
 python -m pytest
 ```
 

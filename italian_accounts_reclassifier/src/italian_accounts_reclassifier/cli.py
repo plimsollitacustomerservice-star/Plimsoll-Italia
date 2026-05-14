@@ -14,6 +14,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--settings", default=None, help="Path to a TOML settings file")
     parser.add_argument("--init-db", action="store_true", help="Initialise the local SQLite database")
     parser.add_argument("--privacy-check", action="store_true", help="Run local-only privacy preflight checks")
+    parser.add_argument("--inspect-template", default=None, help="Inspect a local Template.xlsx file")
     args = parser.parse_args(argv)
 
     settings = load_settings(args.settings) if args.settings else load_settings()
@@ -23,6 +24,17 @@ def main(argv: list[str] | None = None) -> int:
         initialize_database(settings.paths.database)
         print(f"Initialised local SQLite database: {settings.paths.database}")
         print("Tables: " + ", ".join(list_tables(settings.paths.database)))
+
+    if args.inspect_template:
+        from .mapping.template_inspector import inspect_template
+
+        inspection = inspect_template(args.inspect_template)
+        print(f"Template: {inspection.template_path}")
+        print(f"Hash: {inspection.template_hash}")
+        print(f"Targets: {len(inspection.targets)}")
+        print(f"Form labels: {inspection.form_label_count}")
+        print(f"Manual labels: {inspection.manual_label_count}")
+        print(f"Formulas: {inspection.formula_count}")
 
     if args.privacy_check:
         result = run_privacy_preflight(settings)

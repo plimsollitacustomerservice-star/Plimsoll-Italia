@@ -1,1 +1,4 @@
-"""Extraction engines will be implemented in later phases."""
+"""Local extraction engines.
+
+Extractor modules are imported directly to keep optional dependencies isolated.
+"""
