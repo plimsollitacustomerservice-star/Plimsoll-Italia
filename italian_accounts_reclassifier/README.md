@@ -19,7 +19,7 @@ This project is intentionally limited to the approved Phase 2 foundation:
 - End-to-end CLI processing for simple CSV/XLSX adjacent label/value files.
 - Unit tests using synthetic/non-private data only.
 
-PDF/OCR/XBRL extraction, legacy XLS extraction, full review workflow, learned-correction UI, Excel COM recalculation, and Windows packaging are planned for later phases. See `QA_STATUS.md`, `INSTALL_WINDOWS.md`, and `USER_GUIDE.md` for readiness and usage details.
+PDF/OCR/XBRL extraction, legacy XLS extraction, full review workflow, learned-correction UI, Excel COM recalculation, and Windows packaging are planned for later phases. See `QA_STATUS.md`, `INSTALL_WINDOWS.md`, `INSTALL_TROUBLESHOOTING.md`, and `USER_GUIDE.md` for readiness and usage details.
 
 ## Local-only principle
 
@@ -27,20 +27,20 @@ Private financial statements, extracted figures, company names, logs, screenshot
 
 ## Developer quick start
 
-```bash
+```powershell
 cd italian_accounts_reclassifier
 python -m venv .venv
-.venv\Scripts\activate
-python -m pip install -e .[dev]
-python -m italian_accounts_reclassifier.cli --init-db --privacy-check
-python -m italian_accounts_reclassifier.cli --inspect-template "C:\path\to\Template.xlsx"
-python -m pytest
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m pip install -e .
+.\.venv\Scripts\python.exe -m italian_accounts_reclassifier.cli --init-db --privacy-check
+.\.venv\Scripts\python.exe -m italian_accounts_reclassifier.cli --inspect-template "C:\path\to\Template.xlsx"
+.\.venv\Scripts\python.exe -m pytest
 ```
 
 On Windows, install the `gui` extra to run the desktop shell:
 
-```bash
-python -m pip install -e .[gui,dev]
+```powershell
+python -m pip install -e ".[gui,dev]"
 python -c "from italian_accounts_reclassifier.gui.main_window import launch; raise SystemExit(launch())"
 ```
 

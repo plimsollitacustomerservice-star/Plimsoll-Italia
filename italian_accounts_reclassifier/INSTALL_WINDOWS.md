@@ -4,7 +4,7 @@ This guide keeps private financial data local. Install packages only during setu
 
 ## 1. Install local prerequisites
 
-1. Install Python 3.11 or newer for Windows.
+1. Install Python 3.11 or 3.12 for Windows. Python 3.14 may work, but 3.11/3.12 is recommended for dependency compatibility.
 2. Install Microsoft Excel if you want future formula recalculation automation. Formula recalculation automation is not implemented yet in this build.
 3. Install Tesseract OCR with Italian language data before scanned-PDF OCR is implemented in a later build.
 4. Optional later prerequisite: LibreOffice for legacy conversion workflows.
@@ -14,12 +14,22 @@ This guide keeps private financial data local. Install packages only during setu
 From PowerShell in the repository root:
 
 ```powershell
-cd .\italian_accounts_reclassifier
+cd "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\italian_accounts_reclassifier"
 py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
+& ".\.venv\Scripts\Activate.ps1"
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 ```
+
+If activation fails, use the virtual-environment Python directly:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m pip install -e .
+```
+
+See `INSTALL_TROUBLESHOOTING.md` if PowerShell says `Activate.ps1` is not recognized or pip says the `dev` extra is not available.
 
 For GUI development:
 
@@ -63,7 +73,7 @@ run these commands from PowerShell:
 
 ```powershell
 cd "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\italian_accounts_reclassifier"
-.\.venv\Scripts\Activate.ps1
+& ".\.venv\Scripts\Activate.ps1"
 python -m italian_accounts_reclassifier.cli --check-dependencies
 python -m italian_accounts_reclassifier.cli --privacy-check
 python -m italian_accounts_reclassifier.cli --inspect-template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx"

@@ -14,7 +14,7 @@ From PowerShell:
 
 ```powershell
 cd .\italian_accounts_reclassifier
-.\.venv\Scripts\Activate.ps1
+& ".\.venv\Scripts\Activate.ps1"
 python -m italian_accounts_reclassifier.cli `
   --process-file "C:\path\to\account.csv" `
   --template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx" `
