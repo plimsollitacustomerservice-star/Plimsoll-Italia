@@ -13,13 +13,13 @@ No production application code should be implemented until this design is approv
 
 The requested Windows knowledge-base folder is:
 
-`C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\knowledge_base`
+`C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base`
 
 The requested output folder is:
 
-`C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\Output`
+`C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\Output`
 
-In the current Linux/container execution environment, the Windows OneDrive path is not mounted at `/mnt/c/...`, and no `Template.xlsx` or `knowledge_base` folder was present in the repository. Therefore, the final mapping engine cannot yet inspect workbook rows, labels, formulas, or knowledge-base mapping assets. The application design explicitly includes a mandatory first-run knowledge-base scan and a separate inspection utility that must run on the target Windows workstation before mapping rules are finalized.
+In the current Linux/container execution environment, the Windows OneDrive path is not mounted at `/mnt/c/...`, and no `Template.xlsx` or `knowledge base` folder was present in the repository. Therefore, the final mapping engine cannot yet inspect workbook rows, labels, formulas, or knowledge-base mapping assets. The application design explicitly includes a mandatory first-run knowledge-base scan and a separate inspection utility that must run on the target Windows workstation before mapping rules are finalized.
 
 Repository files currently appear to be a separate web/catalog project rather than an existing Python desktop accounts parser. The new application should therefore be added as a self-contained Python project directory after approval, for example `italian_accounts_reclassifier/`, with docs and tests alongside it.
 

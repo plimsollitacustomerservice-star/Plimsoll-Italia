@@ -17,8 +17,8 @@ cd .\italian_accounts_reclassifier
 .\.venv\Scripts\Activate.ps1
 python -m italian_accounts_reclassifier.cli `
   --process-file "C:\path\to\account.csv" `
-  --template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\knowledge_base\Template.xlsx" `
-  --output-dir "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\Output" `
+  --template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx" `
+  --output-dir "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\Output" `
   --company-name "Company Name" `
   --fiscal-year 2024
 ```
@@ -44,3 +44,27 @@ The command creates a timestamped output folder containing:
 2. Confirmation that dependencies install successfully on your Windows machine.
 3. A small non-confidential sample CSV/XLSX account file for validating the output workflow.
 4. Confirmation of whether the OneDrive output path is acceptable despite sync warnings.
+
+## Test the four matching account files you mentioned
+
+If your four equivalent sample files are stored inside the app folder or knowledge-base folder, first test the implemented formats:
+
+```powershell
+# CSV sample
+python -m italian_accounts_reclassifier.cli `
+  --process-file "C:\path\to\sample.csv" `
+  --template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx" `
+  --output-dir "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\Output" `
+  --company-name "Sample Company" `
+  --fiscal-year 2024
+
+# XLSX sample
+python -m italian_accounts_reclassifier.cli `
+  --process-file "C:\path\to\sample.xlsx" `
+  --template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx" `
+  --output-dir "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\Output" `
+  --company-name "Sample Company" `
+  --fiscal-year 2024
+```
+
+The `.pdf` and `.xbrl` files are useful validation fixtures for the next development phase, but this build will currently report those extractors as planned/not implemented.

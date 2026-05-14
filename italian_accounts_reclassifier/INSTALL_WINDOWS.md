@@ -48,7 +48,41 @@ The default settings point to the requested knowledge-base and output folders in
 ## 5. Inspect the real Template.xlsx
 
 ```powershell
-python -m italian_accounts_reclassifier.cli --inspect-template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\knowledge_base\Template.xlsx"
+python -m italian_accounts_reclassifier.cli --inspect-template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx"
 ```
 
 Confirm that the reported Form and Manual labels/formula counts look plausible before processing accounts.
+
+## 6. Check dependencies and paths
+
+Because your app folder is:
+
+`C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani`
+
+run these commands from PowerShell:
+
+```powershell
+cd "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\italian_accounts_reclassifier"
+.\.venv\Scripts\Activate.ps1
+python -m italian_accounts_reclassifier.cli --check-dependencies
+python -m italian_accounts_reclassifier.cli --privacy-check
+python -m italian_accounts_reclassifier.cli --inspect-template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx"
+python -m pytest tests
+```
+
+Expected for the current limited workflow:
+
+- `openpyxl`, `pandas`, and `rapidfuzz` should show `OK`.
+- `Template.xlsx exists` should be `True`.
+- PDF/OCR/XBRL packages may be `MISSING` until those later phases are implemented and installed.
+
+## 7. Process one simple CSV/XLSX file
+
+```powershell
+python -m italian_accounts_reclassifier.cli `
+  --process-file "C:\path\to\account.csv" `
+  --template "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base\Template.xlsx" `
+  --output-dir "C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\Output" `
+  --company-name "Company Name" `
+  --fiscal-year 2024
+```

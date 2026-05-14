@@ -32,7 +32,7 @@ These checks require local Windows dependencies and the real knowledge-base fold
 4. Verify `Form` and `Manual` labels match expected business structure.
 5. Verify formula preservation and Excel recalculation using local Microsoft Excel COM automation when that module is implemented.
 6. Test real CSV and XLSX account samples copied into a safe local test folder.
-7. Confirm OneDrive sync warnings are acceptable for the chosen output path.
+7. OneDrive sync warnings are accepted by the user for the chosen output path.
 
 ## Major implementation still required before production use
 

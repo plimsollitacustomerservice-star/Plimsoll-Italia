@@ -20,10 +20,22 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output-dir", default=None, help="Output directory for --process-file")
     parser.add_argument("--company-name", default=None, help="Optional company name for output naming")
     parser.add_argument("--fiscal-year", type=int, default=None, help="Optional fiscal year for output naming")
+    parser.add_argument("--check-dependencies", action="store_true", help="Check local packages and configured Template.xlsx path")
     args = parser.parse_args(argv)
 
     settings = load_settings(args.settings) if args.settings else load_settings()
     ensure_local_directories(settings)
+
+    if args.check_dependencies:
+        from .dependency_check import check_dependencies
+
+        status = check_dependencies(settings)
+        for item in status.dependencies:
+            marker = "OK" if item.installed else "MISSING"
+            print(f"{marker}: {item.package}")
+        print(f"Knowledge base exists: {status.knowledge_base_exists} ({settings.paths.knowledge_base})")
+        print(f"Template.xlsx exists: {status.template_exists} ({status.template_path})")
+        print(f"Output folder exists: {status.output_exists} ({settings.paths.output})")
 
     if args.init_db:
         initialize_database(settings.paths.database)

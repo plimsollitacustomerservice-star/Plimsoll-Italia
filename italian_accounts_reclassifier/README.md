@@ -48,8 +48,8 @@ python -c "from italian_accounts_reclassifier.gui.main_window import launch; rai
 
 Default settings live in `config/default_settings.toml`. They point to:
 
-- `C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\knowledge_base`
-- `C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Accounts update\Output`
+- `C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\knowledge base`
+- `C:\Users\g.delia\OneDrive - Plimsoll Publishing Ltd\Documents\Editing files\Riclassificatore bilanci italiani\Output`
 
 The app warns when configured folders appear to be cloud-synced because the application processes locally, but OneDrive may independently sync files.
 
